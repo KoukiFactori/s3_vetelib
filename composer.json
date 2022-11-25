@@ -83,6 +83,7 @@
             "@auto-scripts"
         ],
         "start": [
+            "Composer\\Config::disableProcessTimeout",
             "symfony serve"
         ],
         "test:cs": [
