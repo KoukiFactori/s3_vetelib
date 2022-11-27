@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+  font-size: 10px;
+}
+
+header {
+  font-size: 2.6rem;
+  background-color: #F8D671;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+  margin: 0;
+}
+header .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: #9D9A73 solid 0.2rem;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+header .top__cat {
+  align-self: flex-end;
+}
+header .top__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5625rem;
+  padding: 0.5rem 0;
+}
+header .top input[type=checkbox] {
+  display: none;
+}
+header .top .hamburger {
+  display: block;
+  font-size: 2.4rem;
+  user-select: none;
+  cursor: pointer;
+}
+header nav {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.25s;
+  width: 90%;
+  margin: 0 auto;
+}
+header nav .nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style-type: none;
+  margin: 2rem 0;
+  gap: 1.5rem;
+}
+header nav .nav li {
+  cursor: pointer;
+}
+header nav .nav__left {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 60%;
+  gap: 1rem;
+}
+header nav .nav__left li {
+  position: relative;
+}
+header nav .nav__left li::after {
+  content: "";
+  background-color: #2EA7B6;
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  height: 0.3rem;
+  width: 0;
+}
+header nav .nav__left li:hover::after {
+  transition: all 0.25s;
+  left: 0;
+  width: 100%;
+}
+header nav .nav--primary {
+  background-color: #2EA7B6;
+  color: white;
+  padding: 0.8rem;
+}
+header:has(#checkbox_toggle:checked) nav {
+  height: 100%;
+  opacity: 100%;
+}
+
+@media (min-width: 75rem) {
+  header nav {
+    height: 100%;
+    opacity: 100%;
+  }
+  header nav .nav {
+    flex-direction: row;
+    align-items: center;
+  }
+  header nav .nav__left {
+    flex-direction: row;
+  }
+  header .top .hamburger {
+    display: none;
+  }
+}
+

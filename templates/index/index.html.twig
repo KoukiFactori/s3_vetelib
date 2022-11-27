@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{%block stylesheets %}
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet"/>
+{%endblock stylesheets %}
+{% block body %}
+    {% include 'navbar.html.twig' %}
+    <main class="index">
+        <div class=pate>
+            <h1>
+                Le meilleur soutien <br><strong>Pour votre animal</strong>
+            </h1>
+            </div>
+            <img src="{{asset('image/chat.png')}}" class="chat"/>
+
+        
+    </main>
+    <section class="index">
+        <h2>Nos Services </h2>
+        <div>
+            <img src="{{asset('image/chat.png')}}" />
+            <h2>blabla</h2>
+            <p>dfgdsfgdsfgdfgdfgfdg</p>
+        </div>
+        <div>
+            <img src="{{asset('image/chat.png')}}" />
+            <h2>blabla</h2>
+            <p>dfgdsfgdsfgdfgdfgfdg</p>
+        </div>
+        <div>
+            <img src="{{asset('image/chat.png')}}" />
+            <h2>blabla</h2>
+            <p>dfgdsfgdsfgdfgdfgfdg</p>
+        </div>
+         <div class="clear"></div> 
+                 <div>
+            <img src="{{asset('image/chat.png')}}" />
+            <h2>blabla</h2>
+            <p>dfgdsfgdsfgdfgdfgfdg</p>
+        </div>
+        <div>
+            <img src="{{asset('image/chat.png')}}" />
+            <h2>blabla</h2>
+            <p>dfgdsfgdsfgdfgdfgfdg</p>
+        </div>
+        <div>
+            <img src="{{asset('image/chat.png')}}" />
+            <h2>blabla</h2>
+            <p>dfgdsfgdsfgdfgdfgfdg</p>
+        </div>
+    </section>
+{% endblock %}
