@@ -1,0 +1,75 @@
+.nous_connaitre {
+    align-items: flex-end;
+    display: flex;
+    gap: 70px;
+    height: 405px;
+    min-width: 1375px;
+}
+
+.nous_connaitre_notre_histoire {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+    min-height: 405px;
+    width: 871px;
+}
+
+.notre_histoire_title {
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-left: 1px;
+    min-height: 44px;
+}
+
+.notre_histoire_paragraphe {
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: justify;
+    width: 871px;
+}
+
+/* Regarder pour mettre les infos de l'image de la clinique */
+
+.nous_connaitre_bien_etre {
+    letter-spacing: 0;
+    line-height: normal;
+    margin-right: 16px;
+    margin-top: 62px;
+    text-align: justify;
+    width: 1326px;
+}
+
+.paragraphe1 {
+    align-items: center;
+    display: flex;
+    gap: 49px;
+    margin-right: 89px;
+    margin-top: 64px;
+    min-width: 1309px;
+}
+
+.paragraphe2 {
+    align-items: flex-end;
+    display: flex;
+    gap: 137px;
+    margin-right: 37px;
+    margin-top: 55px;
+    min-width: 1289px;
+}
+
+.p2_texte {
+    height: 584;
+    position: relative;
+    width: 805px;
+}
+
+.paragraphe3 {
+    align-items: center;
+    display: flex;
+    gap: 60px;
+    margin-right: 13px;
+    margin-top: 101px;
+    min-width: 1385px;
+}
