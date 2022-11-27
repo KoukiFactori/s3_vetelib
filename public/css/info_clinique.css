@@ -43,24 +43,7 @@ img {
     text-align: justify;
 }
 
-/* Paragraphe 1 */
-.p_texte {
-    background-color: rgba(248, 250, 255, 1);
-    box-shadow: 0px 4px 4px #00000040;
-}
-
-
-.formatage_texte_paragraphe {
-    font-family: "Indie Flower";
-    font-size: 1em;
-    margin: 0.5em;
-    font-weight: 400;
-}
-
-
-
-
-/* Partout */
+/* Paragraphes 1, 2 et 3 */
 .number1, .number3 {
     font-family: "Indie Flower";
     font-size: 3em;
@@ -85,6 +68,20 @@ img {
     color: rgba(46, 167, 182, 1);
     font-weight: 400;
 }
+
+.p_texte {
+    background-color: rgba(248, 250, 255, 1);
+    box-shadow: 0px 4px 4px #00000040;
+}
+
+.formatage_texte_paragraphe {
+    font-family: "Indie Flower";
+    font-size: 1em;
+    margin: 0.5em;
+    font-weight: 400;
+}
+
+
 
 @media(min-width: 426px) {
     .notre_histoire {
