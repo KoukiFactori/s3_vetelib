@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,300,700,600|Indie+Flower:400");
+
+body {
+    margin-left: 0.7em;
+    margin-right: 0.7em;
+}
+
 /* Notre histoire */
 .notre_histoire {
     display: flex;
@@ -7,18 +14,20 @@
 .notre_histoire_texte {
     display: flex;
     flex-direction: column;
-    margin-left: 0.7em;
-    margin-right: 0.7em;
 }
 
 .notre_histoire_title {
+    font-size: 1.7em;
     font-weight: 400;
 }
 
 .notre_histoire_paragraphe {
-    letter-spacing: 0;
     line-height: normal;
     text-align: justify;
+}
+
+.formatage_texte {
+    font-family: "Inter";
 }
 
 img {
@@ -30,15 +39,45 @@ img {
 
 /* Paragraphe bien être */
 .paragraphe_bien_etre {
-    letter-spacing: 0;
     line-height: normal;
     text-align: justify;
-    font-family: "Inter";
-    font-style: normal;
+}
+
+/* Paragraphe 1 */
+.p1_texte {
+    background-color: rgba(248, 250, 255, 1);
+    box-shadow: 0px 4px 4px #00000040;
+}
+
+.titre_p1 {
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    font-family: "Indie Flower";
+    text-decoration: underline;
+    color: rgba(46, 167, 182, 1);
+    font-weight: 400;
+}
+
+.formatage_texte_p1 {
+    font-family: "Indie Flower";
+    font-size: 1em;
+    margin: 0.5em;
+    font-weight: 400;
 }
 
 
-@media(min-width: 375px) {
+
+
+/* Partout */
+.number {
+    font-family: "Indie Flower";
+    font-size: 3em;
+    margin: 0%;
+    margin-top: 1em;
+}
+
+
+@media(min-width: 426px) {
     .notre_histoire {
         flex-direction: row;
     }
@@ -47,6 +86,3 @@ img {
         font-size: 27px;
     }
 }
-
-
-@import url("https://fonts.googleapis.com/css?family=Inter:400,300,700,600|Indie+Flower:400");
