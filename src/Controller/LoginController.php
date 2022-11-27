@@ -15,4 +15,12 @@ class LoginController extends AbstractController
             'controller_name' => 'LoginController',
         ]);
     }
+
+    #[Route('/', name: 'app_vetelib')]
+    public function root(): Response
+    {
+        return $this->render('base.html.twig', [
+            'controller_name' => 'Home',
+        ]);
+    }
 }
