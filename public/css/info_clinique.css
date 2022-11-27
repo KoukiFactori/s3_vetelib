@@ -1,23 +1,18 @@
 /* Notre histoire */
 .notre_histoire {
     display: flex;
-    flex-direction: row;
-    padding: 1em 1em 1em 1em;
-    align-items: center;
+    flex-direction: column;
 }
 
 .notre_histoire_texte {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 1em;
+    margin-left: 0.7em;
+    margin-right: 0.7em;
 }
 
 .notre_histoire_title {
     font-weight: 400;
-    line-height: normal;
-    margin-left: 1px;
-    min-height: 44px;
 }
 
 .notre_histoire_paragraphe {
@@ -26,9 +21,32 @@
     text-align: justify;
 }
 
-.image_clinique > * {
-    max-width : 434px;
-    max-height : 289px;
-    padding: 2em;
+img {
+    width: 90%;
+    height: auto;
+    margin: 1em;
 }
-/* Regarder pour mettre les infos de l'image de la clinique */
+
+
+/* Paragraphe bien être */
+.paragraphe_bien_etre {
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: justify;
+    font-family: "Inter";
+    font-style: normal;
+}
+
+
+@media(min-width: 375px) {
+    .notre_histoire {
+        flex-direction: row;
+    }
+
+    .paragraphe_bien_etre {
+        font-size: 27px;
+    }
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Inter:400,300,700,600|Indie+Flower:400");
