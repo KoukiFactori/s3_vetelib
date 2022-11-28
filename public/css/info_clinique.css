@@ -1,14 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:400,300,700,600|Indie+Flower:400");
 
 body {
-    margin-left: 0.7em;
-    margin-right: 0.7em;
+    margin: 0;
+    padding: 0;
+}
+
+body > * {
+    padding: 0.7em;
 }
 
 /* Notre histoire */
 .notre_histoire {
     display: flex;
     flex-direction: column;
+    background-color: #F8D671;
+    
 }
 
 .notre_histoire_texte {
@@ -44,18 +50,17 @@ img {
 }
 
 /* Paragraphes 1, 2 et 3 */
-.number1, .number3 {
+.number1,
+.number3 {
     font-family: "Indie Flower";
     font-size: 3em;
     margin: 0%;
-    margin-top: 1em;
 }
 
-.number2{
+.number2 {
     font-family: "Indie Flower";
     font-size: 3em;
     margin: 0%;
-    margin-top: 1em;
     display: flex;
     flex-direction: row-reverse;
 }
