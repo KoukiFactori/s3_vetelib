@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+#map { height: 180px; }
+
+body, head {
+    font-size: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.contact {
+    font-family: 'Inter', sans-serif;
+}
+
+.contact .heading {
+    display: flex;
+    flex-direction: column;
+    background-color: #F8D671;
+    padding: 0 0.7rem;
+}
+
+.contact .heading__contact__title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact .heading__contact__description {
+    font-size: 1rem;
+}
+
+.contact .heading__contact__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact .heading__contact__form__section {
+    position: relative;
+    padding: 2rem 0 0 0;
+}
+
+.contact .heading__contact__form__input {
+    width: 100%;
+    border: none;
+    border-bottom: solid black 0.1rem;
+    background-color: #F8D671;
+    font-size: 2.4rem;
+}
+
+.contact .heading__contact__form__section label {
+    position: absolute;
+    transition: all .3s;
+    user-select: none;
+}
+
+.contact .heading__contact__form__section:has(.heading__contact__form__input:placeholder-shown) label {
+    font-size: 2rem;
+    top: 2rem;
+    left: 0;
+}
+
+.contact .heading__contact__form__section:not(:has(.heading__contact__form__input:placeholder-shown)) label {
+    font-size: 1.5rem;
+    top: .75rem;
+    left: 0;
+}

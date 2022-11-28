@@ -2,18 +2,68 @@
 
 {% block title %}Nous contacter{% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+<link rel="stylesheet" href="{{ asset('styles/contact.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin="" defer></script>
+<script src="{{ asset('scripts/contact.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="contact">
+    <div class="heading">
+        <div class="heading__contact">
+            <h1 class="heading__contact__title">Contactez-nous !</h1>
+            <p class="heading__contact__description">Utilisez ce formulaire pour nous contacter si vous souhaitez nous poser n’importe quelle question, ou simplement échanger avec nous</p>
+            <form class="heading__contact__form" method="POST">
+                <div class="heading__contact__form__section">
+                    <input class="heading__contact__form__input" type="text" name="lastname" id="lastname" placeholder=" ">
+                    <label for="lastname">Nom</label>
+                </div>
+                <div class="heading__contact__form__section">
+                    <input class="heading__contact__form__input" type="text" name="firstname" id="firstname" placeholder=" ">
+                    <label for="firstname">Prénom</label>
+                </div>
+                <div class="heading__contact__form__section">
+                    <input class="heading__contact__form__input" type="email" name="email" id="email" placeholder=" ">
+                    <label for="email">Email</label>
+                </div>
+                <div class="heading__contact__form__section">
+                    <textarea class="heading__contact__form__input" name="message" id="message" placeholder=" "></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
 
-<div class="example-wrapper">
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/simon/Documents/BUT/PHP/sae3-01/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/simon/Documents/BUT/PHP/sae3-01/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
+        <div class="heading__infos">
+            <h3 class="heading__infos__title">Infos</h3>
+            <ul class="heading__infos__list">
+                <li>
+                    <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27 0H1C0.446875 0 0 0.446875 0 1V21C0 21.5531 0.446875 22 1 22H27C27.5531 22 28 21.5531 28 21V1C28 0.446875 27.5531 0 27 0ZM25.75 3.4625V19.75H2.25V3.4625L1.3875 2.79063L2.61562 1.2125L3.95312 2.25313H24.05L25.3875 1.2125L26.6156 2.79063L25.75 3.4625ZM24.05 2.25L14 10.0625L3.95 2.25L2.6125 1.20937L1.38438 2.7875L2.24687 3.45938L12.9219 11.7594C13.2289 11.9979 13.6066 12.1273 13.9953 12.1273C14.3841 12.1273 14.7618 11.9979 15.0688 11.7594L25.75 3.4625L26.6125 2.79063L25.3844 1.2125L24.05 2.25Z" fill="#F8D671"/></svg>
+                    contact@vetelib.com
+                </li>
+                <li>
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.39512 2.32444C6.29182 2.19155 6.16142 2.08217 6.01259 2.00355C5.86376 1.92493 5.6999 1.87887 5.53191 1.86845C5.36391 1.85802 5.19562 1.88346 5.03821 1.94307C4.8808 2.00268 4.73787 2.0951 4.61893 2.2142L2.80949 4.02539C1.96426 4.87236 1.65277 6.07108 2.02201 7.12279C3.55451 11.4759 6.0474 15.4282 9.31578 18.6864C12.5741 21.9548 16.5263 24.4477 20.8794 25.9802C21.9311 26.3494 23.1299 26.038 23.9768 25.1927L25.7863 23.3833C25.9054 23.2643 25.9978 23.1214 26.0574 22.964C26.117 22.8066 26.1424 22.6383 26.132 22.4703C26.1216 22.3023 26.0755 22.1385 25.9969 21.9896C25.9183 21.8408 25.8089 21.7104 25.676 21.6071L21.6389 18.4677C21.4969 18.3576 21.3318 18.2811 21.156 18.2442C20.9802 18.2072 20.7982 18.2106 20.6239 18.2542L16.7915 19.2114C16.28 19.3393 15.7441 19.3325 15.2359 19.1917C14.7278 19.051 14.2647 18.781 13.8919 18.4082L9.59402 14.1086C9.22088 13.7359 8.95061 13.2729 8.80955 12.7648C8.66848 12.2566 8.66142 11.7206 8.78905 11.2089L9.74802 7.37654C9.79161 7.20223 9.79504 7.02031 9.75805 6.84449C9.72107 6.66866 9.64464 6.50354 9.53453 6.36157L6.39512 2.32444ZM3.29772 0.894738C3.60395 0.588409 3.97185 0.350733 4.37698 0.197492C4.78211 0.044251 5.21521 -0.0210488 5.64751 0.00592888C6.07982 0.0329065 6.50144 0.151544 6.88438 0.353964C7.26731 0.556385 7.60281 0.837955 7.86858 1.17998L11.008 5.21535C11.5837 5.95558 11.7867 6.9198 11.5592 7.82977L10.602 11.6622C10.5525 11.8606 10.5552 12.0686 10.6098 12.2657C10.6643 12.4629 10.769 12.6426 10.9135 12.7874L15.2131 17.087C15.3581 17.2318 15.5381 17.3366 15.7355 17.3912C15.933 17.4458 16.1413 17.4483 16.3401 17.3985L20.1707 16.4413C20.6198 16.329 21.0885 16.3203 21.5414 16.4157C21.9943 16.5112 22.4196 16.7085 22.7851 16.9925L26.8205 20.1319C28.2712 21.2606 28.4042 23.4043 27.1057 24.701L25.2963 26.5104C24.0013 27.8054 22.0659 28.3741 20.2617 27.7389C15.6439 26.1141 11.4512 23.4705 7.99457 20.0041C4.52844 16.548 1.88483 12.3559 0.259816 7.73877C-0.373664 5.93633 0.195068 3.99914 1.49003 2.70418L3.29947 0.894738H3.29772Z" fill="#F8D671"/></svg>
+                    03 54 30 74 91
+                </li>
+                <li>
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.1109 6.22222H17.8887V7.77778H24.1109V24.1111H17.8887V25.6667H25.6664V7.77778C25.6664 7.36522 25.5026 6.96956 25.2108 6.67783C24.9191 6.38611 24.5235 6.22222 24.1109 6.22222Z" fill="#F8D671"/><path d="M15.4624 2.33333H4.76022C4.3229 2.33333 3.9035 2.50705 3.59428 2.81628C3.28505 3.12551 3.11133 3.54491 3.11133 3.98222V25.6667H17.1113V3.98222C17.1113 3.54491 16.9376 3.12551 16.6284 2.81628C16.3192 2.50705 15.8998 2.33333 15.4624 2.33333ZM15.5558 24.1111H13.2224V21.7778H7.00022V24.1111H4.66688V3.98222C4.66688 3.96996 4.6693 3.95783 4.67399 3.9465C4.67868 3.93518 4.68555 3.92489 4.69422 3.91622C4.70289 3.90756 4.71318 3.90068 4.7245 3.89599C4.73582 3.8913 4.74796 3.88889 4.76022 3.88889H15.4624C15.4747 3.88889 15.4868 3.8913 15.4982 3.89599C15.5095 3.90068 15.5198 3.90756 15.5284 3.91622C15.5371 3.92489 15.544 3.93518 15.5487 3.9465C15.5534 3.95783 15.5558 3.96996 15.5558 3.98222V24.1111Z" fill="#F8D671"/><path d="M6.22217 6.22222H7.77772V7.77778H6.22217V6.22222Z" fill="#F8D671"/><path d="M9.3335 6.22222H10.8891V7.77778H9.3335V6.22222Z" fill="#F8D671"/><path d="M12.4443 6.22222H13.9999V7.77778H12.4443V6.22222Z" fill="#F8D671"/><path d="M6.22217 10.1111H7.77772V11.6667H6.22217V10.1111Z" fill="#F8D671"/><path d="M9.3335 10.1111H10.8891V11.6667H9.3335V10.1111Z" fill="#F8D671"/><path d="M12.4443 10.1111H13.9999V11.6667H12.4443V10.1111Z" fill="#F8D671"/><path d="M6.22217 14H7.77772V15.5556H6.22217V14Z" fill="#F8D671"/><path d="M9.3335 14H10.8891V15.5556H9.3335V14Z" fill="#F8D671"/><path d="M12.4443 14H13.9999V15.5556H12.4443V14Z" fill="#F8D671"/><path d="M6.22217 17.8889H7.77772V19.4444H6.22217V17.8889Z" fill="#F8D671"/><path d="M9.3335 17.8889H10.8891V19.4444H9.3335V17.8889Z" fill="#F8D671"/><path d="M12.4443 17.8889H13.9999V19.4444H12.4443V17.8889Z" fill="#F8D671"/><path d="M17.8887 10.1111H19.4442V11.6667H17.8887V10.1111Z" fill="#F8D671"/><path d="M21 10.1111H22.5556V11.6667H21V10.1111Z" fill="#F8D671"/><path d="M17.8887 14H19.4442V15.5556H17.8887V14Z" fill="#F8D671"/><path d="M21 14H22.5556V15.5556H21V14Z" fill="#F8D671"/><path d="M17.8887 17.8889H19.4442V19.4444H17.8887V17.8889Z" fill="#F8D671"/><path d="M21 17.8889H22.5556V19.4444H21V17.8889Z" fill="#F8D671"/></svg>
+                    51 rue des tournesols
+                </li>
+                <li>
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" stroke="#F8D671" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.0002 13L10.3335 17M13.0002 6.33334V13" stroke="#F8D671" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    9h - 18h du lundi au vendredi
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom">
+        <h1 class="bottom__title">Vous avez du mal à nous situer ? Aidez-vous de la carte interactive :</h1>
+        <div id="map"></div>
+    </div>
 </div>
 {% endblock %}
