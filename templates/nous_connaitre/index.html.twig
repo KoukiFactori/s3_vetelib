@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html.twig' %}
 
-		<title>Nous connaitre</title>
-		<link rel="stylesheet" href="/css/info_clinique.css">
-	</head>
+{% block title %}Nous connaitre
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="/css/info_clinique.css">
+{% endblock %}
+
+
+{% block body %}
 	<body>
 		<div class="notre_histoire">
 			<img src="/images/Image de clinique.png" alt="Image représentant une clinique vétérinaire">
@@ -42,6 +43,4 @@
 				<p class="formatage_texte_paragraphe">Tout un espace vous est réservé également pour toutes éventuelles questions (espace FAQ). Cela peut vous permettre de vous renseigner lorsque vous avez un doute, permettant de savoir rapidement quoi faire en cas de problème. Si d’autres questions vous viennent sans réponse donnée, n’hésitez pas à prendre rendez-vous avec nous ! Nous serons ravis de vous aider</p>
 			</div>
 			<img src="/images/Medecin a l'ecoute.jpg" alt="Dessin d'un vétérinaire à l'écoute du client" width="514px" height="331px">
-		</body>
-	</body>
-</html>
+		{% endblock %}
