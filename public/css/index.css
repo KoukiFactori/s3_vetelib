@@ -33,7 +33,7 @@ main.index img{
 
 @media (max-width: 1200px){
     main.index h1 {
-        margin-top: 2em;
+        margin-top: 2eù;
         font-size:5em;
         text-align: center;
     }
@@ -51,3 +51,20 @@ main.index img{
     }
 }
 
+.allService{
+    display:flex;
+    justify-content:space-around;
+    overflow: hidden;
+}
+h2 + p{
+    width:15em;
+    font-size: 20px;
+    font-family: 'Inter';
+}
+
+h2{ 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+}
