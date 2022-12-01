@@ -38,12 +38,17 @@ body > * {
 }
 
 img {
-    width: 90%;
+    width: auto;
     max-width: 434px;
-    height: auto;
+    height: 80%;
     margin: 1em;
 }
 
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Paragraphe bien être */
 .paragraphe_bien_etre {
@@ -97,7 +102,7 @@ img {
     .notre_histoire {
         flex-direction: row;
     }
-    
+
     .texte_image_p1, .texte_image_p3 {
         display: flex;
         flex-direction: row;
@@ -109,7 +114,7 @@ img {
     }
 }
 
-/* Définition de la taille des textes pour les smartphones et tablettes */
+/* Définition de la taille des textes et images pour les smartphones et tablettes */
 @media(max-width: 769px) {
     .notre_histoire_title {
         font-size:x-large ;
@@ -125,5 +130,9 @@ img {
     
     .number1, .number2, .number3 {
         font-size: 65px;
+    }
+
+    img{
+        max-width: 80%;
     }
 }
