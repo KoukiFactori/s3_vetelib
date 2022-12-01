@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:400,300,700,600|Indie+Flower:400");
 
 body {
-    margin: 0;
-    padding: 0;
+    margin: 10;
 }
 
 body > * {
@@ -39,7 +38,7 @@ body > * {
 
 img {
     width: auto;
-    max-width: 434px;
+    max-width: 430px;
     height: 80%;
     margin: 1em;
 }
@@ -90,7 +89,7 @@ img {
 
 .formatage_texte_paragraphe {
     font-family: "Indie Flower";
-    font-size: 1.9459vw;
+    font-size: 1.7vw;
     margin: 0.5em;
     font-weight: 400;
     text-align: justify;
