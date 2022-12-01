@@ -23,13 +23,14 @@ body > * {
 }
 
 .notre_histoire_title {
-    font-size: 1.7em;
+    font-size: 1.9459vw;
     font-weight: 400;
 }
 
 .notre_histoire_paragraphe {
     line-height: normal;
     text-align: justify;
+    font-size: 1.459vw
 }
 
 .formatage_texte {
@@ -38,6 +39,7 @@ body > * {
 
 img {
     width: 90%;
+    max-width: 434px;
     height: auto;
     margin: 1em;
 }
@@ -47,19 +49,20 @@ img {
 .paragraphe_bien_etre {
     line-height: normal;
     text-align: justify;
+    font-size: 1.459vw;
 }
 
 /* Paragraphes 1, 2 et 3 */
 .number1,
 .number3 {
     font-family: "Indie Flower";
-    font-size: 3em;
+    font-size: 5.189vw;
     margin: 0%;
 }
 
 .number2 {
     font-family: "Indie Flower";
-    font-size: 3em;
+    font-size: 5.189vw;
     margin: 0%;
     display: flex;
     flex-direction: row-reverse;
@@ -72,6 +75,7 @@ img {
     text-decoration: underline;
     color: rgba(46, 167, 182, 1);
     font-weight: 400;
+    font-size: 1.9459vw;
 }
 
 .p_texte {
@@ -81,7 +85,7 @@ img {
 
 .formatage_texte_paragraphe {
     font-family: "Indie Flower";
-    font-size: 1em;
+    font-size: 1.9459vw;
     margin: 0.5em;
     font-weight: 400;
     text-align: justify;
@@ -89,12 +93,8 @@ img {
 
 
 
-@media(min-width: 426px) {
+@media(min-width: 769px) {
     .notre_histoire {
         flex-direction: row;
-    }
-
-    .paragraphe_bien_etre {
-        font-size: 27px;
     }
 }
