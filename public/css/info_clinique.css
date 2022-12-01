@@ -97,6 +97,16 @@ img {
     .notre_histoire {
         flex-direction: row;
     }
+    
+    .texte_image_p1, .texte_image_p3 {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .texte_image_p2 {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }
 
 /* Définition de la taille des textes pour les smartphones et tablettes */
