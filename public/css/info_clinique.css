@@ -30,7 +30,7 @@ body > * {
 .notre_histoire_paragraphe {
     line-height: normal;
     text-align: justify;
-    font-size: 1.459vw
+    font-size: 1.3vw;
 }
 
 .formatage_texte {
@@ -49,7 +49,7 @@ img {
 .paragraphe_bien_etre {
     line-height: normal;
     text-align: justify;
-    font-size: 1.459vw;
+    font-size: 1.3vw;
 }
 
 /* Paragraphes 1, 2 et 3 */
@@ -96,5 +96,24 @@ img {
 @media(min-width: 769px) {
     .notre_histoire {
         flex-direction: row;
+    }
+}
+
+/* Définition de la taille des textes pour les smartphones et tablettes */
+@media(max-width: 769px) {
+    .notre_histoire_title {
+        font-size:x-large ;
+    }
+    
+    .notre_histoire_paragraphe, .paragraphe_bien_etre {
+        font-size: medium;
+    }
+
+    .titre_p, .formatage_texte_paragraphe {
+        font-size: 20px;
+    }
+    
+    .number1, .number2, .number3 {
+        font-size: 65px;
     }
 }
