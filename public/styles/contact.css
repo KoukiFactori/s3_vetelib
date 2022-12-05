@@ -78,6 +78,10 @@ body, head {
     left: 0;
 }
 
+.contact .heading__contact__form__section ul {
+    
+}
+
 .contact .heading__contact__form__submit {
     border: none;
     background-color: #2EA7B6;

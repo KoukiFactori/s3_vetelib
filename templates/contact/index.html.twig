@@ -19,25 +19,27 @@
             <div class="heading__contact__inside">
                 <h1 class="heading__contact__title">Contactez-nous !</h1>
                 <p class="heading__contact__description">Utilisez ce formulaire pour nous contacter si vous souhaitez nous poser n’importe quelle question, ou simplement échanger avec nous</p>
-                <form class="heading__contact__form" method="POST">
+                            
+                {{ form_start(form, {attr: {class: 'heading__contact__form', novalidate: ''}}) }}
                     <div class="heading__contact__form__section">
-                        <input class="heading__contact__form__input" type="text" name="lastname" id="lastname" placeholder=" ">
-                        <label for="lastname">Nom</label>
+                        {{ form_row(form.lastname, {label: 'Nom', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
                     </div>
+
                     <div class="heading__contact__form__section">
-                        <input class="heading__contact__form__input" type="text" name="firstname" id="firstname" placeholder=" ">
-                        <label for="firstname">Prénom</label>
+                        {{ form_row(form.firstname, {label: 'Prénom', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
                     </div>
+
                     <div class="heading__contact__form__section">
-                        <input class="heading__contact__form__input" type="email" name="email" id="email" placeholder=" ">
-                        <label for="email">Email</label>
+                        {{ form_row(form.email, {label: 'Adresse mail', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
                     </div>
+
                     <div class="heading__contact__form__section">
-                        <textarea class="heading__contact__form__input" name="message" id="message" placeholder=" "></textarea>
-                        <label for="message">Message</label>
+                        {{ form_row(form.message, {label: 'Message', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
                     </div>
+
                     <button class="heading__contact__form__submit" type="submit">Envoyer</button>
-                </form>
+                {{ form_end(form) }}
+
             </div>
         </div>
 
