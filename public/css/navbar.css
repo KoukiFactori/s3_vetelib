@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-html, body {
+
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,6 +17,7 @@ header {
   padding-bottom: 2rem;
   margin: 0;
 }
+
 header .top {
   display: flex;
   flex-direction: row;
@@ -25,24 +28,29 @@ header .top {
   margin: 0 auto;
   padding: 0 2rem;
 }
+
 header .top__cat {
   align-self: flex-end;
 }
+
 header .top__brand {
   display: flex;
   align-items: center;
   gap: 0.5625rem;
   padding: 0.5rem 0;
 }
+
 header .top input[type=checkbox] {
   display: none;
 }
+
 header .top .hamburger {
   display: block;
   font-size: 2.4rem;
   user-select: none;
   cursor: pointer;
 }
+
 header nav {
   height: 0;
   opacity: 0;
@@ -51,6 +59,7 @@ header nav {
   width: 90%;
   margin: 0 auto;
 }
+
 header nav .nav {
   display: flex;
   justify-content: space-between;
@@ -60,14 +69,17 @@ header nav .nav {
   margin: 2rem 0;
   gap: 1.5rem;
 }
+
 header nav .nav li {
   cursor: pointer;
 }
+
 header nav .nav li a,
 header nav .nav li a:visited {
   text-decoration: none;
   color: black;
 }
+
 header nav .nav__left {
   display: flex;
   justify-content: space-between;
@@ -76,9 +88,12 @@ header nav .nav__left {
   max-width: 60%;
   gap: 1rem;
 }
+
 header nav .nav__left li {
   position: relative;
+  width: fit-content;
 }
+
 header nav .nav__left li::after {
   content: "";
   background-color: #2EA7B6;
@@ -88,16 +103,19 @@ header nav .nav__left li::after {
   height: 0.3rem;
   width: 0;
 }
+
 header nav .nav__left li:hover::after {
   transition: all 0.25s;
   left: 0;
   width: 100%;
 }
+
 header nav .nav--primary {
   background-color: #2EA7B6;
   color: white;
   padding: 0.8rem;
 }
+
 header:has(#checkbox_toggle:checked) nav {
   height: 100%;
   opacity: 100%;
@@ -108,13 +126,16 @@ header:has(#checkbox_toggle:checked) nav {
     height: 100%;
     opacity: 100%;
   }
+
   header nav .nav {
     flex-direction: row;
     align-items: center;
   }
+
   header nav .nav__left {
     flex-direction: row;
   }
+
   header .top .hamburger {
     display: none;
   }
