@@ -2,10 +2,11 @@
 
 body {
     margin: 10;
+    font-size: 10px;
 }
 
 body>* {
-    padding: 0.7em;
+    padding: 0.7rem;
 }
 
 /* Notre histoire */
@@ -22,14 +23,14 @@ body>* {
 }s      
 
 .notre_histoire_title {
-    font-size: 1.9459vw;
+    font-size: 20rem;
     font-weight: 400;
 }
 
 .notre_histoire_paragraphe {
     line-height: normal;
     text-align: justify;
-    font-size: 1.3vw;
+    font-size: 2rem;
 }
 
 .formatage_texte {
@@ -40,7 +41,7 @@ img {
     width: auto;
     max-width: 430px;
     height: 80%;
-    margin: 1em;
+    margin: 1rem;
 }
 
 .images {
@@ -53,14 +54,14 @@ img {
 .paragraphe_bien_etre {
     line-height: normal;
     text-align: justify;
-    font-size: 1.3vw;
+    font-size: 1.56rem;
 }
 
 /* Paragraphes 1, 2 et 3 */
 .number1,
 .number3 {
     font-family: "Indie Flower";
-    font-size: 5.189vw;
+    font-size: 6.23rem;
     margin: 0%;
 }
 
@@ -73,13 +74,13 @@ img {
 }
 
 .titre_p {
-    padding-top: 0.5em;
-    padding-left: 0.5em;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
     font-family: "Indie Flower";
     text-decoration: underline;
     color: rgba(46, 167, 182, 1);
     font-weight: 400;
-    font-size: 1.9459vw;
+    font-size: 2.34rem;
 }
 
 .p_texte {
@@ -89,8 +90,8 @@ img {
 
 .formatage_texte_paragraphe {
     font-family: "Indie Flower";
-    font-size: 1.7vw;
-    margin: 0.5em;
+    font-size: 2.04rem;
+    margin: 0.5rem;
     font-weight: 400;
     text-align: justify;
 }
@@ -117,17 +118,17 @@ img {
 /* Définition de la taille des textes et images pour les smartphones et tablettes */
 @media(max-width: 769px) {
     .notre_histoire_title {
-        font-size: x-large;
+        font-size: 2rem;
     }
 
     .notre_histoire_paragraphe,
     .paragraphe_bien_etre {
-        font-size: medium;
+        font-size: 1.5rem;
     }
 
     .titre_p,
     .formatage_texte_paragraphe {
-        font-size: 20px;
+        font-size: 1.55rem;
     }
 
     .number1,
