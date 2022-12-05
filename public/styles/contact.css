@@ -131,6 +131,10 @@ body, head {
     margin: 2.5rem 2rem;
 }
 
+#map {
+    height: 30rem;
+}
+
 @media screen and (min-width: 1024px) {
     .contact .heading {
         flex-direction: row;
@@ -149,16 +153,22 @@ body, head {
 
     .contact .heading__contact__form__submit {
         width: fit-content;
-        float: right;
+        font-size: 1.5rem;
     }
 
     .contact .heading__infos {
         flex-grow: 1;
+        height: fit-content;
+        align-self: center;
     }
 
     .contact .heading__infos__patte svg {
         top: -13px;
         left: -11px;
         box-shadow: 5px 5px 9px -2px rgba(0,0,0,0.39);
+    }
+
+    #map {
+        height: 40rem;
     }
 }
