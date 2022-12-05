@@ -18,6 +18,9 @@ body, head {
 .contact .heading {
     display: flex;
     flex-direction: column;
+}
+
+.contact .heading__contact {
     background-color: #F8D671;
     padding: 0 0.7rem;
 }
@@ -28,7 +31,7 @@ body, head {
 }
 
 .contact .heading__contact__description {
-    font-size: 1rem;
+    font-size: 2rem;
 }
 
 .contact .heading__contact__form {
@@ -44,9 +47,16 @@ body, head {
 .contact .heading__contact__form__input {
     width: 100%;
     border: none;
-    border-bottom: solid black 0.1rem;
+    outline: none;
+    border-bottom: solid black 0.2rem;
     background-color: #F8D671;
     font-size: 2.4rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.contact .heading__contact__form__input:focus {
+    border-bottom: solid #2EA7B6 0.2rem;
+    transition: all .3s;
 }
 
 .contact .heading__contact__form__section label {
@@ -61,8 +71,94 @@ body, head {
     left: 0;
 }
 
-.contact .heading__contact__form__section:not(:has(.heading__contact__form__input:placeholder-shown)) label {
+.contact .heading__contact__form__section:not(:has(.heading__contact__form__input:placeholder-shown)) label,
+.contact .heading__contact__form__section:has(.heading__contact__form__input:focus) label {
     font-size: 1.5rem;
     top: .75rem;
     left: 0;
+}
+
+.contact .heading__contact__form__submit {
+    border: none;
+    background-color: #2EA7B6;
+    color: white;
+    padding: 0.8rem;
+    margin: .5rem 0;
+    cursor: pointer;
+}
+
+.contact .heading__infos {
+    position: relative;
+    background-color: #2EA7B6;
+    color: white;
+    padding: 2.5rem 2rem;
+}
+
+.contact .heading__infos__patte svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #F8D671;
+    padding: .3rem;
+    box-shadow: -5px 5px 9px -2px rgba(0,0,0,0.39);
+}
+
+.contact .heading__infos__title {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.contact .heading__infos__list {
+    list-style-type: none;
+    margin-top: 2.5rem;
+}
+
+.contact .heading__infos__list li {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.contact .heading__infos__list li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.contact .heading__infos__list__info {
+    font-size: 1.5rem;
+}
+
+.contact .bottom {
+    margin: 2.5rem 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .contact .heading {
+        flex-direction: row;
+        background-color: #F8D671;
+    }
+
+    .contact .heading__contact {
+        flex-grow: 2;
+        display: flex;
+        justify-content: center;
+    }
+
+    .contact .heading__contact__inside {
+        width: 80%;
+    }
+
+    .contact .heading__contact__form__submit {
+        width: fit-content;
+        float: right;
+    }
+
+    .contact .heading__infos {
+        flex-grow: 1;
+    }
+
+    .contact .heading__infos__patte svg {
+        top: -13px;
+        left: -11px;
+        box-shadow: 5px 5px 9px -2px rgba(0,0,0,0.39);
+    }
 }
