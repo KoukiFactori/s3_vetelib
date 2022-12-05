@@ -63,6 +63,11 @@ header nav .nav {
 header nav .nav li {
   cursor: pointer;
 }
+header nav .nav li a,
+header nav .nav li a:visited {
+  text-decoration: none;
+  color: black;
+}
 header nav .nav__left {
   display: flex;
   justify-content: space-between;
