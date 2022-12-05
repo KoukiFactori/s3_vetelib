@@ -19,7 +19,7 @@ body>* {
 .notre_histoire_texte {
     display: flex;
     flex-direction: column;
-}
+}s      
 
 .notre_histoire_title {
     font-size: 1.9459vw;
