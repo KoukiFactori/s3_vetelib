@@ -24,6 +24,10 @@ class Animal
     #[ORM\JoinColumn(nullable: false)]
     private ?Espece $espece = null;
 
+    #[ORM\ManyToOne(inversedBy: 'animals')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Client $client = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +65,18 @@ class Animal
     public function setEspece(?Espece $espece): self
     {
         $this->espece = $espece;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }
