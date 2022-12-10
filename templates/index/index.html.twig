@@ -2,8 +2,12 @@
 {%block stylesheets %}
     <link href="{{ asset('css/index.css') }}" rel="stylesheet"/>
 {%endblock stylesheets %}
+{%block javascripts%}
+    <script 
+        src="{{asset('js/index.js')}}">
+    </script>
+{%endblock javascripts %}
 {% block body %}
-    {% include 'navbar.html.twig' %}
     <main class="index">
         <div class=pate>
             <h1>
@@ -43,5 +47,15 @@
          
             </div>
         </div>
+        <div id="carousel">
+            <img src="{{asset('image/chat.png')}}" style="display : block;">
+            <img src="{{asset('image/avis1.png')}}"style="display : none">
+            <img src="{{asset('image/avis1.png')}}"style="display : none">
+            <img src="{{asset('image/avis1.png')}}"style="display : none">
+            <!-- Ajoute des boutons de contrôle -->
+            <button onclick="previous()">Précédent</button>
+            <button onclick="next()">Suivant</button>
+        </div>
+
     </section>
 {% endblock %}

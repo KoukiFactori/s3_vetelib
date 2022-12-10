@@ -68,3 +68,12 @@ h2{
     font-weight: 400;
     font-size: 30px;
 }
+@media (max-width: 900px){
+    .allService{
+        flex-direction: column;
+    }
+}
+
+
+  
+  
