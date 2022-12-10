@@ -8,6 +8,11 @@ html, body {
   font-size: 10px;
 }
 
+.carousel {
+    display: flex;
+    justify-content: center;
+}
+
 header {
   font-size: 2.6rem;
   background-color: #F8D671;

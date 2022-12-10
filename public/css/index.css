@@ -66,6 +66,7 @@ h2{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
+    text-decoration-line: underline;
     font-size: 30px;
 }
 @media (max-width: 900px){
@@ -74,6 +75,11 @@ h2{
     }
 }
 
+.carousel
+{
+    display: flex ;
+    justify-content: center;
+}
 
   
   

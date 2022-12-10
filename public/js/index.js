@@ -31,5 +31,4 @@ function next() {
   images[index].style.display = "block";
 }
 
-// Définit une intervalle de temps pour passer à l'image suivante toutes les 3 secondes
-setInterval(next, 3000);
+

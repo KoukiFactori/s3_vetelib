@@ -4,16 +4,16 @@
 {%endblock stylesheets %}
 {%block javascripts%}
     <script 
-        src="{{asset('js/index.js')}}">
+        src="{{asset('js/index.js')}}" defer >
     </script>
 {%endblock javascripts %}
 {% block body %}
     <main class="index">
-        <div class=pate>
+        <div class="pate">
             <h1>
                 Le meilleur soutien <br><strong>Pour votre animal</strong>
             </h1>
-            </div>
+        </div>
             <img src="{{asset('image/chat.png')}}" class="chat"/>
 
         
@@ -47,6 +47,7 @@
          
             </div>
         </div>
+        <h2>Commentaires de nos clients</h2>
         <div id="carousel">
             <img src="{{asset('image/chat.png')}}" style="display : block;">
             <img src="{{asset('image/avis1.png')}}"style="display : none">
