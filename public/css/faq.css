@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,30 +17,44 @@ html, body {
     text-decoration: underline;
     margin: 0;
     font-size: 36px;
+    padding: 0.5em;
 }
 
 .intro {
-    display: flex;
-    flex: 1;
-    align-items: center;
+    background-color: #F8D671;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+}
+.lien {
+    background-color: #F8D671;
     margin: 0;
-    column-gap: 5px;
-    row-gap: 32px;
+    font-size: 20px;
 }
 
+.firstD {
+    background-color: #F8D671;
+}
 
 .faqD {
     display: flex;
-    justify-items: center;
     flex-direction: column;
-    row-gap: 52px;
-    font-size: 26px;
+    row-gap: 1.5em;
+    font-size: 20px;
+    width: auto;
+}
+.detone {
+    background-color: white;
+    justify-content: center;
+    margin-bottom: 1.5em;
 
 }
+
 details {
     border: 1px solid #aaa;
     border-radius: 8px;
     padding: 1em 0.5em .5em;
+    margin: 10px;
 }
 
 summary {
@@ -51,14 +66,43 @@ summary {
 details[open] {
     padding: 0.5em 0.5em 1em;
 }
+
 details[open] summary {
     border-bottom: 1px solid #aaa;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     margin-bottom: 1em;
 }
+
 @media (min-width: 769px) {
     details {
-        width: 50%;
+        
+        display: flex;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        padding: 1em 0.5em 0.5em;
+        margin-left: 5em;
+        margin-right: 5em;
     }
+
+    .intro {
+        background-color: #F8D671;
+        padding-left: 4em;
+        padding-right: 4em;
+        padding-bottom: 2em;
+    }
+    .lien {
+        background-color: #F8D671;
+        margin: 0;
+        font-size: 32px;
+    }
+
+    .faqD {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2em;
+        font-size: 26px;
+        justify-content: center;
+    }
+    
 }
