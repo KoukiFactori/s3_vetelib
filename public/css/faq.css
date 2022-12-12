@@ -55,6 +55,32 @@ details {
     border-radius: 8px;
     padding: 1em 0.5em .5em;
     margin: 10px;
+    background-color: white;
+}
+
+.patte1 {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+
+.patte2 {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.souspatte {
+    width: 40%;
+    display: flex;
+    z-index: -1;
+    opacity: 60%;
+    position: absolute;
+    padding: 1em;
+}
+
+.souspatte2 {
+    transform: rotate(0.15turn);
 }
 
 summary {
@@ -105,4 +131,7 @@ details[open] summary {
         justify-content: center;
     }
     
+    .souspatte {
+        width: 30%;
+    }
 }
