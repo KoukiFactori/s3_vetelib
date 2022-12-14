@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FAQ
+{% endblock %}
+{% block stylesheets %}
+
+	<link href="/css/faq.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+	<div class="faq">
+		<h1 class="title">Besoin d'aide ?</h1>
+
+		<div class="intro">
+			<p class="lien">Consulter les questions les plus fréquentes. Si vous ne trouvez pas de réponse, contactez nous
+				<a class="lien" href="">ici</a>.
+			</p>
+		</div>
+		<div class="faqD">
+			<div class="firstD">
+				<details open class="detone">
+					<summary>Quelle est la saison des tiques ?</summary>
+					Les tiques sont le plus souvent actives en automne et au printemps. 
+														                Cependant, il reste important de faire attention quelle que soit la saison, car celles-ci restent présentes toute l’année !
+				</details>
+			</div>
+			<details>
+				<summary>Mon chat eternue, est-ce le Coryza ?</summary>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam elementum ipsum eget molestie pulvinar. 
+													                Phasellus eget risus consectetur, dictum metus eget, condimentum lacus. Cras at lacus pulvinar, elementum diam vitae.
+			</details>
+			<div class="patte1">
+				<img class="souspatte1 souspatte" src="images/patte_faq.png">
+			</div>
+			<details>
+				<summary>J'ai retiré une tique à mon chien, la tête est restée dans la peau ! Que faire ?</summary>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla tortor sed nisi dictum malesuada.
+			</details>
+			<details>
+				<summary>Comment savoir si les vaccins de mon animal sont à jour ?</summary>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate diam vel pharetra pharetra. 
+													                Cras a vulputate enim, ac mattis.
+			</details>
+			<div class="patte2">
+				<img class="souspatte2 souspatte" src="images/patte_faq.png">
+			</div>
+			<details>
+				<summary>Comment reconnaitre un poil en bonne santé ?</summary>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non egestas velit. 
+													                Ut viverra felis in felis viverra, a semper diam varius. Vestibulum non ligula.
+			</details>
+			<details>
+				<summary>Mon chien a la truffe sèche, c’est grave docteur ?</summary>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat.
+			</details>
+		</div>
+	</div>
+{% endblock %}
