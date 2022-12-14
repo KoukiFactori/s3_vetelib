@@ -39,7 +39,7 @@ body {
 .faqD {
     display: flex;
     flex-direction: column;
-    row-gap: 1.5em;
+    
     font-size: 20px;
     width: auto;
 }
@@ -56,6 +56,8 @@ details {
     padding: 1em 0.5em .5em;
     margin: 10px;
     background-color: white;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .patte1 {
@@ -109,6 +111,8 @@ details[open] summary {
         padding: 1em 0.5em 0.5em;
         margin-left: 5em;
         margin-right: 5em;
+        margin-top: 1em;
+        margin-bottom: 1em;
     }
 
     .intro {
@@ -126,7 +130,7 @@ details[open] summary {
     .faqD {
         display: flex;
         flex-direction: column;
-        row-gap: 2em;
+
         font-size: 26px;
         justify-content: center;
     }
