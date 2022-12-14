@@ -32,5 +32,4 @@ function next() {
 }
 
 // Fonction pour défiler image
-setInterval(next, 3000);
-
+setInterval(next, 5000)
