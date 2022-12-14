@@ -31,4 +31,6 @@ function next() {
   images[index].style.display = "block";
 }
 
+// Fonction pour défiler image
+setInterval(next, 3000);
 
