@@ -69,6 +69,7 @@ h2{
     text-decoration-line: underline;
     font-size: 30px;
 }
+
 @media (max-width: 900px){
     .allService{
         flex-direction: column;
