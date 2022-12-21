@@ -50,8 +50,6 @@ final class AnimalFactory extends ModelFactory
     {
         return [
             'birthdate' => self::faker()->dateTime(),
-            'client' => null, // TODO add App\Entity\Client ORM type manually
-            'espece' => null, // TODO add App\Entity\Espece ORM type manually
             'name' => self::faker()->firstname(),
         ];
     }

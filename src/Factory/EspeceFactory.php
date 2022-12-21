@@ -47,7 +47,7 @@ final class EspeceFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'name' => self::faker()->text(50),
+            'name' => mb_convert_case(self::faker()->word(), MB_CASE_TITLE, "UTF-8")
         ];
     }
 

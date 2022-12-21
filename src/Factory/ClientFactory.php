@@ -45,15 +45,18 @@ final class ClientFactory extends ModelFactory
      * @todo add your default values here
      */
     protected function getDefaults(): array
-    {
+    {   
+        $firstname=self::faker()->firstName();
+        $lastname=self::faker()->lastName();
+        
         return [
-            'address' => self::faker()->text(255),
+            'address' => self::faker()->streetadress(),
             'birthdate' => self::faker()->dateTime(),
-            'city' => self::faker()->text(60),
-            'email' => self::faker()->text(255),
-            'firstname' => self::faker()->text(50),
-            'lastname' => self::faker()->text(50),
-            'zipcode' => self::faker()->text(20),
+            'city' => self::faker()->cityName(),
+            'email' => transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname)).'.'.transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($lastname)).'@'.self::faker()->domainName(),
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'zipcode' => self::faker()->departmentNumber(),
         ];
     }
 
