@@ -20,7 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected ?int $id = null;
 
     #[ORM\Column(length: 50)]
     private ?string $lastname = null;
@@ -29,7 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $firstname = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    private ?string $email = null;
+    protected ?string $email = null;
 
     #[ORM\Column]
     private array $roles = [];
@@ -38,7 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    private ?string $password = null;
+    protected ?string $password = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone = null;
