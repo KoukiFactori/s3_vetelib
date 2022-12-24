@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\EspeceFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -14,6 +15,6 @@ class EspeceFixtures extends Fixture
 
         foreach ($especes as $element) {
             EspeceFactory::createOne($element);
-        }   
-}
+        }
+    }
 }
