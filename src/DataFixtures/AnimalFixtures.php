@@ -21,7 +21,7 @@ class AnimalFixtures extends Fixture
     public function getDependencies(): array
     {
         return [
-            CategoryFixtures::class,
+            EspeceFixtures::class,
             ClientFixtures::class,
         ];
     }
