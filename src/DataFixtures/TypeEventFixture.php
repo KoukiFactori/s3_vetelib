@@ -10,10 +10,11 @@ class TypeEventFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        $typeEventFile = file_get_contents(__DIR__.'/data/TypeEvent.json', true);
+        $typeEvents = json_decode($typeEventFile, true);
 
-        $manager->flush();
-        TypeEventFactory::createOne([['typeEvent' => 0],[ 'typeEvent' => 1]]);    // 0 = Non urgent ; 1 = Urgent
+        foreach ($typeEvents as $element) {
+            TypeEventFactory::createOne($element);
+        }
     }
 }

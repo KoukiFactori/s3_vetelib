@@ -6,9 +6,10 @@ use App\Factory\AnimalFactory;
 use App\Factory\ClientFactory;
 use App\Factory\EspeceFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AnimalFixtures extends Fixture
+class AnimalFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
