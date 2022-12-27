@@ -102,7 +102,8 @@
     "scripts-descriptions": {
         "start" : "Lance un serveur web de test symfony",
         "fix:cs": "Fix le code PHP avec PHP CS Fixer",
-        "test:cs" : "Test le code PHP avec PHP CS Fixer"
+        "test:cs" : "Test le code PHP avec PHP CS Fixer",
+        "db" : "Supprime et créé une nouvelle base de données, à laquelle on applique des migrations, puis création des données factives"
     },
     "conflict": {
         "symfony/symfony": "*"
