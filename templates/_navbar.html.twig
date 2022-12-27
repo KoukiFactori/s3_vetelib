@@ -1,5 +1,5 @@
 {% block stylesheets %}
-    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block navbar %}
@@ -23,8 +23,8 @@
         <ul class="nav">
             <div class="nav__left">
                 <li><a href={{ path('app_index') }}>Accueil</a></li>
-                <li><a href={{path('app_nous_connaitre')}}>Nous connaitre</a></li>
-                <li><a href={{path('app_faq')}}>FAQ</a></li>
+                <li><a href={{ path('app_nous_connaitre')}}>Nous connaitre</a></li>
+                <li><a href={{ path('app_faq')}}>FAQ</a></li>
                 <li>Nous contacter</li>
             </div>
             <div class="nav__right">

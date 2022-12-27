@@ -16,7 +16,10 @@
         {% endblock %}
     </head>
     <body>
-        {% include '_navbar.html.twig' %}
+        {% if not hide_navbar is defined %}
+            {% include '_navbar.html.twig' %}
+        {% endif %}
+        
         {% block body %}{% endblock %}
     </body>
 </html>
