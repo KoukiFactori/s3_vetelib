@@ -38,7 +38,15 @@ class AnimalRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    /**
+     * @param Client client dont on souhaite avoir les animaux
+     * @return Animal[]  return an array de tout les animaux d'un client
+    */
+     public function search(Client $client): Array 
+    {
 
+    }
+    
 //    /**
 //     * @return Animal[] Returns an array of Animal objects
 //     */
