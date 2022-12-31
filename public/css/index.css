@@ -68,7 +68,7 @@ h2 {
 section.index {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     padding: 10px;
 }
 
@@ -109,4 +109,10 @@ section.index {
     .allService > div svg {
         display: block;
     }
+}
+
+.carrousel {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
