@@ -1,78 +1,112 @@
 main.index {
-    background-color: #F8D671;
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: space-between;
-  }
-  
+  background-color: #f8d671;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
 main.index h1 {
-    font-size:7em;
-    text-align: center;
+  font-size: 7em;
+  text-align: center;
 }
 
-
-main.index img{
-    position: relative;
-    bottom: -69px;
-    margin-left:auto;
-    margin-right:auto;
+main.index img {
+  position: relative;
+  bottom: -69px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.pate{
-    background-image: URL(../image/PawOpacity50.png);
-    color: #3E402A;
-    font-family: 'Inter';
-    margin-left:auto;
-    margin-right:auto;
-    height: 434px;
-    width: 439px;
+
+.pate {
+  background-image: URL(../image/PawOpacity50.png);
+  color: #3e402a;
+  font-family: "Inter";
+  margin-left: auto;
+  margin-right: auto;
+  height: 434px;
+  width: 439px;
 }
 .pate strong {
-    color: #2A4E45;
+  color: #2a4e45;
 }
 
-@media (max-width: 1200px){
-    main.index h1 {
-        margin-top: 2eù;
-        font-size:5em;
-        text-align: center;
+@media (max-width: 1200px) {
+  main.index h1 {
+    margin-top: 2eù;
+    font-size: 5em;
+    text-align: center;
+  }
+  main.index img {
+    display: none;
+  }
+
+  .pate {
+    background-image: URL(../image/PawOpacity50.png);
+    color: #3e402a;
+    font-family: "Inter";
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+h2 + p {
+  width: 15em;
+  font-size: 20px;
+  font-family: "Inter";
+}
+
+h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  text-decoration-line: underline;
+  font-size: 30px;
+}
+
+/* For screen 900px wide and less */
+section.index {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.allService {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.allService > div {
+    display: flex;
+    width: 80%;
+
+    gap: 5px;
+}
+
+.allService > div svg {
+    display: none;
+}
+
+/* --- */
+
+@media (min-width: 900px) {
+    .allService {
+        flex-direction: row;
     }
-    main.index img {
-        display: none;
-    }
 
-    .pate {
-        background-image: URL(../image/PawOpacity50.png);
-        color: #3E402A;
-        font-family: 'Inter';
-        margin-left: auto;
-        margin-right: auto;
-        
-    }
-}
-
-.allService{
-    display:flex;
-    justify-content:space-around;
-    overflow: hidden;
-}
-h2 + p{
-    width:15em;
-    font-size: 20px;
-    font-family: 'Inter';
-}
-
-h2{ 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    text-decoration-line: underline;
-    font-size: 30px;
-}
-
-@media (max-width: 900px){
-    .allService{
+    .allService > div {
+        flex: 1 1 33%;
+        justify-content: space-evenly;
+        align-items: center;
         flex-direction: column;
     }
 }
 
+@media (min-width: 1200px) {
+    .allService > div svg {
+        display: block;
+    }
+}
