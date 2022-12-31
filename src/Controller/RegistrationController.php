@@ -17,46 +17,17 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register() {
-        return $this->redirectToRoute('app_register_client');
-    }
-
-    #[Route('/register/veterinaire', name: 'app_register_veterinaire')]
-    public function registerVeterinaire(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
-        $user = new Veterinaire();
+        $isVet = $request->query->get('veterinaire');
 
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) {
-            $form->getData();
-
-            // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
-
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+        if ($isVet) {
+            $user = new Veterinaire();
+            $user->setRoles(["ROLE_VETERINAIRE"]);
+        } else {
+            $user = new Client();
+            $user->setRoles(["ROLE_CLIENT"]);
         }
-
-    }
-
-    #[Route('/register/client', name: 'app_register_client')]
-    public function registerClient(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
-    {
-        $user = new Client();
 
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
