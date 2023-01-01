@@ -50,13 +50,13 @@ final class ClientFactory extends ModelFactory
         $lastname=self::faker()->lastName();
         
         return [
-            'address' => self::faker()->streetadress(),
+            'address' => self::faker()->streetAddress(),
             'birthdate' => self::faker()->dateTime(),
-            'city' => self::faker()->cityName(),
+            'city' => self::faker()->city(),
             'email' => transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname)).'.'.transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($lastname)).'@'.self::faker()->domainName(),
             'firstname' => $firstname,
             'lastname' => $lastname,
-            'zipcode' => self::faker()->departmentNumber(),
+            'zipcode' => self::faker()->postcode(),
         ];
     }
 

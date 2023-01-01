@@ -48,7 +48,7 @@ final class EventFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'animal' => AnimalFactory::new(),
+            'animal' => AnimalFactory::random(),
             'date' => self::faker()->dateTime(),
             'description' => self::faker()->text(255),
         ];

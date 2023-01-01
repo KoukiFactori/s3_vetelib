@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use Factory\ClientFactory;
+use App\Factory\ClientFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 

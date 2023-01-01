@@ -11,21 +11,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<Veterinaire>
  *
- * @method        Veterinaire|Proxy create(array|callable $attributes = [])
- * @method static Veterinaire|Proxy createOne(array $attributes = [])
- * @method static Veterinaire|Proxy find(object|array|mixed $criteria)
- * @method static Veterinaire|Proxy findOrCreate(array $attributes)
- * @method static Veterinaire|Proxy first(string $sortedField = 'id')
- * @method static Veterinaire|Proxy last(string $sortedField = 'id')
- * @method static Veterinaire|Proxy random(array $attributes = [])
- * @method static Veterinaire|Proxy randomOrCreate(array $attributes = [])
+ * @method        Veterinaire|Proxy                     create(array|callable $attributes = [])
+ * @method static Veterinaire|Proxy                     createOne(array $attributes = [])
+ * @method static Veterinaire|Proxy                     find(object|array|mixed $criteria)
+ * @method static Veterinaire|Proxy                     findOrCreate(array $attributes)
+ * @method static Veterinaire|Proxy                     first(string $sortedField = 'id')
+ * @method static Veterinaire|Proxy                     last(string $sortedField = 'id')
+ * @method static Veterinaire|Proxy                     random(array $attributes = [])
+ * @method static Veterinaire|Proxy                     randomOrCreate(array $attributes = [])
  * @method static VeterinaireRepository|RepositoryProxy repository()
- * @method static Veterinaire[]|Proxy[] all()
- * @method static Veterinaire[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Veterinaire[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Veterinaire[]|Proxy[] findBy(array $attributes)
- * @method static Veterinaire[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Veterinaire[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Veterinaire[]|Proxy[]                 all()
+ * @method static Veterinaire[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Veterinaire[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Veterinaire[]|Proxy[]                 findBy(array $attributes)
+ * @method static Veterinaire[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static Veterinaire[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
 final class VeterinaireFactory extends ModelFactory
 {
@@ -46,14 +46,17 @@ final class VeterinaireFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $firstname = self::faker()->firstName();
+        $lastname = self::faker()->lastName();
+
         return [
-            'address' => self::faker()->text(255),
+            'address' => self::faker()->streetAddress(),
             'birthdate' => self::faker()->dateTime(),
-            'city' => self::faker()->text(60),
-            'email' => self::faker()->text(255),
-            'firstname' => self::faker()->text(50),
-            'lastname' => self::faker()->text(50),
-            'zipcode' => self::faker()->text(20),
+            'city' => self::faker()->city(),
+            'email' => transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname)).'.'.transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($lastname)).'@'.self::faker()->domainName(),
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'zipcode' => self::faker()->postcode(),
         ];
     }
 

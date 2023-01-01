@@ -2,16 +2,18 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\VeterinaireFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class AppFixtures extends Fixture
+class VeterinaireFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
         // $product = new Product();
         // $manager->persist($product);
 
-        //$manager->flush();
+        $manager->flush();
+        VeterinaireFactory::createMany(5);
     }
 }
