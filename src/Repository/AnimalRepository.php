@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+
 use App\Entity\Animal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\ClientRepository;
 
 /**
  * @extends ServiceEntityRepository<Animal>
@@ -42,8 +44,15 @@ class AnimalRepository extends ServiceEntityRepository
      * @param Client client dont on souhaite avoir les animaux
      * @return Animal[]  return an array de tout les animaux d'un client
     */
-     public function search(Client $client): Array 
+    public function getAllAnimalsByClient(string $clientId): Array 
     {
+        $qb = $this->createQueryBuilder('a')
+        ->innerJoin('a.client', 'c')
+        ->where('c.id = :clientId')
+        ->setParameter('clientId', $clientId)
+        ->getQuery();
+
+        return $qb->execute();
 
     }
     
