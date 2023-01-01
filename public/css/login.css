@@ -1,48 +1,91 @@
-html, body {
-    margin: 0;
-}
-
 body {
     height: 100vh;
-    width: 100vw;
+    background: linear-gradient(180deg, #f8e7c1 10%, #f5bd89 100%);
 
-    background: rgb(253,243,172);
-    background: linear-gradient(180deg, rgba(253,243,172,1) 10%, rgba(246,197,152,1) 100%);
-
-    display: flex;
-    flex-direction: column;
-
-    border: 1px red solid;
+    padding: 30px;
 }
 
 * {
     box-sizing: border-box;
 }
 
-.main_form {
+.header__bar a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+}
+
+.form__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 40%;
+    padding: 30px;
+
+    border-radius: 10px;
+
     display: flex;
     flex-direction: column;
-
     align-items: center;
 }
 
-.form_login {
-    border: 1px black solid;
+.form__container h1 {
+    font-size: 4rem;
+    font-weight: bold;
 
-    display: flex;
-    flex-direction: column;
-
-    gap: 20px;
+    margin: 5%;
 }
 
-.input {
-    background-color: greenyellow;
+.form_login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
-    border-radius: 20px;
+    width: 400px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field label {
+    font-size: 2rem;
+    color: gray;
+}
+
+.field input {
+    background-color: #1B4758;
+    color: rgba(255, 255, 255, 0.89);
+
+    border-radius: 12px;
     border-style: hidden;
+    height: 30px;
+
+    padding: 5px;
+}
+
+.field input::placeholder {
+    color: rgba(245, 245, 245, 0.473);
 }
 
 .form_login .parameter {
     display: flex;
     flex-direction: row;
+}
+
+.form_login .btn[type=submit] {
+    background-color: #1AC474;
+    color: white;
+    border: none;
+    height: 30px;
+    border-radius: 12px;
+}
+
+.txt_register a {
+    text-decoration: none;
+    font-size: 2rem;
 }
