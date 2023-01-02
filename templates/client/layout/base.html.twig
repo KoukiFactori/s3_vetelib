@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		<link href="{{ asset('css/reset.css') }}" rel="stylesheet"/>
+
+
+		<style>
+			body {
+				background: url("{{ asset('images/client/background.svg') }}") no-repeat center center fixed;
+			}
+		</style>
+		<link href="{{ asset('css/client/layout.css') }}" rel="stylesheet"/>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<header>
+			<div class="top">
+
+				<input type="checkbox" id="checkbox_toggle"/>
+				<label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+			</div>
+			<nav>
+				<ul class="nav">
+					<div class="nav__left">
+						<li>
+							<a href={{ path('app_index') }}>Accueil</a>
+						</li>
+						<li>Mes rendez-vous</li>
+						<li>Mes animaux</li>
+						<li>Mes informations</li>
+					</div>
+					<div class="nav__right">
+						<li class="nav--primary">Nom client connecté</li>
+					</div>
+				</ul>
+			</nav>
+		</header>
+	</body>
+</html>
