@@ -5,15 +5,11 @@
 
 {% block stylesheets %}
 	<link href="{{ asset('css/index.css') }}" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	{{ encore_entry_link_tags('slick') }}
 {% endblock %}
 
 {% block javascripts %}
-	<script src="//code.jquery.com/jquery-1.11.0.min.js" defer></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" defer></script>
-	<script src="slick/slick.min.js" defer></script>
-	<script src="{{asset('js/index.js')}}" defer></script>
+	{{ encore_entry_script_tags('slick') }}
 {% endblock %}
 
 

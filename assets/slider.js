@@ -1,6 +1,8 @@
-import slick from 'slick-carousel';
+import $ from 'jquery';
+import 'slick-carousel';
+import './styles/slider.css';
 
-$('.carousel').slick({
+$('.carrousel').slick({
   dots: true,
   infinite: true,
   speed: 300,
