@@ -12,10 +12,9 @@
 
 L'objectif est de créer un site web fonctionnel pour un vétérinaire, afin de lui faciliter différentes tâches. Le site regroupera différentes fonctionnalités, permettant de relier le client avec des professionnels de la santé.
 
-## Commandes composer  
-
 ### Lancer le serveur
-    composer start
+- `composer start` : Pour démarrer le serveur web
+- `bin/console messenger:consume async` : Pour l'envoi des mails
 
 ### Style de codage
 
