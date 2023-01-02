@@ -1,6 +1,8 @@
 {% block stylesheets %}
-    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
 {% endblock %}
+
+{% block navbar %}
 <header>
     <div class="top">
         <svg class="top__cat" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,9 +22,9 @@
     <nav>
         <ul class="nav">
             <div class="nav__left">
-                <li>Accueil</li>
-                <li><a href="{{ path('app_nous_connaitre') }}">Nous connaitre</a></li>
-                <li><a href="{{ path('app_faq') }}">FAQ</a></li>
+                <li><a href={{ path('app_index') }}>Accueil</a></li>
+                <li><a href={{ path('app_nous_connaitre')}}>Nous connaitre</a></li>
+                <li><a href={{ path('app_faq')}}>FAQ</a></li>
                 <li><a href="{{ path('app_contact') }}">Nous contacter</a></li>
             </div>
             <div class="nav__right">
@@ -33,3 +35,4 @@
 
     </div>
 </header>
+{% endblock %}

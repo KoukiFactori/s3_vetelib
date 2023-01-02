@@ -1,14 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter";
-  font-size: 10px;
-}
 
 header {
   font-size: 2.6rem;

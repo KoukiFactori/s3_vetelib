@@ -91,12 +91,19 @@
         ],
         "fix:cs": [
             "php-cs-fixer fix"
-        ]
+        ],
+          "db": [
+            "php bin/console doctrine:database:drop --force --if-exists",
+            "php bin/console doctrine:database:create",
+            "php bin/console doctrine:migrations:migrate --no-interaction",
+            "php bin/console doctrine:fixtures:load --no-interaction"
+          ]
     },
     "scripts-descriptions": {
         "start" : "Lance un serveur web de test symfony",
         "fix:cs": "Fix le code PHP avec PHP CS Fixer",
-        "test:cs" : "Test le code PHP avec PHP CS Fixer"
+        "test:cs" : "Test le code PHP avec PHP CS Fixer",
+        "db" : "Supprime et créé une nouvelle base de données, à laquelle on applique des migrations, puis création des données factives"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -108,6 +115,8 @@
         }
     },
     "require-dev": {
+        "codeception/module-doctrine2": "^3.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "friendsofphp/php-cs-fixer": "^3.13",
         "phpmd/phpmd": "^2.13",
         "phpunit/phpunit": "^9.5",
@@ -117,6 +126,7 @@
         "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.1",
         "symfony/stopwatch": "5.4.*",
-        "symfony/web-profiler-bundle": "5.4.*"
+        "symfony/web-profiler-bundle": "5.4.*",
+        "zenstruck/foundry": "^1.24"
     }
 }
