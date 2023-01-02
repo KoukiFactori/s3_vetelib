@@ -59,6 +59,10 @@ body, head {
     transition: all .3s;
 }
 
+.contact .heading__contact__form__section:has(.heading__contact__form__errors ul) .heading__contact__form__input {
+    border-bottom-color: red;
+}
+
 .contact .heading__contact__form__section label {
     position: absolute;
     transition: all .3s;
@@ -78,8 +82,10 @@ body, head {
     left: 0;
 }
 
-.contact .heading__contact__form__section ul {
-    
+.contact .heading__contact__form__errors ul {
+    font-size: 1.3rem;
+    color: red;
+    list-style-type: none;
 }
 
 .contact .heading__contact__form__submit {

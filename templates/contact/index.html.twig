@@ -22,19 +22,35 @@
                             
                 {{ form_start(form, {attr: {class: 'heading__contact__form', novalidate: ''}}) }}
                     <div class="heading__contact__form__section">
-                        {{ form_row(form.lastname, {label: 'Nom', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        {{ form_label(form.lastname) }}
+                        {{ form_widget(form.lastname, {attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        <div class="heading__contact__form__errors">
+                            {{ form_errors(form.lastname) }}
+                        </div>
                     </div>
 
                     <div class="heading__contact__form__section">
-                        {{ form_row(form.firstname, {label: 'Prénom', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        {{ form_label(form.firstname) }}
+                        {{ form_widget(form.firstname, {attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        <div class="heading__contact__form__errors">
+                            {{ form_errors(form.firstname) }}
+                        </div>
                     </div>
 
                     <div class="heading__contact__form__section">
-                        {{ form_row(form.email, {label: 'Adresse mail', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, {attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        <div class="heading__contact__form__errors">
+                            {{ form_errors(form.email) }}
+                        </div>
                     </div>
 
                     <div class="heading__contact__form__section">
-                        {{ form_row(form.message, {label: 'Message', attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        {{ form_label(form.message) }}
+                        {{ form_widget(form.message, {attr: {class: 'heading__contact__form__input', placeholder: ' '}}) }}
+                        <div class="heading__contact__form__errors">
+                            {{ form_errors(form.message) }}
+                        </div>
                     </div>
 
                     <button class="heading__contact__form__submit" type="submit">Envoyer</button>

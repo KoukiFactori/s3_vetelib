@@ -18,18 +18,21 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('lastname', TextType::class, options: [
+                'label' => 'Nom',
                 'empty_data' => '',
                 'constraints' => [
                     new NotBlank(),
                 ],
             ])
             ->add('firstname', TextType::class, options: [
+                'label' => 'Prénom',
                 'empty_data' => '',
                 'constraints' => [
                     new NotBlank(),
                 ],
             ])
             ->add('email', EmailType::class, options: [
+                'label' => 'Adresse mail',
                 'empty_data' => '',
                 'constraints' => [
                     new NotBlank(),
@@ -37,6 +40,7 @@ class ContactType extends AbstractType
                 ],
             ])
             ->add('message', TextareaType::class, options: [
+                'label' => 'Message',
                 'empty_data' => '',
                 'constraints' => [
                     new NotBlank(),
