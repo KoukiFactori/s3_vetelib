@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}{% endblock %}</title>
-        <style>
-            body {
-                background: url("{{ asset('images/client/background.svg') }}") no-repeat center center fixed;
-            }
-        </style>
-        <link href="{{ asset('css/client/layout.css') }}" rel="stylesheet"/>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		<style>
+			body {
+				background: url("{{ asset('images/client/background.svg') }}") no-repeat center center fixed;
+			}
+		</style>
+		<link href="{{ asset('css/client/layout.css') }}" rel="stylesheet"/>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        
-    </body>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul class="nav">
+					<div class="nav__left">
+						<li>
+							<a href={{ path('app_index') }}>Accueil</a>
+						</li>
+						<li>
+							<a href={{ path('app_nous_connaitre')}}>Mes rendez-vous</a>
+						</li>
+						<li>
+							<a href={{ path('app_faq')}}>Mes animaux</a>
+						</li>
+						<li>
+							<a href="{{ path('app_contact') }}">Mes informations</a>
+						</li>
+					</div>
+					<div class="nav__right">
+						<li class="nav--primary">Nom client connecté</li>
+					</div>
+				</ul>
+			</nav>
+		</header>
+	</body>
 </html>
