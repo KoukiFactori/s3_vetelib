@@ -15,4 +15,10 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
         ]);
     }
+
+    #[Route('/veto', name: 'app_index')]
+    public function veto(): Response
+    {
+        return $this->render('veterinaire/layout/base.html.twig');
+    }
 }

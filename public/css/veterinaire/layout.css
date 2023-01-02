@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,300,700,600|Indie+Flower:400");
+
+body {
+    background-size: cover;
+    font-size: 10px;
+    font-family: "Inter";
+}
+
+.veterinaire {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.veterinaire__header {
+    align-self: flex-end;
+    font-size: 1.6rem;
+}
+
+.veterinaire__page {
+    display: flex;
+}
+
+.veterinaire__page__nav {
+    
+}
