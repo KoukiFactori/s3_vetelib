@@ -31,7 +31,7 @@
                 {% if not app.user %}
                     <li class="nav--primary"><a href={{ path('app_login') }}>Login</a></li>
                 {% else %}
-                    <li class="nav--primary"><a href={{ path('app_account_show')}}>{{app.user.lastname}} {{app.user.firstname}}</a></li>
+                    <li class="nav--primary"><a href={{ path('app_index')}}>{{app.user.lastname}} {{app.user.firstname}}</a></li>
                 {% endif %}
             </div>
         </ul>
