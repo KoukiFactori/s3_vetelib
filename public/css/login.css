@@ -1,91 +1,97 @@
 body {
-    height: 100vh;
-    background: linear-gradient(180deg, #f8e7c1 10%, #f5bd89 100%);
+  height: 100vh;
+  background: linear-gradient(180deg, #f8e7c1 10%, #f5bd89 100%);
 
-    padding: 30px;
+  padding: 30px;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .header__bar a {
-    font-size: 2rem;
-    text-decoration: none;
-    color: black;
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
 }
 
 .form__container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    width: 40%;
-    padding: 30px;
+  width: 60%;
+  padding: 30px;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form__container h1 {
-    font-size: 4rem;
-    font-weight: bold;
+  font-size: 4rem;
+  font-weight: bold;
 
-    margin: 5%;
+  margin: 5%;
 }
 
 .form_login {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
-    width: 400px;
+  width: 600px;
 }
 
 .field {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .field label {
-    font-size: 2rem;
-    color: gray;
+  font-size: 2rem;
+  color: gray;
 }
 
 .field input {
-    background-color: #1B4758;
-    color: rgba(255, 255, 255, 0.89);
+  background-color: #1b4758;
+  color: rgba(255, 255, 255, 0.89);
 
-    border-radius: 12px;
-    border-style: hidden;
-    height: 30px;
+  border-radius: 12px;
+  border-style: hidden;
+  height: 30px;
 
-    padding: 5px;
+  padding: 5px;
 }
 
 .field input::placeholder {
-    color: rgba(245, 245, 245, 0.473);
+  color: rgba(245, 245, 245, 0.473);
 }
 
 .form_login .parameter {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-.form_login .btn[type=submit] {
-    background-color: #1AC474;
-    color: white;
-    border: none;
-    height: 30px;
-    border-radius: 12px;
+.form_login .btn[type="submit"] {
+  background-color: #1ac474;
+  color: white;
+  border: none;
+  height: 30px;
+  border-radius: 12px;
 }
 
 .txt_register a {
-    text-decoration: none;
-    font-size: 2rem;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.inline_row {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
