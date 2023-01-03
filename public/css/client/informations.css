@@ -1,0 +1,13 @@
+.bloc_contenu {
+    display: flex;
+    justify-content: center;
+}
+
+.arrondi_deco {
+    background-color: #32A4BD;
+    border-radius: 49px 49px 0px 0px;
+    height: 60px;
+    width: 70%;
+  }
+
+
