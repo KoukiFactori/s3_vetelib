@@ -30,7 +30,7 @@ class RegistrationFormType extends AbstractType
                 'help' => 'Apartment, suite, unit, building, floor',
             ])
             ->add('city', TextType::class)
-            ->add('zipCode', TextType::class, [
+            ->add('zipcode', TextType::class, [
                 'label' => 'ZIP Code',
             ])
             ->add('plainPassword', RepeatedType::class, [
