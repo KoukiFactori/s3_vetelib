@@ -3,11 +3,18 @@
     justify-content: center;
 }
 
+.fond_blanc {
+    background-color: white;
+    width: 70%;
+    border-radius: 49px 49px 49px 49px;
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+}
+
 .arrondi_deco {
     background-color: #32A4BD;
     border-radius: 49px 49px 0px 0px;
     height: 60px;
-    width: 70%;
+    width: 100%;
   }
-
-
