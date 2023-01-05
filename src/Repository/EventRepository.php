@@ -40,13 +40,14 @@ class EventRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
     public function findEventByAnimal(Animal $animal)
 {
     $qb = $this->createQueryBuilder('a');
 
     $qb
         ->where('a.animal = :animal')
-        ->orderBy('MONTH(a.date)', 'ASC')
+        ->orderBy("MONTH(a.date)", 'ASC')
         ->setParameter('animal', $animal)
     ;
 

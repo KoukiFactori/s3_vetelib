@@ -14,12 +14,20 @@
         <div class="animals">
            
             <div class="decoration">
-                <h1>{{ animal.name }}</h1> <p>{{animal.espece.name}}</p>{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
-                
+                <h1>{{ animal.name }}</h1> <p>{{animal.espece.name}}</p>{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}  
             </div>
             <h2>{{ animal.espece.name }}</h2>
             <h2>Age:{{age}}</h2> 
         </div> 
     {% endfor %}
+    {% for animalId, animalAppointments in appointments %}
+    {% for appointment in animalAppointments %}
+        {{ appointment.date|date("d/m/Y") }}
+    {% endfor %}
+    {% endfor %}
+
+    {% endfor %}
+
+{% endfor %}
     </div>
 {% endblock %}
