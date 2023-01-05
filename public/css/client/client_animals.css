@@ -21,11 +21,13 @@
     width: max-content;
     /* padding-left: 1rem; */
     display: inline;
+    color: white;
 }
 
 
 
 .animals{
+    margin-top: 5%;
     border-radius: 49px 49px 0px 0px;
     margin-right: 7%;
     margin-left: 5%;
@@ -33,4 +35,5 @@
     width: 90%;
     min-width: 120px;
     background-color: white;
+    flex-direction: column;
 }
