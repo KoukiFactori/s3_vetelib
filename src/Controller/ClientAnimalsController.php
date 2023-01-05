@@ -12,12 +12,13 @@ class ClientAnimalsController extends AbstractController
     #[Route('/client/animals', name: 'app_client_animals')]
     public function index(AnimalRepository $ar): Response
     {
+        $now = new \DateTime();
         //$this->denyAccessUnlessGranted('ROLE_CLIENT');
 
         //$clientId=$this->getUser()->Id;
         $animals=$ar->getAllAnimalsByClient(23);
 
-        return $this->render('client/client_animals/index.html.twig', ['animals' => $animals] );
+        return $this->render('client/client_animals/index.html.twig', ['animals' => $animals, 'now'=> $now] );
     
     }
 }
