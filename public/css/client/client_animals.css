@@ -1,11 +1,32 @@
-.animals{
+.nav_animals{
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    overflow: scroll;
+    /* height: 150%; */
 }
 
 .decoration {
     background-color: #32A4BD;
     border-radius: 49px 49px 0px 0px;
-    height: 60px;
-    width: 70%;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    width: 100%;
   }
+
+  
+
+.decoration h1 {
+    text-align:left;
+    width: max-content;
+    padding-left: 1rem;
+}
+
+h1 {}
+
+.animals{
+    margin-right: 7%;
+    margin-left: 5%;
+    display: flex;
+    width: 90%;
+    min-width: 120px;
+}
