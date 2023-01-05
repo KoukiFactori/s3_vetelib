@@ -1,13 +1,14 @@
 .bloc_contenu {
     display: flex;
     justify-content: center;
+    height: 50rem;
 }
 
 .fond_blanc {
     background-color: white;
-    width: 70%;
+    width: 85%;
     border-radius: 49px 49px 49px 49px;
-    height: 50rem;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
