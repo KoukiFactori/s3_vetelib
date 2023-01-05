@@ -12,15 +12,31 @@ body {
     margin: 2rem;
 }
 
-.veterinaire__header {
+.veterinaire .veterinaire__header {
     align-self: flex-end;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 }
 
-.veterinaire__page {
+.veterinaire .veterinaire__page {
+    display: flex;
+    flex-direction: column;
+}
+
+.veterinaire .veterinaire__nav {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.veterinaire .veterinaire__nav a,
+.veterinaire .veterinaire__nav a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.veterinaire .veterinaire__nav--top {
     display: flex;
 }
 
-.veterinaire__page__nav {
-    
+.veterinaire .veterinaire__nav--bottom {
+    display: flex;
 }
