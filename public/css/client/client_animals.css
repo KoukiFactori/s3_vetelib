@@ -1,7 +1,7 @@
 .nav_animals{
     display: flex;
     flex-direction: row;
-    overflow: scroll;
+    overflow-x: scroll;
 }
 
 .decoration {
@@ -28,7 +28,7 @@
 
 .animals{
     margin-top: 5%;
-    border-radius: 49px 49px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
     margin-right: 7%;
     margin-left: 5%;
     display: flex;
@@ -36,4 +36,9 @@
     min-width: 120px;
     background-color: white;
     flex-direction: column;
+}
+
+.animals h2 {
+    text-align: left;
+    padding: 1rem;
 }
