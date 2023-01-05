@@ -15,7 +15,7 @@ class ClientAnimalsController extends AbstractController
         //$this->denyAccessUnlessGranted('ROLE_CLIENT');
 
         //$clientId=$this->getUser()->Id;
-        $animals=$ar->getAllAnimalsByClient(4);
+        $animals=$ar->getAllAnimalsByClient(23);
 
         return $this->render('client/client_animals/index.html.twig', ['animals' => $animals] );
     
