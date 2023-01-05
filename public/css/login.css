@@ -1,6 +1,7 @@
 body {
   height: 100vh;
   background: linear-gradient(180deg, #f8e7c1 10%, #f5bd89 100%);
+  background-image: url("/images/background_client.png");
 
   padding: 30px;
 }
