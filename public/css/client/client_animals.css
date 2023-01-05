@@ -2,15 +2,16 @@
     display: flex;
     flex-direction: row;
     overflow: scroll;
-    /* height: 150%; */
 }
 
 .decoration {
+    display: flex;
     background-color: #32A4BD;
     border-radius: 49px 49px 0px 0px;
     padding-top: 5px;
     padding-bottom: 2px;
     width: 100%;
+    justify-content: space-around;
   }
 
   
@@ -18,15 +19,18 @@
 .decoration h1 {
     text-align:left;
     width: max-content;
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
+    display: inline;
 }
 
-h1 {}
+
 
 .animals{
+    border-radius: 49px 49px 0px 0px;
     margin-right: 7%;
     margin-left: 5%;
     display: flex;
     width: 90%;
     min-width: 120px;
+    background-color: white;
 }

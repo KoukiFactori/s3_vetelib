@@ -1,4 +1,5 @@
 {% extends 'client/base.html.twig' %}
+
 {% block stylesheets %}
     <link href="{{ asset('css/client/client_animals.css') }}" rel="stylesheet"/>
 {% endblock %}
@@ -9,12 +10,15 @@
 {% block body %}
     <div class="nav_animals">
     {% for animal in animals %}
+    {% set age = now|date("Y") - animal.birthday|date("Y") %}
         <div class="animals">
            
             <div class="decoration">
-                <h1>{{ animal.name }}</h1>
+                <h1>{{ animal.name }}</h1> <p>{{animal.espece.name}}</p>{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
                 
             </div> 
+            <h2>{{ animal.espece.name }}</h2>
+            <h2>Age:{{age}}</h2> 
         </div> 
     {% endfor %}
     </div>
