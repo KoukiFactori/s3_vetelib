@@ -2,17 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ClientInformationsController extends AbstractController
 {
-    #[Route('/client/informations', name: 'app_client_informations')]
-    public function index(): Response
+    #[Route('/client/informations/{user}', name: 'app_client_informations', requirements: ["user" => "\d+"])]
+    public function index(User $user): Response
     {
+        $form = $this->createForm(UserType::class, $user);
+
         return $this->render('client/client_informations/index.html.twig', [
-            'controller_name' => 'ClientInformationsController',
+            'form' => $form, 'controller_name' => 'ClientInformationsController',
         ]);
     }
 }
