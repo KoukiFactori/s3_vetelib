@@ -62,7 +62,8 @@ final class VeterinaireFactory extends ModelFactory
             'firstname' => $firstname,
             'lastname' => $lastname,
             'zipcode' => self::faker()->postcode(),
-            'password' => 'miaou'
+            'password' => 'miaou',
+            'roles' => ['ROLE_VETERINAIRE']
         ];
     }
 

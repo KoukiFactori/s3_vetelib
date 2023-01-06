@@ -63,6 +63,7 @@ final class ClientFactory extends ModelFactory
             'lastname' => $lastname,
             'zipcode' => self::faker()->postcode(),
             'password' => 'miaou',
+            'roles' => ['ROLE_CLIENT']
         ];
     }
 
