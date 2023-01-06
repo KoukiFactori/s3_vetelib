@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Veterinaire;
 use App\Repository\VeterinaireRepository;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -27,16 +28,18 @@ use Zenstruck\Foundry\RepositoryProxy;
  * @method static Veterinaire[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static Veterinaire[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
-final class VeterinaireFactory extends ModelFactory
+final class VeterinaireFactory extends UserFactory
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
      *
      * @todo inject services if required
      */
-    public function __construct()
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        parent::__construct();
+        parent::__construct($passwordHasher);
     }
 
     /**
@@ -46,18 +49,9 @@ final class VeterinaireFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        $firstname = self::faker()->firstName();
-        $lastname = self::faker()->lastName();
-
-        return [
-            'address' => self::faker()->streetAddress(),
-            'birthdate' => self::faker()->dateTime(),
-            'city' => self::faker()->city(),
-            'email' => transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname)).'.'.transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($lastname)).'@'.self::faker()->domainName(),
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'zipcode' => self::faker()->postcode(),
-        ];
+        return array_merge(parent::getDefaults(), [
+            'roles' => ['ROLE_VETERINAIRE']
+        ]);
     }
 
     /**
@@ -65,10 +59,11 @@ final class VeterinaireFactory extends ModelFactory
      */
     protected function initialize(): self
     {
-        return $this
-            // ->afterInstantiate(function(Veterinaire $veterinaire): void {})
-        ;
+        /** @var VeterinaireFactory $self */
+        $self = parent::initialize();
+        return $self;
     }
+
 
     protected static function getClass(): string
     {
