@@ -12,7 +12,20 @@
 	<div class="bloc_contenu">
 		<div class="fond_blanc">
 			<div class="arrondi_deco"></div>
-
+			<div class="formulaire">
+				{{ form_start(form) }}
+				{{ form_errors(form) }}
+				{{ form_widget(form.lastname) }}
+				{{ form_widget(form.firstname) }}
+				{{ form_widget(form.email) }}
+				{{ form_widget(form.phone) }}
+				{{ form_widget(form.birthdate) }}
+				{{ form_widget(form.city) }}
+				{{ form_widget(form.zipcode) }}
+				{{ form_widget(form.address) }}
+				<button type="submit">Enregistrer</button>
+				{{ form_end(form) }}
+			</div>
 		</div>
 	</div>
 
