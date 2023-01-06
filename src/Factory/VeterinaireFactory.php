@@ -28,7 +28,7 @@ use Zenstruck\Foundry\RepositoryProxy;
  * @method static Veterinaire[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static Veterinaire[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
-final class VeterinaireFactory extends ModelFactory
+final class VeterinaireFactory extends UserFactory
 {
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -39,9 +39,7 @@ final class VeterinaireFactory extends ModelFactory
      */
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        parent::__construct();
-
-        $this->passwordHasher = $passwordHasher;
+        parent::__construct($passwordHasher);
     }
 
     /**
@@ -51,20 +49,9 @@ final class VeterinaireFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        $firstname = self::faker()->firstName();
-        $lastname = self::faker()->lastName();
-
-        return [
-            'address' => self::faker()->streetAddress(),
-            'birthdate' => self::faker()->dateTime(),
-            'city' => self::faker()->city(),
-            'email' => transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname)).'.'.transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($lastname)).'@'.self::faker()->domainName(),
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'zipcode' => self::faker()->postcode(),
-            'password' => 'miaou',
+        return array_merge(parent::getDefaults(), [
             'roles' => ['ROLE_VETERINAIRE']
-        ];
+        ]);
     }
 
     /**
@@ -72,12 +59,11 @@ final class VeterinaireFactory extends ModelFactory
      */
     protected function initialize(): self
     {
-        return $this
-            ->afterInstantiate(function (Veterinaire $veterinaire) {
-                $veterinaire->setPassword($this->passwordHasher->hashPassword($veterinaire, $veterinaire->getPassword()));
-            })
-        ;
+        /** @var VeterinaireFactory $self */
+        $self = parent::initialize();
+        return $self;
     }
+
 
     protected static function getClass(): string
     {
