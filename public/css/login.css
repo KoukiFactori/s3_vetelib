@@ -21,8 +21,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  
+  max-width: 600px;
+  width: 100%;
 
-  width: 60%;
   padding: 30px;
 
   border-radius: 10px;
@@ -30,6 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 
 .form__container h1 {
@@ -39,18 +42,66 @@ body {
   margin: 5%;
 }
 
+.alert {
+  font-size: 16px;
+  align-self: center;
+  color: red;
+}
+
+/* Registration specifics rules */
+.form__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.form__header p {
+  font-size: 16px;
+  align-self: center;
+}
+
+.form_login label {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .form_login label {
+    display: block;
+  }
+
+  .field {
+    gap: 5px;
+  }
+
+  .form_login {
+    gap: 20px;
+  }
+
+  .field input {
+    margin: 0;
+  }
+  
+  .form__address {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+/* ============== */
+
 .form_login {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 
-  width: 600px;
+  width: 100%;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 5px;
 }
 
 .field label {
@@ -67,6 +118,8 @@ body {
   height: 30px;
 
   padding: 5px;
+
+  margin-top: 2px;
 }
 
 .field input::placeholder {
@@ -91,8 +144,10 @@ body {
   font-size: 2rem;
 }
 
-.inline_row {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
+@media screen and (min-width: 900px) {
+  .inline_row {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }  
 }

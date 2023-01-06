@@ -17,10 +17,25 @@
 {% endblock %}
 
 {% block body %}
+	<header class="header__bar">
+		<nav>
+			<ul>
+				<li><a href={{ path('app_index') }}>Accueil</a></li>
+			</ul>
+		</nav>
+	</header>
+
 	<div class="form__container">
 		{{ form_start(registrationForm, { attr: { class: "form_login" }}) }}
 
-		<h1>Register</h1>
+		<div class="form__header">
+			<h1>Inscription</h1>
+			{% if app.request.query.has("veterinaire") %}
+				<p><a href="{{ path('app_register') }}">Client ?</a></p>	
+			{% else %}
+				<p><a href="{{ path('app_register', { 'veterinaire': 1 }) }}">Vétérinaire ?</a></p>	
+			{% endif %}
+		</div>
 
 		<div class="form__name inline_row">
 			<div class="field">
