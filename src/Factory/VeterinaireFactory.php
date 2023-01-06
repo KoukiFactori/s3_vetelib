@@ -4,6 +4,7 @@ namespace App\Factory;
 
 use App\Entity\Veterinaire;
 use App\Repository\VeterinaireRepository;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -29,14 +30,18 @@ use Zenstruck\Foundry\RepositoryProxy;
  */
 final class VeterinaireFactory extends ModelFactory
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
      *
      * @todo inject services if required
      */
-    public function __construct()
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();
+
+        $this->passwordHasher = $passwordHasher;
     }
 
     /**
@@ -57,6 +62,7 @@ final class VeterinaireFactory extends ModelFactory
             'firstname' => $firstname,
             'lastname' => $lastname,
             'zipcode' => self::faker()->postcode(),
+            'password' => 'miaou'
         ];
     }
 
@@ -66,7 +72,9 @@ final class VeterinaireFactory extends ModelFactory
     protected function initialize(): self
     {
         return $this
-            // ->afterInstantiate(function(Veterinaire $veterinaire): void {})
+            ->afterInstantiate(function (Veterinaire $veterinaire) {
+                $veterinaire->setPassword($this->passwordHasher->hashPassword($veterinaire, $veterinaire->getPassword()));
+            })
         ;
     }
 

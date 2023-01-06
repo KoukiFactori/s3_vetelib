@@ -10,6 +10,6 @@ class ClientFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        ClientFactory::createMany(150);
+        ClientFactory::createMany(50);
     }
 }
