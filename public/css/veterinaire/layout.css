@@ -6,6 +6,10 @@ body {
     font-family: "Inter";
 }
 
+.veterinaire main {
+  background-color: white;
+}
+
 .veterinaire .veterinaire__connected {
   display: none;
 }
@@ -13,7 +17,6 @@ body {
 .veterinaire .veterinaire__main {
     display: flex;
     flex-direction: column;
-    margin: 2rem;
 }
 
 .veterinaire .veterinaire__header {
