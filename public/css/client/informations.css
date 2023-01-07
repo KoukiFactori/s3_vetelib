@@ -10,7 +10,7 @@
     border-radius: 49px 49px 49px 49px;
     height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .arrondi_deco {
