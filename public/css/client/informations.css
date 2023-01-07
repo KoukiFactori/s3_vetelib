@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,300,700,600|Indie+Flower:400");
+
 .bloc_contenu {
     display: flex;
     justify-content: center;
@@ -20,6 +22,12 @@
     border-radius: 49px 49px 0px 0px;
     height: 60px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    color: white;
+    font-family: "Inter";
 }
 
 
