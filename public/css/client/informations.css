@@ -87,3 +87,14 @@ button:hover {
     margin-top: 0.1rem;
     max-width: 18rem;
 }
+
+
+
+@media(min-width: 670px) {
+       
+    .formulaire {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+}
