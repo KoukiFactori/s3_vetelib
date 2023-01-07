@@ -15,16 +15,42 @@
 			<div class="formulaire">
 				{{ form_start(form) }}
 				{{ form_errors(form) }}
-				{{ form_widget(form.lastname) }}
-				{{ form_widget(form.firstname) }}
-				{{ form_widget(form.email) }}
-				{{ form_widget(form.phone) }}
-				{{ form_widget(form.birthdate) }}
-				{{ form_widget(form.city) }}
-				{{ form_widget(form.zipcode) }}
-				{{ form_widget(form.address) }}
+				<div class="formulaire_lastname">
+					{{ form_label(form.lastname) }}
+					{{ form_widget(form.lastname) }}
+				</div>
+				<div class="formulaire_firstname">
+					{{ form_label(form.firstname) }}
+					{{ form_widget(form.firstname) }}
+				</div>
+				<div class="formulaire_email">
+					{{ form_label(form.email) }}
+					{{ form_widget(form.email) }}
+				</div>
+				<div class="formulaire_phone">
+					{{ form_label(form.phone) }}
+					{{ form_widget(form.phone) }}
+				</div>
+				<div class="formulaire_birthdate">
+					{{ form_label(form.birthdate) }}
+					{{ form_widget(form.birthdate) }}
+				</div>
+				<div class="formulaire_city">
+					{{ form_label(form.city) }}
+					{{ form_widget(form.city) }}
+				</div>
+				<div class="formulaire_zipcode">
+					{{ form_label(form.zipcode) }}
+					{{ form_widget(form.zipcode) }}
+				</div>
+				<div class="formulaire_address">
+					{{ form_label(form.address) }}
+					{{ form_widget(form.address) }}
+				</div>
+
 				<button type="submit">Enregistrer</button>
 				{{ form_end(form) }}
+
 			</div>
 		</div>
 	</div>
