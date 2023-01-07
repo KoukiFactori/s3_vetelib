@@ -4,9 +4,14 @@ namespace App\Controller;
 
 use App\Repository\AnimalRepository;
 use App\Repository\EventRepository;
+use phpDocumentor\Reflection\Types\AbstractList;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class ClientAnimalsController extends AbstractController
 {
@@ -30,20 +35,22 @@ class ClientAnimalsController extends AbstractController
     }
     
      #[Route("/client/animals/{id}",name: 'data_client_animals')]
-    public function animalInformation(int $id ,AnimalRepository $ar , EventRepository $er)
+    public function animalInformation(int $id ,AnimalRepository $ar , EventRepository $er ,SerializerInterface $ser)
     {
         
-        $user=$this->getUser();
-        
-        $animal = array_filter($ar->getAllAnimalsByclient($user->id), function($animal) use ($id) {
+        //$user=$this->getUser();
+        $animal = array_filter($ar->getAllAnimalsByclient(23), function($animal) use ($id) {
             return $animal->getId() === $id;
         })[0];
-        $appointments=$er->findEventByAnimal($animal);
-
-        return $this->json([
-            'animal' => $animal,
-            'appointments' => $appointments
-        ]);
+        return new Response($ser->serialize($animal, 'json', [
+            AbstractNormalizer::ATTRIBUTES => [
+              'name',
+              'birthdate',
+              'espece' => ['name'],
+              'events' => ['date', 'description', 'typeEvent' => ['libType']]
+            ]
+          ]));
+    
 
     }
 }
