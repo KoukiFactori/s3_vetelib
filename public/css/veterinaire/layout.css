@@ -6,7 +6,11 @@ body {
     font-family: "Inter";
 }
 
-.veterinaire {
+.veterinaire .veterinaire__connected {
+  display: none;
+}
+
+.veterinaire .veterinaire__main {
     display: flex;
     flex-direction: column;
     margin: 2rem;
@@ -67,7 +71,7 @@ header {
     align-items: flex-start;
     list-style-type: none;
     margin: 2rem 0;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
   header nav .nav li {
@@ -80,7 +84,7 @@ header {
     color: black;
   }
   
-  header nav .nav__left {
+  header nav .nav__start {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -89,12 +93,12 @@ header {
     gap: 2rem;
   }
   
-  header nav .nav__left li {
+  header nav li {
     position: relative;
     width: fit-content;
   }
   
-  header nav .nav__left li::after {
+  header nav li::after {
     content: "";
     background-color: #2EA7B6;
     position: absolute;
@@ -104,16 +108,17 @@ header {
     width: 0;
   }
   
-  header nav .nav__left li:hover::after {
+  header nav li:hover::after {
     transition: all 0.25s;
     left: 0;
     width: 100%;
   }
   
-  header nav .nav--primary {
+  header .nav--primary {
     background-color: #2EA7B6;
     color: white;
     padding: 0.8rem;
+    font-size: 1.5rem;
   }
   
   header:has(#checkbox_toggle:checked) nav {
@@ -122,22 +127,40 @@ header {
   }
   
   @media (min-width: 750px) {
+    header {
+      width: 100%;
+    }
+
     header nav {
       height: 100%;
       opacity: 100%;
     }
   
-    header nav .nav {
-      flex-direction: row;
-      align-items: center;
-    }
-  
-    header nav .nav__left {
-      flex-direction: row;
-    }
-  
-    header .top .hamburger {
+    header .top {
       display: none;
+    }
+
+    .veterinaire .veterinaire__main {
+      flex-direction: row;
+    }
+
+    header .nav {
+      justify-content: space-around;
+    }
+
+    header .nav__start {
+      flex-grow: 1;
+    }
+
+    .veterinaire .veterinaire__connected {
+      display: block;
+      text-align: right;
+    }
+
+    .veterinaire main {
+      background-color: white;
+      border-radius: 5rem;
+      padding: 2rem;
     }
   }
 
