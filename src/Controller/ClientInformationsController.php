@@ -14,6 +14,7 @@ class ClientInformationsController extends AbstractController
     public function index(User $user): Response
     {
         $form = $this->createForm(UserType::class, $user);
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
         return $this->render('client/client_informations/index.html.twig', [
             'form' => $form->createView(), 'controller_name' => 'ClientInformationsController',
