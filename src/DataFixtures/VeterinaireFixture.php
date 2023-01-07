@@ -10,10 +10,7 @@ class VeterinaireFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $manager->flush();
+        VeterinaireFactory::createOne(['firstname'=>'Antoine','lastname'=>'Maréchal','email'=>'antoinemarechal08@gmail.com']);
         VeterinaireFactory::createMany(5);
     }
 }
