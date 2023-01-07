@@ -23,7 +23,7 @@ class ClientInformationsController extends AbstractController
             $userRepository->save($user, true);
         }
         // $this->denyAccessUnlessGranted('ROLE_CLIENT');
-        $clientId = $this->getUser()->id;
+        //$clientId = $this->getUser()->id;
 
         return $this->render('client/client_informations/index.html.twig', [
             'form' => $form->createView(), 'controller_name' => 'ClientInformationsController',
