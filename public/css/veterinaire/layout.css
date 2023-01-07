@@ -127,13 +127,11 @@ header {
   }
   
   @media (min-width: 750px) {
-    header {
-      width: 100%;
-    }
-
     header nav {
       height: 100%;
       opacity: 100%;
+      width: fit-content;
+      margin-right: 2rem;
     }
   
     header .top {
@@ -170,6 +168,7 @@ header {
       background-color: white;
       border-radius: 5rem;
       padding: 2rem;
+      flex-grow: 1;
     }
   }
 
