@@ -46,7 +46,7 @@ class EventRepository extends ServiceEntityRepository
 
     $qb
         ->where('a.animal = :animal')
-        ->orderBy("MONTH(a.date)", 'ASC')
+        ->orderBy("a.date", 'ASC')
         ->setParameter('animal', $animal)
     ;
 
