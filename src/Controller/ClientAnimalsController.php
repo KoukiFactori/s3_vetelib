@@ -27,18 +27,18 @@ class ClientAnimalsController extends AbstractController
     }
 
         return $this->render('client/client_animals/index.html.twig', ['animals' => $animals, 'now'=> $now ,'appointments' => $appointments,] );
-    
     }
     
      #[Route("/client/animals/{id}",name: 'data_client_animals')]
-    public function animalInformation(int $id)
+    public function animalInformation(int $id ,AnimalRepository $ar , EventRepository $er)
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
         $user=$this->getUser();
         
-        $animal = array_filter($user->animals, function($animal) use ($id) {
+        $animal = array_filter($user->ar->getAllAnimalsByclient($user->id), function($animal) use ($id) {
             return $animal->getId() === $id;
         })[0];
-        
+        $appointments=$er->findEventByAnimal($animal);
+
     }
 }

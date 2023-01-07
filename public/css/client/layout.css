@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: #32A4BD;
+    /* background-color: #32A4BD; */
 }
 
 
