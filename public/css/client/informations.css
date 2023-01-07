@@ -24,4 +24,5 @@
 .formulaire_lastname, .formulaire_firstname, .formulaire_email, .formulaire_phone, .formulaire_birthdate, .formulaire_city, .formulaire_zipcode, .formulaire_address {
     display: flex;
     flex-direction: column;
+    margin: 1rem;
 }
