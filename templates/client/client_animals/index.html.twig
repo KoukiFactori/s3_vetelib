@@ -3,6 +3,9 @@
 {% block stylesheets %}
     <link href="{{ asset('css/client/client_animals.css') }}" rel="stylesheet"/>
 {% endblock %}
+{% block javascripts%} 
+    <script src="{{asset('js/client/AnimalAppointments.js')}}" defer></script>
+{% endblock %}
 {% block title %}
     Mes animaux
 {% endblock %}
@@ -31,7 +34,7 @@
     <br>
     <div class="main-content">
         <div class="decoration">
-
+            <h1 class="name"></h1> <p class="species"></p>
         </div>
         {% for animalId, animalAppointments in appointments %}
             {% for appointment in animalAppointments %}
