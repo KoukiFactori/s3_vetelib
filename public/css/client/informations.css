@@ -26,3 +26,7 @@
     flex-direction: column;
     margin: 1rem;
 }
+
+.formulaire_lastname_widget, .formulaire_firstname_widget, .formulaire_email_widget, .formulaire_phone_widget, .formulaire_birthdate_widget, .formulaire_city_widget, .formulaire_zipcode_widget, .formulaire_address_widget {
+    margin-top: 0.5rem;
+}
