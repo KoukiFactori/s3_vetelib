@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link href="{{ asset('css/reset.css') }}" rel="stylesheet"/>
+        <style>
+            body {
+                background: url("{{ asset('images/veterinaire/background.svg') }}") no-repeat center center fixed;
+            }
+        </style>
+        <link href="{{ asset('css/veterinaire/layout.css') }}" rel="stylesheet"/>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="veterinaire">
+            <div class="veterinaire__connected">Nom client connecté</div>
+            <div class="veterinaire__main">
+                <header>
+                    <div class="top">
+                        <input type="checkbox" id="checkbox_toggle"/>
+                        <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+                        <div class="nav--primary">Nom client connecté</div>
+                    </div>
+                    <nav>
+                        <ul class="nav">
+                            <div class="nav__start">
+                                <li><a href="#">Calendrier</a></li>
+                                <li><a href="#">Clients</a></li>
+                                <li><a href="#">Animaux</a></li>
+                                <li><a href="#">Urgences</a></li>
+                            </div>
+                            <div class="nav__end">
+                                <li><a href="#">Déconnexion</a></li>
+                            </div>
+                        </ul>
+                    </nav>
+                </header>
+                    <main>
+                        {% block body %}{% endblock %}
+                        junsdfisfgiuqjknlsdfgjiomfsgjiomfsdgjoimfsjiodfsjkiedfjiomfgvjoldefoijmsdfqjoi
+                    </main>
+            </div>
+        </div>
+    </body>
+</html>
