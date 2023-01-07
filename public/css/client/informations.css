@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 52rem;
+    height: 62rem;
 }
 
 .fond_blanc {
@@ -71,4 +71,19 @@ button {
 
 button:hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.15), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.etiquettes {
+    font-family: "Inter";
+    font-size: 1.3rem;
+}
+
+.champs {
+    border-radius: 6px;
+    align-items: flex-end;
+    box-shadow: 0px -1px 4px #00000040, 0px 4px 4px #00000040;
+    padding: 0.5rem;
+    border: none;
+    margin-top: 0.1rem;
+    max-width: 18rem;
 }
