@@ -22,7 +22,6 @@ class ClientInformationsController extends AbstractController
             $user = $form->getData();
 
             $userRepository->save($user, true);
-            return $this->redirectToRoute('/client/informations/2');
         }
         // $this->denyAccessUnlessGranted('ROLE_CLIENT');
         // $clientId=$this->getUser()->Id;
