@@ -13,10 +13,4 @@ class IndexController extends AbstractController
     {
         return $this->render('index/index.html.twig');
     }
-
-    #[Route('/veto', name: 'app_index')]
-    public function veto(): Response
-    {
-        return $this->render('veterinaire/layout/base.html.twig');
-    }
 }
