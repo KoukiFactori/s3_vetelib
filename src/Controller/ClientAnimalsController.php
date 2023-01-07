@@ -40,5 +40,10 @@ class ClientAnimalsController extends AbstractController
         })[0];
         $appointments=$er->findEventByAnimal($animal);
 
+        return $this->json([
+            'animal' => $animal,
+            'appointments' => $appointments
+        ]);
+
     }
 }
