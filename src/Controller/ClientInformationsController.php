@@ -22,6 +22,7 @@ class ClientInformationsController extends AbstractController
     #[Route('/client/informations', name: 'app_client_informations')]
     public function index(UserRepository $userRepository, Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
         $token = $this->tokenStorage->getToken();
         $user = $token->getUser();
         $userId = $user->getId();
@@ -35,7 +36,6 @@ class ClientInformationsController extends AbstractController
 
             $userRepository->save($user, true);
         }
-        // $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
         return $this->render('client/client_informations/index.html.twig', [
             'form' => $form->createView(), 'controller_name' => 'ClientInformationsController',
