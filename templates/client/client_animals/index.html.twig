@@ -17,7 +17,7 @@
         {% set age = now|date("Y") - animal.birthdate|date("Y") %}
         
             <div class="animals">
-            <a href="#" class="animal-link"data-id="{{ animal.id}}">
+            <a href="#" class="animal-link"data-id="{{animal.id}}">
                 <div class="decoration">
                     <h1>{{ animal.name }}</h1> <p>{{animal.espece.name}}</p>{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}  
                 </div>
@@ -34,13 +34,11 @@
     <br>
     <div class="main-content">
         <div class="decoration">
-            <h1 class="name"></h1> <p class="species"></p>
+            <h1 class="name">Nom :</h1> <p class="species"></p>
         </div>
-        {% for animalId, animalAppointments in appointments %}
-            {% for appointment in animalAppointments %}
-                {{ appointment.date|date("d/m/Y") }}
-            {% endfor %}
-        {% endfor %}
-        
-    </div>
+            <h1> Date de naissance :</h1>
+            <ul>
+                <li class="birthdate">  </li>
+            </ul>
+        </div>
 {% endblock %}
