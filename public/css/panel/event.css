@@ -1,0 +1,77 @@
+.event__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.event__form__section {
+    position: relative;
+    padding: 2rem 0 0 0;
+}
+
+.event__form__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: solid black 0.2rem;
+    background-color: white;
+    font-size: 2.4rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.event__form__input:focus {
+    border-bottom: solid #2EA7B6 0.2rem;
+    transition: all .3s;
+}
+
+.event__form__section:has(.event__form__errors ul) .event__form__input {
+    border-bottom-color: red;
+}
+
+.event__form__section label {
+    position: absolute;
+    transition: all .3s;
+    user-select: none;
+}
+
+.event__form__section:has(.event__form__input:placeholder-shown) label {
+    font-size: 2rem;
+    top: 2rem;
+    left: 0;
+}
+
+.event__form__section:not(:has(.event__form__input:placeholder-shown)) label,
+.event__form__section:has(.event__form__input:focus) label {
+    font-size: 1.5rem;
+    top: .75rem;
+    left: 0;
+}
+
+.event__form__errors ul {
+    font-size: 1.3rem;
+    color: red;
+    list-style-type: none;
+}
+
+.event__form__buttongroup {
+    display: flex;
+}
+
+.event__form__buttongroup * {
+    flex-grow: 1;
+    border: none;
+    color: white;
+    padding: 0.8rem;
+    margin: .5rem 0;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.event__form__submit {
+    background-color: #2EA7B6;
+}
+
+.event__form__back {
+    background-color: rgb(88, 95, 99);
+} 

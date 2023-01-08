@@ -5,49 +5,55 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', () => {
-            var calendarEl = document.getElementById('calendar-holder');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                defaultView: 'timeGridWeek',
-                editable: true,
-                eventSources: [
-                    {
-                        url: "{{ path('fc_load_events') }}",
-                        method: "POST",
-                        extraParams: {
-                            filters: JSON.stringify({})
-                        },
-                        failure: () => {
-                            // alert("There was an error while fetching FullCalendar!");
-                        },
-                    },
-                ],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
-                },
-                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-                timeZone: 'UTC',
-                minTime: '08:00:00',
-                maxTime: '19:00:00',
-                weekends: false,
-                editable: false,
-                locale: 'fr'
-            });
-            calendar.render();
-        });
-    </script>
 {% endblock %}
 
-{% block title %}Calendrier{% endblock %}
+{% block title %}Event{% endblock %}
 
 {% block body %}
-    <div id="calendar-holder"></div>
+    {{ form_start(form, {attr: {class: 'event__form', novalidate: ''}}) }}
+        <div class="event__form__section">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.date) }}
+            {{ form_widget(form.date, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.date) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.typeEvent) }}
+            {{ form_widget(form.typeEvent, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.typeEvent) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.animal) }}
+            {{ form_widget(form.animal, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.animal) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.veterinaire) }}
+            {{ form_widget(form.veterinaire, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.veterinaire) }}
+            </div>
+        </div>
+
+        <div class="event__form__buttongroup">
+            <button class="event__form__submit" type="submit">Enregistrer</button>
+            <a href="{{ path('app_panel_event') }}" class="event__form__back">Retour</a>
+        </div>
+    {{ form_end(form) }}
 {% endblock %}
