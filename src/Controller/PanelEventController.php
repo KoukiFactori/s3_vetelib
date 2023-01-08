@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class VeterinaireCalendrierController extends AbstractController
+class PanelEventController extends AbstractController
 {
-    #[Route('/veterinaire/calendrier', name: 'app_veterinaire_calendrier')]
+    #[Route('/panel/event', name: 'app_panel_event')]
     public function index(): Response
     {
-        return $this->render('veterinaire/calendrier/index.html.twig');
+        return $this->render('panel/event/index.html.twig');
     }
 }
