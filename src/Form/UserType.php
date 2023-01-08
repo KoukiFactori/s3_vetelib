@@ -5,9 +5,9 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
@@ -15,9 +15,23 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('lastname')
-            ->add('firstname')
-            ->add('email', EmailType::class, ['empty_data' => '',])
+            ->add('firstname', TextType::class, [
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z]+$/',
+                        'message' => 'Le prénom ne peut contenir que des lettres.',
+                    ]),
+                ],
+            ])
+            ->add('lastname', TextType::class, [
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z]+$/',
+                        'message' => 'Le nom ne peut contenir que des lettres.',
+                    ]),
+                ],
+            ])
+            ->add('email', EmailType::class, ['empty_data' => ''])
             ->add('phone', TextType::class, [
                 'constraints' => [
                     new Regex([
@@ -33,9 +47,9 @@ class UserType extends AbstractType
                 'constraints' => [
                     new Regex([
                         'pattern' => '/^\d{5}$/',
-                        'message' => 'Le code postal doit être composé de 5 chiffres.'
-                    ])
-                ]
+                        'message' => 'Le code postal doit être composé de 5 chiffres.',
+                    ]),
+                ],
             ])
             ->add('address')
         ;
