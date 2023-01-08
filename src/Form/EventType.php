@@ -39,7 +39,7 @@ class EventType extends AbstractType
                 'choice_label' => 'libType',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('typeevent')
-                        ->orderBy('typevent.libType', 'ASC');
+                        ->orderBy('typeevent.libType', 'ASC');
                 },
             ])
             ->add('animal', EntityType::class, options: [
@@ -52,11 +52,11 @@ class EventType extends AbstractType
             ])
             ->add('veterinaire', EntityType::class, options: [
                 'class' => Veterinaire::class,
-                'choice_label' => 'last_name',
+                'choice_label' => 'lastname',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('veterinaire')
-                        ->orderBy('veterinaire.last_name', 'ASC')
-                        ->orderBy('veterinaire.first_name', 'ASC');
+                        ->orderBy('veterinaire.lastname', 'ASC')
+                        ->orderBy('veterinaire.firstname', 'ASC');
                 },
             ])
         ;

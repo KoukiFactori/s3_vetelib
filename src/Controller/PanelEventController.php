@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Form\EventType;
+use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,6 @@ class PanelEventController extends AbstractController
             return $this->redirectToRoute('app_panel_event_show', ['id' => $event->getId()]);
         }
 
-        return $this->renderForm('panel/event/event.html.twig', compact('contact', 'form'));
-
+        return $this->renderForm('panel/event/event.html.twig', compact('event', 'form'));
     }
 }
