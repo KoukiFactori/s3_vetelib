@@ -8,14 +8,17 @@ use CalendarBundle\Event\CalendarEvent;
 use CalendarBundle\Entity\Event;
 use DateTime;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Security\Core\Security;
 
 class CalendarSubscriber implements EventSubscriberInterface
 {
     private EventRepository $eventRepository;
+    private Security $security;
 
-    public function __construct(EventRepository $eventRepository)
+    public function __construct(EventRepository $eventRepository, Security $security)
     {
         $this->eventRepository = $eventRepository;
+        $this->security = $security;
     }
     
     public static function getSubscribedEvents(): array
@@ -27,7 +30,8 @@ class CalendarSubscriber implements EventSubscriberInterface
 
     public function onCalendarSetData(CalendarEvent $calendar)
     {
-        $events = $this->eventRepository->getEventsBetween(
+        $events = $this->eventRepository->getVeterinaireEventsBetween(
+            $this->security->getUser()->getId(),
             $calendar->getStart(),
             $calendar->getEnd()
         );
@@ -36,7 +40,7 @@ class CalendarSubscriber implements EventSubscriberInterface
             $calendarEvent = new Event(
                 $event->getDescription(),
                 $event->getDate(),
-                DateTime::createFromInterface($event->getDate())->modify('+30 minutes')
+                DateTime::createFromInterface( $event->getDate())->modify('+30 minutes')
             );
 
             $calendar->addEvent($calendarEvent);
