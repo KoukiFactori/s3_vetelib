@@ -61,4 +61,10 @@ a {
 .main-content
 {   
     background-color: white;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.main-content h1{
+    font-weight: bold;
+    text-decoration: underline;
 }
