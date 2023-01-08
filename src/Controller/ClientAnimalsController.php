@@ -74,6 +74,6 @@ class ClientAnimalsController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('app_client_animals');
-    }
+    }       
 }   
      
