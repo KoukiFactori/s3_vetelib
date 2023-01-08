@@ -61,6 +61,7 @@ class UserFactory extends ModelFactory
             'email' => transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname)).'.'.transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($lastname)).'@'.self::faker()->domainName(),
             'firstname' => $firstname,
             'lastname' => $lastname,
+            'phone' => self::faker()->phoneNumber(),
             'zipcode' => self::faker()->postcode(),
             'password' => 'miaou',
             'roles' => []
