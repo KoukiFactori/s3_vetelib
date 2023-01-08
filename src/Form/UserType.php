@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Regex;
@@ -41,7 +42,12 @@ class UserType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('birthdate')
+
+            ->add('birthdate', DateType::class, [
+                'widget' => 'single_text',
+                'years' => range(1930, (new \DateTime())->format('Y')),
+             ])
+
             ->add('city')
             ->add('zipcode', TextType::class, [
                 'empty_data' => '',
