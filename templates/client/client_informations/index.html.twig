@@ -19,18 +19,24 @@
 				<div class="formulaire_lastname">
 					{{ form_label(form.lastname, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_lastname_widget">{{ form_widget(form.lastname, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.lastname) is not empty %}
+						<div class="alert">{{ form_errors(form.lastname) }}</div>
+					{% endif %}
 				</div>
-        
+
 				<div class="formulaire_firstname">
 					{{ form_label(form.firstname, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_firstname_widget">{{ form_widget(form.firstname, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.firstname) is not empty %}
+						<div class="alert">{{ form_errors(form.firstname) }}</div>
+					{% endif %}
 				</div>
 
 				<div class="formulaire_email">
 					{{ form_label(form.email, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_email_widget">{{ form_widget(form.email, { attr: { class: 'champs' } }) }}</div>
 					{% if form_errors(form.email) is not empty %}
-						<div class="alert alert-danger">{{ form_errors(form.email) }}</div>
+						<div class="alert">{{ form_errors(form.email) }}</div>
 					{% endif %}
 				</div>
 
@@ -38,7 +44,7 @@
 					{{ form_label(form.phone, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_phone_widget">{{ form_widget(form.phone, { attr: { class: 'champs' } }) }}</div>
 					{% if form_errors(form.phone) is not empty %}
-						<div class="alert alert-danger">{{ form_errors(form.phone) }}</div>
+						<div class="alert">{{ form_errors(form.phone) }}</div>
 					{% endif %}
 				</div>
 
@@ -56,7 +62,7 @@
 					{{ form_label(form.zipcode, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_zipcode_widget">{{ form_widget(form.zipcode, { attr: { class: 'champs' } }) }}</div>
 					{% if form_errors(form.zipcode) is not empty %}
-						<div class="alert alert-danger">{{ form_errors(form.zipcode) }}</div>
+						<div class="alert">{{ form_errors(form.zipcode) }}</div>
 					{% endif %}
 				</div>
 
