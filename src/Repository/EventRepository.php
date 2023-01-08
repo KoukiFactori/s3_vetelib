@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Event;
 use App\Entity\Veterinaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -55,6 +56,68 @@ class EventRepository extends ServiceEntityRepository
         ->setParameter('vetoId', $vetoId)
         ->getQuery()
         ->getResult();
+    }
+    
+    /*
+     * @param integer $veterinaireId
+     * @return Event[]
+     */
+    public function fetchEventsByVeterinaire(int $veterinaireId): array
+    {
+        $query = $this->createQueryBuilder("ev")
+            ->innerJoin("ev.responsable", "vet")
+            ->where("vet.id = :id")
+            ->orderBy("ev.id")
+            ->getQuery();
+
+        return $query->execute(["id" => $veterinaireId]);
+    }
+
+    /**
+     * @param integer $veterinaireId
+     * @return Event[]
+     */
+    public function fetchEventsAllDataByVeterinaire(int $veterinaireId): array {
+        $query = $this->createQueryBuilder("ev")
+            ->innerJoin("ev.animal", "ani")
+            ->addSelect("ani as animal")
+
+            ->innerJoin("ani.espece", "esp")
+            ->addSelect("esp as espece")
+
+            ->innerJoin("ani.client", "cli")
+            ->addSelect("cli as client")
+
+            ->innerJoin("ev.responsable", "vet")
+            ->addSelect("vet as veterinaire")
+            
+            ->where("vet.id = :id")
+            ->getQuery();
+
+        return $query->execute(["id" => $veterinaireId]);
+    }
+
+    /**
+     * @param integer $eventId
+     * @return Event
+     */
+    public function fetchEventAllData(int $eventId) {
+        $query = $this->createQueryBuilder("ev")
+            ->where("ev.id = :id")
+
+            ->innerJoin("ev.animal", "ani")
+            ->addSelect("ani as animal")
+
+            ->innerJoin("ani.espece", "esp")
+            ->addSelect("esp as espece")
+
+            ->innerJoin("ani.client", "cli")
+            ->addSelect("cli as client")
+            
+            ->setParameter('id', $eventId)
+            ->getQuery();
+
+        return $query->setMaxResults(1)->getOneOrNullResult();
     }
 
 //    /**
