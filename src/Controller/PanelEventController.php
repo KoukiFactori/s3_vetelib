@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
+use App\Form\EventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,5 +18,21 @@ class PanelEventController extends AbstractController
     public function index(): Response
     {
         return $this->render('panel/event/events.html.twig');
+    }
+
+    #[Route('/panel/event/{id}', name: 'app_panel_event_show')]
+    public function show(Event $event, Request $request, ManagerRegistry $doctrine): Response
+    {
+        $form = $this->createForm(EventType::class, $event);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $doctrine->getManager()->flush();
+
+            return $this->redirectToRoute('app_panel_event_show', ['id' => $event->getId()]);
+        }
+
+        return $this->renderForm('panel/event/event.html.twig', compact('contact', 'form'));
+
     }
 }
