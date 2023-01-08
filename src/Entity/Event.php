@@ -28,6 +28,10 @@ class Event
     #[ORM\JoinColumn(nullable: false)]
     private ?TypeEvent $typeEvent = null;
 
+    #[ORM\ManyToOne(inversedBy: 'events')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Veterinaire $veterinaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +81,18 @@ class Event
     public function setTypeEvent(?TypeEvent $typeEvent): self
     {
         $this->typeEvent = $typeEvent;
+
+        return $this;
+    }
+
+    public function getVeterinaire(): ?Veterinaire
+    {
+        return $this->veterinaire;
+    }
+
+    public function setVeterinaire(?Veterinaire $veterinaire): self
+    {
+        $this->veterinaire = $veterinaire;
 
         return $this;
     }
