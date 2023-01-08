@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use App\Entity\Veterinaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -44,12 +45,14 @@ class EventRepository extends ServiceEntityRepository
      * 
      * @return Event[]
      */
-    public function getEventsBetween(\DateTimeInterface $start, \DateTimeInterface $end): array
+    public function getVeterinaireEventsBetween(int $vetoId, \DateTimeInterface $start, \DateTimeInterface $end): array
     {
         return $this->createQueryBuilder('event')
         ->where('event.date BETWEEN :start and :end')
+        ->andWhere('event.veterinaire = :vetoId')
         ->setParameter('start', $start->format('Y-m-d H:i:s'))
         ->setParameter('end', $end->format('Y-m-d H:i:s'))
+        ->setParameter('vetoId', $vetoId)
         ->getQuery()
         ->getResult();
     }
