@@ -17,13 +17,18 @@ animalLinks.forEach(link => {
         })
             .then(response => response.json());
 
-        const date = new Date(data.birthdate);
+        const birthday = new Date(data.birthdate);
+        const age =(new Date().getFullYear() - birthday.getFullYear()) ;
         document.querySelector(".name").innerText = data.name
         document.querySelector(".species").innerText = data.espece.name
-        document.querySelector(".birthdate").innerText = date.toLocaleDateString('fr-FR', {
+        document.querySelector(".birthdate").innerText = birthday.toLocaleDateString('fr-FR', {
             day: 'numeric',
             month: 'long',
             year: 'numeric'
         });
+        document.querySelector(".age").innerText = age.toLocaleString('fr-FR', { 
+        year: 'numeric'
+        });
+        
     })
 });

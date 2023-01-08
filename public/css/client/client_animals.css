@@ -68,3 +68,20 @@ a {
     font-weight: bold;
     text-decoration: underline;
 }
+.main-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+br+h1{
+    margin-bottom: 2%;
+}
+
+.line {
+    width: 80%; 
+    height: 2%;
+    background-color:  #32A4BD;; 
+    border-top-left-radius: 5px; 
+    border-top-right-radius: 5px; 
+  }
