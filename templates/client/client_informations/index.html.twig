@@ -18,9 +18,9 @@
 
 				<div class="formulaire_lastname">
 					{{ form_label(form.lastname, '', { label_attr: { class: 'etiquettes' } }) }}
-
 					<div class="formulaire_lastname_widget">{{ form_widget(form.lastname, { attr: { class: 'champs' } }) }}</div>
 				</div>
+        
 				<div class="formulaire_firstname">
 					{{ form_label(form.firstname, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_firstname_widget">{{ form_widget(form.firstname, { attr: { class: 'champs' } }) }}</div>
@@ -29,12 +29,19 @@
 				<div class="formulaire_email">
 					{{ form_label(form.email, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_email_widget">{{ form_widget(form.email, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.email) is not empty %}
+						<div class="alert alert-danger">{{ form_errors(form.email) }}</div>
+					{% endif %}
 				</div>
 
 				<div class="formulaire_phone">
 					{{ form_label(form.phone, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_phone_widget">{{ form_widget(form.phone, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.phone) is not empty %}
+						<div class="alert alert-danger">{{ form_errors(form.phone) }}</div>
+					{% endif %}
 				</div>
+
 				<div class="formulaire_birthdate">
 					{{ form_label(form.birthdate, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_birthdate_widget">{{ form_widget(form.birthdate, { attr: { class: 'champs' } }) }}</div>
@@ -51,8 +58,8 @@
 					{% if form_errors(form.zipcode) is not empty %}
 						<div class="alert alert-danger">{{ form_errors(form.zipcode) }}</div>
 					{% endif %}
-
 				</div>
+
 				<div class="formulaire_address">
 					{{ form_label(form.address, '', { label_attr: { class: 'etiquettes' } }) }}
 					<div class="formulaire_address_widget">{{ form_widget(form.address, { attr: { class: 'champs' } }) }}</div>
