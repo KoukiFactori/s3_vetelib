@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+{% set hide_navbar = true %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href={{ asset('css/login.css') }}>
+
+	{% if app.request.query.has("veterinaire") %}
+		<style>
+			body {
+				background-image: url("/images/background_veterinaire.png");
+			}
+		</style>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<header class="header__bar">
+		<nav>
+			<ul>
+				<li><a href={{ path('app_index') }}>Accueil</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="form__container">
+		{{ form_start(registrationForm, { attr: { class: "form_login" }}) }}
+
+		<div class="form__header">
+			<h1>Inscription</h1>
+			{% if app.request.query.has("veterinaire") %}
+				<p><a href="{{ path('app_register') }}">Client ?</a></p>	
+			{% else %}
+				<p><a href="{{ path('app_register', { 'veterinaire': 1 }) }}">Vétérinaire ?</a></p>	
+			{% endif %}
+		</div>
+
+		<div class="form__name inline_row">
+			<div class="field">
+				{{ form_label(registrationForm.firstname, "Prénom") }}
+				{{ form_widget(registrationForm.firstname, { attr: { placeholder: "Prénom" }}) }}
+			</div>
+			<div class="field">
+				{{ form_label(registrationForm.lastname, "Nom") }}
+				{{ form_widget(registrationForm.lastname, { attr: { placeholder: "Nom" }}) }}
+			</div>
+		</div>
+
+		<div class="field">
+			{{ form_label(registrationForm.email, "E-mail") }}
+			{{ form_widget(registrationForm.email, { attr: { placeholder: "E-mail" }}) }}
+		</div>
+
+		<div class="inline_row">
+			<div class="field">
+				{{ form_label(registrationForm.plainPassword.first, "Mot de passe") }}
+				{{ form_widget(registrationForm.plainPassword.first, { attr: { placeholder: "Mot de passe" }}) }}
+			</div>
+
+			<div class="field">
+				{{ form_label(registrationForm.plainPassword.second, "Répétez le mot de passe") }}
+				{{ form_widget(registrationForm.plainPassword.second, { attr: { placeholder: "Répétez le mot de passe" }}) }}			
+			</div>
+		</div>
+		
+		<div class="field">
+			{{ form_label(registrationForm.phone, "Téléphone (optionnel)") }}
+			{{ form_widget(registrationForm.phone, { attr: { placeholder: "Téléphone" }}) }}
+		</div>
+
+		<div class="form__address">
+			<div class="field">
+				{{ form_label(registrationForm.address, "Adresse") }}
+				{{ form_widget(registrationForm.address, { attr: { placeholder: "Adresse" }}) }}
+			</div>
+
+			<div class="inline_row">
+				<div class="field">
+					{{ form_label(registrationForm.city, "Ville") }}
+					{{ form_widget(registrationForm.city, { attr: { placeholder: "Ville" }}) }}
+				</div>
+
+				<div class="field">
+					{{ form_label(registrationForm.zipcode, "Code postal") }}
+					{{ form_widget(registrationForm.zipcode, { attr: { placeholder: "Code postal" }}) }}
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn">Register</button>
+		{{ form_end(registrationForm) }}
+	</div>
+{% endblock %}
