@@ -17,7 +17,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
         // Tableau stoquant les évennements déjà présents
         $datetimes = [];
 
-        EventFactory::createMany(150, function () use ($datetimes){
+        EventFactory::createMany(500, function () use ($datetimes){
             
             // Tant que les évennements se chevauchent et ne sont pas en weekend, on regénère une nouvelle date
             do {
@@ -38,15 +38,12 @@ class EventFixture extends Fixture implements DependentFixtureInterface
                 foreach ($datetimes[$vetoId] as $datetime) {
                     if ($start >= $datetime['start'] && $start < $datetime['end']) {
                         $regenerate = true;
-                        break;
                     }
-                    if ($end > $datetime['start'] && $end <= $datetime['end']) {
+                    else if ($end > $datetime['start'] && $end <= $datetime['end']) {
                         $regenerate = true;
-                        break;
                     }
-                    if (intval($start->format('N')) >= 6) {
+                    else if (intval($start->format('N')) >= 6) {
                         $regenerate = true;
-                        break;
                     }
                 }
             } while ($regenerate);
