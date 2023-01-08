@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +18,14 @@ class UserType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('email', EmailType::class, ['empty_data' => '',])
-            ->add('phone', TelType::class, ['empty_data' => '',])
+            ->add('phone', TextType::class, [
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^\d+$/',
+                        'message' => 'Le numéro de téléphone ne peut contenir que des chiffres.',
+                    ]),
+                ],
+            ])
             ->add('birthdate')
             ->add('city')
             ->add('zipcode', TextType::class, [
