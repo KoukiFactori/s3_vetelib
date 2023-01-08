@@ -19,7 +19,7 @@ class UserType extends AbstractType
             ->add('firstname', TextType::class, [
                 'constraints' => [
                     new Regex([
-                        'pattern' => '/^[a-zA-Z]+$/',
+                        'pattern' => '/^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/',
                         'message' => 'Le prénom ne peut contenir que des lettres.',
                     ]),
                 ],
@@ -27,7 +27,7 @@ class UserType extends AbstractType
             ->add('lastname', TextType::class, [
                 'constraints' => [
                     new Regex([
-                        'pattern' => '/^[a-zA-Z]+$/',
+                        'pattern' => '/^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/',
                         'message' => 'Le nom ne peut contenir que des lettres.',
                     ]),
                 ],
