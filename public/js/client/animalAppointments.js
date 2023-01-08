@@ -17,6 +17,7 @@ animalLinks.forEach(link => {
             signal: abortController.signal
         })
             .then(response => response.json());
+        const id = data.id;
 
         const birthday = new Date(data.birthdate);
         const age = (new Date().getFullYear() - birthday.getFullYear());
@@ -45,5 +46,18 @@ animalLinks.forEach(link => {
             `;
             appointments.appendChild(element);
         }
+
     })
 });
+
+const deleteButton = document.querySelectorAll('.delete');
+
+deleteButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    await fetch(`/mon_profil/animal/${id}/delete`)
+        
+});
+
+window.loca
+
+

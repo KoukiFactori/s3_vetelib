@@ -111,3 +111,7 @@ ul.appointments > li {
 li p:nth-child(2) {
     font-weight: lighter;
 }
+
+.delete{
+   margin-left: auto;
+}
