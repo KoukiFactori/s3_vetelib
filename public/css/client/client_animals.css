@@ -94,7 +94,7 @@ ul{
    flex-direction: column;
 }
 
-li{
+ul.appointments > li {
     font-size: bold;
     border: 1px solid #aaa;
     border-radius: 8px;
