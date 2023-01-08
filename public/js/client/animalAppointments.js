@@ -1,11 +1,14 @@
 const animalLinks = document.querySelectorAll('.animal-link');
 const firstAnimal = document.querySelector('.animal-link');
-fetch("/client/animals/" + firstAnimal.dataset.id);
 let abortController;
+console.log(firstAnimal.dataset.id);
+let idChoosenAnimal=firstAnimal.dataset.id;
+const deleteButton = document.querySelector('.delete');
 
 animalLinks.forEach(link => {
     link.addEventListener('click', async (event) => {
         event.preventDefault();
+        deleteButton.style.display = "block";
 
         if (abortController) {
             abortController.abort();
@@ -13,11 +16,11 @@ animalLinks.forEach(link => {
 
         abortController = new AbortController();
 
-        const data = await fetch("/client/animals/" + link.dataset.id, {
+        const data = await fetch("/mon_profil/animal/" + link.dataset.id, {
             signal: abortController.signal
         })
             .then(response => response.json());
-        const id = data.id;
+        idChoosenAnimal= data.id;
 
         const birthday = new Date(data.birthdate);
         const age = (new Date().getFullYear() - birthday.getFullYear());
@@ -50,14 +53,13 @@ animalLinks.forEach(link => {
     })
 });
 
-const deleteButton = document.querySelectorAll('.delete');
+deleteButton.style.display = "none";
 
 deleteButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    await fetch(`/mon_profil/animal/${id}/delete`)
+    await fetch(`/mon_profil/animal/${idChoosenAnimal}/delete`)
         
 });
 
-window.loca
 
 
