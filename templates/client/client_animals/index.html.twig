@@ -1,52 +1,63 @@
 {% extends 'client/base.html.twig' %}
 
 {% block stylesheets %}
-    <link href="{{ asset('css/client/client_animals.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/client/client_animals.css') }}" rel="stylesheet"/>
 {% endblock %}
-{% block javascripts%} 
-    <script src="{{asset('js/client/AnimalAppointments.js')}}" defer></script>
+{% block javascripts%}
+	<script src="{{asset('js/client/AnimalAppointments.js')}}" defer></script>
 {% endblock %}
 {% block title %}
-    Mes animaux
+	Mes animaux
 {% endblock %}
 
 {% block body %}
-    <div class="scrolling">
-        <div class="nav_animal">
-        {% for animal in animals %}
-        {% set age = now|date("Y") - animal.birthdate|date("Y") %}
-        
-            <div class="animals">
-            <a href="#" class="animal-link"data-id="{{animal.id}}">
-                <div class="decoration">
-                    <h1>{{ animal.name }}</h1> <p>{{animal.espece.name}}</p>{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}  
-                </div>
-                <h2>{{ animal.espece.name }}</h2>
-                <h2>Age:{{age}}</h2> 
-            </a> 
-            </div>
-            
-        {% endfor %}
-        
-        </div>
-    </div>
-    <br>
-    <br>
-    <div class="main-content">
-        <div class="decoration">
-            <h1 class="name">Nom :</h1> <p class="species"></p>
-        </div>
-            <br>
-            <h1> Date de naissance :</h1>
-            <ul>
-                <li class="birthdate">  </li>
-            </ul>
-            <br>
-            <h1> Age :</h1>
-            <ul>
-                <li class="age"> </li>
-            <ul>
-        </div>
-        <div class="line"></div>
-    </div>
+	<div class="scrolling">
+		<div class="nav_animal">
+			{% for animal in animals %}
+				{% set age = now|date("Y") - animal.birthdate|date("Y") %}
+
+				<div class="animals">
+					<a href="#" class="animal-link" data-id="{{animal.id}}">
+						<div class="decoration">
+							<h1>{{ animal.name }}</h1>
+							<p>{{animal.espece.name}}</p>
+							{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
+						</div>
+						<h2>{{ animal.espece.name }}</h2>
+						<h2>Age:{{age}}</h2>
+					</a>
+				</div>
+
+			{% endfor %}
+
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="main-content">
+		<div class="decoration">
+			<h1 class="name">Nom :</h1>
+			<p class="species"></p>
+		</div>
+		<br>
+		<h1>
+		    Date de naissance :
+        </h1>
+		<p class="birthdate"></p>
+		<br>
+		<h1>
+			Age :
+        </h1>
+		<p class="age"></p>
+        <br>
+		<div class="line"></div>
+        <br>
+		<h1>Historique des rendez vous:</h1>
+		<br>
+		<ul class="appointments">
+        </ul>
+        <br>
+        <br>
+
+	</div>
 {% endblock %}

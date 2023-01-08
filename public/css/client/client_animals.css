@@ -1,6 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
+    
 }
 a {
     color: inherit; 
@@ -24,7 +25,7 @@ a {
 .decoration {
     display: flex;
     background-color: #32A4BD;
-    border-radius: 49px 49px 0px 0px;
+    border-radius: 49px 49px 20px 20px;
     padding-top: 5px;
     padding-bottom: 2px;
     width: 100%;
@@ -43,7 +44,7 @@ a {
 
 .animals{
     margin-top: 5%;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 20px 20px 10px 10px;
     margin-right: 7%;
     margin-left: 5%;
     display: flex;
@@ -59,29 +60,54 @@ a {
 }
 
 .main-content
-{   
+{
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
     background-color: white;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 20px 20px 20px 20px;
+    margin:auto;
 }
 
 .main-content h1{
     font-weight: bold;
     text-decoration: underline;
 }
-.main-content{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
+
 br+h1{
     margin-bottom: 2%;
 }
 
 .line {
-    width: 80%; 
-    height: 2%;
+    width: 95%; 
+    height: 2px;
     background-color:  #32A4BD;; 
     border-top-left-radius: 5px; 
     border-top-right-radius: 5px; 
-  }
+}
+ul{
+    width: 80%;
+   display: flex;
+   flex-direction: column;
+}
+
+li{
+    font-size: bold;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    padding: 0.5em 0.5em 0.5em;
+    margin: 10px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    display: flex;
+    flex-direction: row;
+    row-gap: 50%;
+    justify-content: space-between;
+}
+
+li p:nth-child(2) {
+    font-weight: lighter;
+}
