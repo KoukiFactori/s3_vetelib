@@ -22,13 +22,13 @@
     </head>
     <body>
         <div class="veterinaire">
-            <div class="veterinaire__connected">Nom client connecté</div>
+            <div class="veterinaire__connected">{{ app.user.firstname }} {{ app.user.lastname }}</div>
             <div class="veterinaire__main">
                 <header>
                     <div class="top">
                         <input type="checkbox" id="checkbox_toggle"/>
                         <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-                        <div class="nav--primary">Nom client connecté</div>
+                        <div class="nav--primary">{{ app.user.firstname }} {{ app.user.lastname }}</div>
                     </div>
                     <nav>
                         <ul class="nav">
