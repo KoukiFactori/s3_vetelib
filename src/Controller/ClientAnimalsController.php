@@ -37,11 +37,12 @@ class ClientAnimalsController extends AbstractController
      #[Route("/client/animals/{id}",name: 'data_client_animals')]
     public function animalInformation(int $id ,AnimalRepository $ar , EventRepository $er ,SerializerInterface $ser)
     {
-        
+
         //$user=$this->getUser();
-        $animal = array_filter($ar->getAllAnimalsByclient(23), function($animal) use ($id) {
+        $animal = array_values(array_filter($ar->getAllAnimalsByclient(23), function($animal) use ($id) {
             return $animal->getId() === $id;
-        })[0];
+        }))[0];
+
         return new Response($ser->serialize($animal, 'json', [
             AbstractNormalizer::ATTRIBUTES => [
               'name',
