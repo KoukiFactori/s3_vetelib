@@ -14,8 +14,10 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         AnimalFactory::createMany(150, function () {
-            return ['espece' => EspeceFactory::random(),
-            'client' => ClientFactory::random()];
+            return [
+                'espece' => EspeceFactory::random(),
+                'client' => ClientFactory::random()
+            ];
         });
     }
 
