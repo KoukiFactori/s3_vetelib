@@ -12,7 +12,7 @@
 	<div class="bloc_contenu">
 		<div class="fond_blanc">
 			<div class="arrondi_deco">Mes informations</div>
-			{{ form_start(form) }}
+			{{ form_start(form, {'method': 'POST'}) }}
 			<div class="formulaire">
 				{{ form_errors(form) }}
 
