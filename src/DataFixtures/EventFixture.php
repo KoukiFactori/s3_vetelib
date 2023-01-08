@@ -2,8 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\AnimalFactory;
 use App\Factory\EventFactory;
 use App\Factory\TypeEventFactory;
+use App\Factory\VeterinaireFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -17,9 +19,13 @@ class EventFixture extends Fixture implements DependentFixtureInterface
 
         EventFactory::createMany(150, function () use ($datetimes){
             
-            // Tant que les évennements se chevauchent, on regénère une nouvelle date
+            // Tant que les évennements se chevauchent et ne sont pas en weekend, on regénère une nouvelle date
             do {
-                $start = EventFactory::faker()->dateTimeThisMonth();
+                $veterinaire = VeterinaireFactory::random();
+                $vetoId = $veterinaire->getId();
+                if(!isset($datetimes[$vetoId])) $datetimes[$vetoId] = [];
+
+                $start = EventFactory::faker()->dateTimeBetween('-15 days', '+15 days');
                 $start->setTime(
                     EventFactory::faker()->numberBetween(8, 18),
                     EventFactory::faker()->boolean() ? 0 : 30
@@ -28,25 +34,33 @@ class EventFixture extends Fixture implements DependentFixtureInterface
                 $end = clone $start;
                 $end->modify('+30 minutes');
 
-                $overlapping = false;
-                foreach ($datetimes as $datetime) {
+                $regenerate = false;
+                foreach ($datetimes[$vetoId] as $datetime) {
                     if ($start >= $datetime['start'] && $start < $datetime['end']) {
-                        $overlapping = true;
+                        $regenerate = true;
                         break;
                     }
                     if ($end > $datetime['start'] && $end <= $datetime['end']) {
-                        $overlapping = true;
+                        $regenerate = true;
+                        break;
+                    }
+                    if (intval($start->format('N')) >= 6) {
+                        $regenerate = true;
                         break;
                     }
                 }
-            } while ($overlapping);
+            } while ($regenerate);
 
-            $events[] = [
+            $datetimes[$vetoId][] = [
                 'start' => $start,
                 'end' => $end,
             ];
 
-            return ['typeEvent' => TypeEventFactory::random(), 'date' => $start];
+            return [
+                'typeEvent' => TypeEventFactory::random(),
+                'date' => $start,
+                'veterinaire' => $veterinaire
+            ];
         });
     }
 
@@ -54,6 +68,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
     {
         return [
             TypeEventFixture::class,
+            VeterinaireFixture::class
         ];
     }
 }
