@@ -44,8 +44,7 @@ class UserType extends AbstractType
             ])
 
             ->add('birthdate', DateType::class, [
-                'widget' => 'single_text',
-                'years' => range(1930, (new \DateTime())->format('Y')),
+                'years' => range(1920, (new \DateTime())->format('Y')),
              ])
 
             ->add('city')
