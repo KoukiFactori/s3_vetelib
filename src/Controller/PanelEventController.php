@@ -13,6 +13,6 @@ class PanelEventController extends AbstractController
     #[Route('/panel/event', name: 'app_panel_event')]
     public function index(): Response
     {
-        return $this->render('panel/event/index.html.twig');
+        return $this->render('panel/event/events.html.twig');
     }
 }
