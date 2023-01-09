@@ -1,0 +1,83 @@
+html, body {
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+body {
+  font-size: 16px;
+}
+
+main {
+  overflow-y: scroll;
+  height: 700px;
+
+  border-radius: 2rem 0 0 2rem;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+
+  overflow: hidden;
+}
+
+table caption {
+  margin: 10px;
+}
+
+thead th {
+  text-align: center;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 2%;
+}
+
+th,
+td {
+  padding: 20px;
+
+  border: 1px solid black;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: aliceblue;
+}
+
+tbody tr:hover {
+  background-color: aquamarine;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+
+  height: 90px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
