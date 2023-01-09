@@ -39,6 +39,17 @@ class TypeEventRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return TypeEvent[]
+     */
+    public function getAll(): array
+    {
+        return $this->createQueryBuilder('typeevent')
+            ->getQuery()
+            ->getResult();
+
+    }
+
 //    /**
 //     * @return TypeEvent[] Returns an array of TypeEvent objects
 //     */
