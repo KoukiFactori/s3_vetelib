@@ -39,6 +39,23 @@ class VeterinaireRepository extends ServiceEntityRepository
         }
     }
 
+    public function getEventsOn(\DateTimeInterface $date): array
+    {
+        $events = $this->createQueryBuilder('veto')
+            ->addSelect('event')
+            ->leftJoin("veto.events", 'event')
+            ->where('event.date >= :start')
+            ->andWhere('event.date <= :end')
+            ->orderBy('event.date')
+            ->setParameter('start', $date->format('Y-m-d 00:00:00'))
+            ->setParameter('end', $date->format('Y-m-d 23:59:59'))
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $events;
+    }
+
 //    /**
 //     * @return Veterinaire[] Returns an array of Veterinaire objects
 //     */
