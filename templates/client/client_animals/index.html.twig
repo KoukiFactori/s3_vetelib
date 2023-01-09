@@ -57,6 +57,7 @@
 		<ul class="appointments"></ul>
 		<br>
 		<br>
+		{# Affichage du bouton poubelle (SVG) START #}
 		<button class="delete" onclick="return confirm('Are you sure?')">
 			<svg width="38" height="38" viewbox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g filter="url(#filter0_d_148_74)">
@@ -76,5 +77,9 @@
 				</defs>
 			</svg>
 		</button>
+		{# Affichage du bouton poubelle (SVG) END #}
+	</div>
+	<div >
+		<button class="bouton_ajout" type="submit"> + </button>
 	</div>
 {% endblock %}
