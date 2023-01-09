@@ -28,9 +28,8 @@ class ClientAnimalsController extends AbstractController
     public function index(AnimalRepository $ar, EventRepository $er): Response
     {
         $now = new \DateTime();
-        // $this->denyAccessUnlessGranted('ROLE_CLIENT');
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        // $clientId=$this->getUser()->Id;
         $user = $this->tokenStorage->getToken()->getUser();
         $userId = $user->getId();
 
