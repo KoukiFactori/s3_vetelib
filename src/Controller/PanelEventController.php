@@ -29,7 +29,7 @@ class PanelEventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $doctrine->getManager()->flush();
 
-            return $this->redirectToRoute('app_panel_event_show', ['id' => $event->getId()]);
+            return $this->redirectToRoute('app_panel_event');
         }
 
         return $this->renderForm('panel/event/event.html.twig', compact('event', 'form'));
