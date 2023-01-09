@@ -4,12 +4,12 @@ namespace App\Form;
 
 use App\Entity\Animal;
 use App\Entity\Espece;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class AddAnimalType extends AbstractType
@@ -27,7 +27,10 @@ class AddAnimalType extends AbstractType
 
         $builder
             ->add('name')
-            ->add('birthdate')
+            ->add('birthdate', DateType::class, [
+                'years' => range(1980, (new \DateTime())->format('Y')),
+             ])
+
             ->add('espece', EntityType::class, [
                 'class' => Espece::class,
                 'choice_label' => 'name',
