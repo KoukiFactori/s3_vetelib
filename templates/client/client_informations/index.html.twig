@@ -1,0 +1,78 @@
+{% extends 'client/layout/base.html.twig' %}
+
+{% block title %}
+	Informations client
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="/css/client/informations.css"/>
+{% endblock %}
+
+{% block body %}
+	<div class="bloc_contenu">
+		<div class="fond_blanc">
+			<div class="arrondi_deco">Mes informations</div>
+			{{ form_start(form, {'method': 'POST'}) }}
+			<div class="formulaire">
+				{{ form_errors(form) }}
+
+				<div class="formulaire_lastname">
+					{{ form_label(form.lastname, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Nom' }) }}
+					<div class="formulaire_lastname_widget">{{ form_widget(form.lastname, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.lastname) is not empty %}
+						<div class="alert">{{ form_errors(form.lastname) }}</div>
+					{% endif %}
+				</div>
+
+				<div class="formulaire_firstname">
+					{{ form_label(form.firstname, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Prénom' }) }}
+					<div class="formulaire_firstname_widget">{{ form_widget(form.firstname, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.firstname) is not empty %}
+						<div class="alert">{{ form_errors(form.firstname) }}</div>
+					{% endif %}
+				</div>
+
+				<div class="formulaire_email">
+					{{ form_label(form.email, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Email' }) }}
+					<div class="formulaire_email_widget">{{ form_widget(form.email, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.email) is not empty %}
+						<div class="alert">{{ form_errors(form.email) }}</div>
+					{% endif %}
+				</div>
+
+				<div class="formulaire_phone">
+					{{ form_label(form.phone, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Téléphone' }) }}
+					<div class="formulaire_phone_widget">{{ form_widget(form.phone, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.phone) is not empty %}
+						<div class="alert">{{ form_errors(form.phone) }}</div>
+					{% endif %}
+				</div>
+
+				<div class="formulaire_birthdate">
+					{{ form_label(form.birthdate, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Date de naissance'  }) }}
+					<div class="formulaire_birthdate_widget">{{ form_widget(form.birthdate, { attr: { class: 'champs' } }) }}</div>
+				</div>
+
+				<div class="formulaire_city">
+					{{ form_label(form.city, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Ville' }) }}
+					<div class="formulaire_city_widget">{{ form_widget(form.city, { attr: { class: 'champs' } }) }}</div>
+				</div>
+
+				<div class="formulaire_zipcode">
+					{{ form_label(form.zipcode, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Code postal' }) }}
+					<div class="formulaire_zipcode_widget">{{ form_widget(form.zipcode, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.zipcode) is not empty %}
+						<div class="alert">{{ form_errors(form.zipcode) }}</div>
+					{% endif %}
+				</div>
+
+				<div class="formulaire_address">
+					{{ form_label(form.address, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Adresse' }) }}
+					<div class="formulaire_address_widget">{{ form_widget(form.address, { attr: { class: 'champs' } }) }}</div>
+				</div>
+			</div>
+		</div>
+		{{ form_widget(form.save, {'label' : 'Modifier' }) }}
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
