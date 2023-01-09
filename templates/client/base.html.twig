@@ -24,7 +24,6 @@
 		{% endblock %}
 	</head>
 	<body>
-	
 		<header>
 			<div class="top">
 
@@ -43,12 +42,12 @@
 						<li>Mes informations</li>
 					</div>
 					<div class="nav__right">
-						<li class="nav--primary">Nom client connecté</li>
+						<li class="nav--primary">{{ app.user.firstname }}
+							{{ app.user.lastname }}</li>
 					</div>
 				</ul>
 			</nav>
 		</header>
 		{% block body %}{% endblock %}
 	</body>
-	
 </html>
