@@ -1,0 +1,29 @@
+.bloc_contenu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 64rem;
+}
+
+.fond_blanc {
+    background-color: white;
+    border-radius: 49px 49px 49px 49px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.arrondi_deco {
+    background-color: #32A4BD;
+    border-radius: 49px 49px 0px 0px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    font-family: "Inter";
+}
