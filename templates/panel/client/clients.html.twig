@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/panel/client/style.css">
+  <link rel="stylesheet" href="{{ asset("css/panel/client/style.css") }}">
 {% endblock %}
 
 {% block title %} Liste des clients {% endblock %}
@@ -26,7 +26,7 @@
           <td>{{client.lastname}} {{client.firstname}}</td>
           <td>{{client.phone}}</td>
           <td>{{client.email}}</td>
-          <td>
+          <td class="actions">
             <span class="material-symbols-outlined">file_open</span>
             <span class="material-symbols-outlined">close</span>
           </td>
