@@ -1,0 +1,38 @@
+{% extends 'panel/layout/base.html.twig' %}
+
+{% block stylesheets %}
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ asset("css/panel/client/style.css") }}">
+{% endblock %}
+
+{% block title %} Liste des clients {% endblock %}
+
+{% block body %}
+  <table class="client__list">
+    <caption>
+      Liste des clients
+    </caption>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Type animal</th>
+        <th>Age</th>
+        <th>Descriptif santé</th>
+        <th>Nom maitre</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for animal in animals %}
+        <tr>
+          <td>{{animal.name}}</td>
+          <td>{{animal.type.name}}</td>
+          <td>{{client.email}}</td>
+          <td class="actions">
+            <span class="material-symbols-outlined">delete</span>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
