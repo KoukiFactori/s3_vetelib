@@ -62,5 +62,6 @@ deleteButton.addEventListener('click', async (event) => {
         
 });
 
-
-
+function redirect() {
+    window.location.href = '/mon_profil/animal/add';
+}
