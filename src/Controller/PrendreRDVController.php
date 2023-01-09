@@ -21,9 +21,9 @@ class PrendreRDVController extends AbstractController
         $slots = $vetoRepo->getAvailableSlots($vetoAndEvents);
 
         return $this->render('prendre_rdv/index.html.twig', [
-            'espece' => $request->get('espece'),
-            'date' => (new \DateTime())->format('d/m/Y'),
-            'typeEvent' => $request->get('typeEvent'),
+            'selectedEspece' => $request->get('espece'),
+            'selectedDate' => (new \DateTime())->format('d/m/Y'),
+            'selectedTypeEvent' => $request->get('typeEvent'),
             'especes' => $especes,
             'typeEvents' => $typeEvents,
             'vetos' => $vetoAndEvents,
