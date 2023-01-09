@@ -7,9 +7,13 @@ body {
   font-size: 16px;
 }
 
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+
 main {
   overflow-y: scroll;
-  height: 700px;
+  height: 80vh;
 
   border-radius: 2rem 0 0 2rem !important;
 }
@@ -24,6 +28,8 @@ table {
 
 table caption {
   margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 thead th {
@@ -31,19 +37,11 @@ thead th {
 }
 
 thead th:nth-child(1) {
-  width: 30%;
-}
-
-thead th:nth-child(2) {
-  width: 20%;
-}
-
-thead th:nth-child(3) {
-  width: 15%;
+  width: 25%;
 }
 
 thead th:nth-child(4) {
-  width: 2%;
+  width: 60px;
 }
 
 th,
@@ -51,6 +49,8 @@ td {
   padding: 20px;
 
   border-bottom: 1px solid #ddd;
+
+  overflow: hidden;
 }
 
 tbody tr:nth-child(odd) {
