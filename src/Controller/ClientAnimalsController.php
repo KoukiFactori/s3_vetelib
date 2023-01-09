@@ -44,6 +44,7 @@ class ClientAnimalsController extends AbstractController
         return new Response($ser->serialize($animal, 'json', [
             AbstractNormalizer::ATTRIBUTES => [
               'name',
+              'id',
               'birthdate',
               'espece' => ['name'],
               'events' => ['date', 'description', 'typeEvent' => ['libType']],
