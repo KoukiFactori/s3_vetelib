@@ -35,7 +35,8 @@ animalLinks.forEach(link => {
         });
         document.querySelector(".age").innerText = age.toLocaleString('fr-FR', {
             year: 'numeric'
-        });
+        }) + " ans";
+
         const appointments = document.querySelector(".appointments");
         while (appointments.firstChild) appointments.removeChild(appointments.firstChild)
         for (const event of data.events) {
