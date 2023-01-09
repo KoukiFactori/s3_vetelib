@@ -1,4 +1,4 @@
-new AirDatepicker('#date', {
+new AirDatepicker('.js-datepicker', {
     locale: {
         days: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
         daysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
