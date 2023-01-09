@@ -1,0 +1,59 @@
+{% extends 'panel/layout/base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/panel/event.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block title %}Event{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {attr: {class: 'event__form', novalidate: ''}}) }}
+        <div class="event__form__section">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.date) }}
+            {{ form_widget(form.date, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.date) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.typeEvent) }}
+            {{ form_widget(form.typeEvent, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.typeEvent) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.animal) }}
+            {{ form_widget(form.animal, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.animal) }}
+            </div>
+        </div>
+
+        <div class="event__form__section">
+            {{ form_label(form.veterinaire) }}
+            {{ form_widget(form.veterinaire, {attr: {class: 'event__form__input', placeholder: ' '}}) }}
+            <div class="event__form__errors">
+                {{ form_errors(form.veterinaire) }}
+            </div>
+        </div>
+
+        <div class="event__form__buttongroup">
+            <button class="event__form__submit" type="submit">Enregistrer</button>
+            <a href="{{ path('app_panel_event') }}" class="event__form__back">Retour</a>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
