@@ -1,4 +1,4 @@
-body {
+* {
     box-sizing: border-box;
 }
 
@@ -47,4 +47,62 @@ button.sec--4 {
 
 .air-datepicker {
     margin: .5rem auto 0 auto;
+}
+
+.prendre_rdv_result {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.card {
+    background-color: #F8D671;
+    width: 90%;
+    border-radius: .5rem;
+}
+
+.card:not(:last-child) {
+    margin-bottom: 5rem;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.card__veto_info {
+    display: flex;
+    font-size: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card__veto_info .contact,
+.card__veto_info .contact:visited {
+    text-decoration: none;
+    color: white;
+    background-color: #2EA7B6;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.card__slots {
+    display: grid;
+    grid-template-columns: repeat(3, calc(33% - .5rem));
+    grid-gap: 1rem;
+}
+
+.card__slots .slot,
+.card__slots .slot:visited {
+    text-decoration: none;
+    color: white;
+    background-color: #2EA7B6;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
