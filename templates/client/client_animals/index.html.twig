@@ -20,7 +20,6 @@
 					<a href="#" class="animal-link" data-id="{{animal.id}}">
 						<div class="decoration">
 							<h1>{{ animal.name }}</h1>
-							<p>{{animal.espece.name}}</p>
 							{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
 						</div>
 						<h2>{{ animal.espece.name }}</h2>
@@ -35,10 +34,12 @@
 	<br>
 	<br>
 	<div class="main-content">
-		<div class="decoration">
+		<div class="decoration_bloc_principal">
 			<h1 class="name">Nom :</h1>
-			<p class="species"></p>
 		</div>
+		<h1>Type :</h1>
+		<br>
+		<p class="species"></p>
 		<br>
 		<h1>
 			Date de naissance :
@@ -83,7 +84,7 @@
 	</div>
 	<div>
 		<button class="bouton_ajout" type="submit" onclick="redirect()">
-			+
+			Ajouter un animal
 		</button>
 	</div>
 {% endblock %}
