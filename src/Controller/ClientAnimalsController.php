@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class ClientAnimalsController extends AbstractController
 {
-    #[Route('/mon_profil/animal ', name: 'app_client_animals')]
+    #[Route('/mon_profil/animal', name: 'app_client_animals')]
     public function index(AnimalRepository $ar, EventRepository $er): Response
     {
         $now = new \DateTime();
