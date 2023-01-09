@@ -89,7 +89,7 @@ br+h1 {
     border-top-right-radius: 5px;
 }
 
-ul {
+.historique_rdv {
     width: 80%;
     display: flex;
     flex-direction: column;

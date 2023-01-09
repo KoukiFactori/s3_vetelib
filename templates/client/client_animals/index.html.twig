@@ -1,4 +1,4 @@
-{% extends 'client/base.html.twig' %}
+{% extends 'client/layout/base.html.twig' %}
 
 {% block stylesheets %}
 	<link href="{{ asset('css/client/client_animals.css') }}" rel="stylesheet"/>
@@ -54,7 +54,9 @@
 		<br>
 		<h1>Historique des rendez vous:</h1>
 		<br>
-		<ul class="appointments"></ul>
+		<div class="historique_rdv">
+			<ul class="appointments"></ul>
+		</div>
 		<br>
 		<br>
 		{# Affichage du bouton poubelle (SVG) START #}
