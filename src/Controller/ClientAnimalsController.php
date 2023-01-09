@@ -4,15 +4,26 @@ namespace App\Controller;
 
 use App\Repository\AnimalRepository;
 use App\Repository\EventRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ClientAnimalsController extends AbstractController
 {
+    private $em;
+    private $tokenStorage;
+
+    public function __construct(EntityManagerInterface $em, TokenStorageInterface $tokenStorage)
+    {
+        $this->em = $em;
+        $this->tokenStorage = $tokenStorage;
+    }
+    
     #[Route('/mon_profil/animal', name: 'app_client_animals')]
     public function index(AnimalRepository $ar, EventRepository $er): Response
     {
@@ -20,7 +31,10 @@ class ClientAnimalsController extends AbstractController
         // $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
         // $clientId=$this->getUser()->Id;
-        $animals = $ar->getAllAnimalsByClient(23);
+        $user = $this->tokenStorage->getToken()->getUser();
+        $userId = $user->getId();
+
+        $animals = $ar->getAllAnimalsByClient($userId);
 
         $appointments = [];
 
