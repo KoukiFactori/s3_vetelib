@@ -40,17 +40,6 @@ class
         }
     }
 
-    /**
-     * @return Espece[]
-     */
-    public function getAll(): array
-    {
-        return $this->createQueryBuilder('espece')
-            ->getQuery()
-            ->getResult();
-
-    }
-
 //    /**
 //     * @return Espece[] Returns an array of Espece objects
 //     */
