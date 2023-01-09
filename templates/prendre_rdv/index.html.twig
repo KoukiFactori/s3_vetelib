@@ -14,64 +14,58 @@
 
 {% block body %}
     <header class="prendre_rdv_header">
-        <form class="crenaux_form">
+        {{ form_start(form, {attr: {class: 'crenaux_form'}}) }}
             <div class="sec sec--1">
-                <label class="sec__title" for="espece">
-                    Selectionner un animal
-                </label>
+                {{ form_label(form.animal) }}
                 <div class="sec__content">
-                    <select name="espece" id="espece">
-                        {% for espece in especes %}
-                            <option value="{{ espece.id }}" {% if selectedEspece == espece.id %} selected {% endif %}>{{ espece.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form_widget(form.animal) }}
                 </div>
             </div>
             <div class="sec sec--2">
-                <label class="sec__title" for="date">
-                    Choisir une date
-                </label>
+                {{ form_label(form.date) }}
                 <div class="sec__content">
-                    <input type="text" name="date" id="date" value="{{ selectedDate }}" />
+                    {{ form_widget(form.date) }}
                 </div>
             </div>
             <div class="sec sec--3">
-                <label class="sec__title" for="typeEvent">
-                    Choisir le type
-                </label>
+                {{ form_label(form.typeEvent) }}
                 <div class="sec__content">
-                    <select name="typeEvent" id="typeEvent">
-                        {% for typeEvent in typeEvents %}
-                            <option value="{{ typeEvent.id }}" {% if selectedTypeEvent == typeEvent.id %} selected {% endif %}>{{ typeEvent.libType }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form_widget(form.typeEvent) }}
                 </div>
             </div>
-            <button class="sec sec--4" type="submit">
+            <div class="sec sec--4">
+                {{ form_label(form.description) }}
+                <div class="sec__content">
+                    {{ form_widget(form.description) }}
+                </div>
+            </div>
+            <button class="sec sec--5" type="submit">
                 Chercher des créneaux
             </button>
-        </form>
+        {{ form_end(form) }}
     </header>
 
-    <main class="prendre_rdv_result">
-        {% for veto in vetos %}
-            <div class="card">
-                <div class="card__veto_info">
-                    <div class="name">
-                        Dr. {{ veto.firstname }} {{ veto.lastname }}
-                    </div>
-                    <a class="contact" href="mailto:{{ veto.email }}">
-                        Contacter
-                    </a>
-                </div>
-                <div class="card__slots">
-                    {% for slot in slots[veto.id] %}
-                        <a class="slot" href="">
-                            {{ slot['start'] }}
+    {% if hasSubmitted %}
+        <main class="prendre_rdv_result">
+            {% for veto in vetos %}
+                <div class="card">
+                    <div class="card__veto_info">
+                        <div class="name">
+                            Dr. {{ veto.firstname }} {{ veto.lastname }}
+                        </div>
+                        <a class="contact" href="mailto:{{ veto.email }}">
+                            Contacter
                         </a>
-                    {% endfor %}
+                    </div>
+                    <div class="card__slots">
+                        {% for slot in slots[veto.id] %}
+                            <a class="slot" href="">
+                                {{ slot['start'] }}
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </main>
+            {% endfor %}
+        </main>
+    {% endif %}
 {% endblock %}
