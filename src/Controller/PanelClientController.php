@@ -18,7 +18,7 @@ class PanelClientController extends AbstractController
     #[Route('/panel/client', name: 'app_panel_client')]
     public function index(ClientRepository $repository): Response
     {
-        $clients = $repository->findAll();
+        $clients = $repository->findBy([], ["lastname" => "ASC"]);
 
         return $this->render('panel/client/clients.html.twig', [
             "clients" => $clients 
