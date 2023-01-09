@@ -27,7 +27,7 @@
           <td>{{client.phone}}</td>
           <td>{{client.email}}</td>
           <td class="actions">
-            <span class="material-symbols-outlined">file_open</span>
+            <a href={{ path('app_panel_client_show', { id: client.id }) }}><span class="material-symbols-outlined">file_open</span></a>
             <span class="material-symbols-outlined">close</span>
           </td>
         </tr>
