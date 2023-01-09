@@ -1,0 +1,21 @@
+{% extends 'panel/layout/base.html.twig' %}
+
+{% block stylesheets %}
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/panel/client/style.css">
+{% endblock %}
+
+{% block title %} Information Client {% endblock %}
+
+{% block body %}
+  <div class="client__info">
+    {{ client.lastname }}
+    {{ client.firstname }}
+
+    <div class="client__animal">
+      {% for animal in client.animals %}
+        {{ animal.name }}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
