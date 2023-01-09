@@ -46,6 +46,18 @@ class AnimalRepository extends ServiceEntityRepository
     {
 
     }
+
+    /**
+     * @return Animal[]
+     */
+    public function getByClientId(int $clientId): Array {
+        return $this->createQueryBuilder('animal')
+            ->where('client = :clientId')
+            ->setParameter('clientId', $clientId)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
 //    /**
 //     * @return Animal[] Returns an array of Animal objects
