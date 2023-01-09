@@ -3,6 +3,7 @@ const firstAnimal = document.querySelector('.animal-link');
 let abortController;
 console.log(firstAnimal.dataset.id);
 let idChoosenAnimal=firstAnimal.dataset.id;
+console.log(`${idChoosenAnimal}`);
 const deleteButton = document.querySelector('.delete');
 
 animalLinks.forEach(link => {
@@ -20,7 +21,7 @@ animalLinks.forEach(link => {
             signal: abortController.signal
         })
             .then(response => response.json());
-        console.log(data.id);
+        console.log(JSON.stringify(data, null, 2));
         idChoosenAnimal= parseInt(data.id);
         console.log(idChoosenAnimal);
         const birthday = new Date(data.birthdate);
@@ -59,7 +60,7 @@ deleteButton.style.display = "none";
 deleteButton.addEventListener('click', async (event) => {
     event.preventDefault();
     await fetch(`/mon_profil/animal/${idChoosenAnimal}/delete`)
-        
+    location.reload();   
 });
 
 
