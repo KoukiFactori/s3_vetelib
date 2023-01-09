@@ -22,7 +22,7 @@
                 <div class="sec__content">
                     <select name="espece" id="espece">
                         {% for espece in especes %}
-                            <option value="{{ espece.id }}">{{ espece.name }}</option>
+                            <option value="{{ espece.id }}" {% if selectedEspece == espece.id %} selected {% endif %}>{{ espece.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -32,7 +32,7 @@
                     Choisir une date
                 </label>
                 <div class="sec__content">
-                    <input type="text" name="date" id="date" value="{{ "now"|date("d/m/Y") }}" />
+                    <input type="text" name="date" id="date" value="{{ selectedDate }}" />
                 </div>
             </div>
             <div class="sec sec--3">
@@ -42,7 +42,7 @@
                 <div class="sec__content">
                     <select name="typeEvent" id="typeEvent">
                         {% for typeEvent in typeEvents %}
-                            <option value="{{ typeEvent.id }}">{{ typeEvent.libType }}</option>
+                            <option value="{{ typeEvent.id }}" {% if selectedTypeEvent == typeEvent.id %} selected {% endif %}>{{ typeEvent.libType }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -52,4 +52,26 @@
             </button>
         </form>
     </header>
+
+    <main class="prendre_rdv_result">
+        {% for veto in vetos %}
+            <div class="card">
+                <div class="card__veto_info">
+                    <div class="name">
+                        Dr. {{ veto.firstname }} {{ veto.lastname }}
+                    </div>
+                    <a class="contact" href="mailto:{{ veto.email }}">
+                        Contacter
+                    </a>
+                </div>
+                <div class="card__slots">
+                    {% for slot in slots[veto.id] %}
+                        <a class="slot" href="">
+                            {{ slot['start'] }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </main>
 {% endblock %}
