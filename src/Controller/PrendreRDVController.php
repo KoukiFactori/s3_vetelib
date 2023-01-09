@@ -43,4 +43,10 @@ class PrendreRDVController extends AbstractController
             'form' => $form
         ]);
     }
+
+    #[Route('/prendre-rdv/create', name: 'app_prendre_rdv_create')]
+    public function create(): Response
+    {
+        
+    }
 }
