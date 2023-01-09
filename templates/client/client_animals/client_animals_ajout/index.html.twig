@@ -9,11 +9,41 @@
 
 
 {% block body %}
-	<div class="bloc_contenu">
-		<div class="fond_blanc">
-			<div class="arrondi_deco">Ajouter votre animal :</div>
-            {{ form(form) }}
+<div class="bloc_contenu">
+	<div class="fond_blanc">
+		<div class="arrondi_deco">Ajouter votre animal :</div>
+		{{ form_start(form, {'method': 'POST'}) }}
+		<div class="formulaire">
+
+			<div class="formulaire_prenom">
+				{{ form_label(form.name, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Prénom' }) }}
+				<div class="formulaire_prenom_widget">{{ form_widget(form.name, { attr: { class: 'champs' } }) }}</div>
+				{% if form_errors(form.name) is not empty %}
+					<div class="alert">{{ form_errors(form.name) }}</div>
+				{% endif %}
+			</div>
+
+			<div class="formulaire_birthday">
+				{{ form_label(form.birthdate, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Date d\'anniversaire' }) }}
+					<div class="formulaire_birthday_widget">{{ form_widget(form.birthdate, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.birthdate) is not empty %}
+						<div class="alert">{{ form_errors(form.birthdate) }}</div>
+					{% endif %}
+				</div>
+
+				<div class="formulaire_espece">
+					{{ form_label(form.espece, '', { label_attr: { class: 'etiquettes' }, 'label' : 'Espece' }) }}
+					<div class="formulaire_espece_widget">{{ form_widget(form.espece, { attr: { class: 'champs' } }) }}</div>
+					{% if form_errors(form.espece) is not empty %}
+						<div class="alert">{{ form_errors(form.espece) }}</div>
+					{% endif %}
+				</div>
+
+			</div>
 		</div>
+		{{ form_widget(form.save, {'label' : 'Modifier' }) }}
+		{{ form_end(form) }}
+
 	</div>
 
 {% endblock %}
