@@ -38,8 +38,8 @@ class ClientRendezVousController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        $userId=$this->getUser()->getId();
-        $appointment = array_values(array_filter($er->getAllEventByClient($userId), function ($appointment) use ($id) {
+        $user=$this->getUser();
+        $appointment = array_values(array_filter($er->getAllEventByClient($user), function ($appointment) use ($id) {
             return $appointment->getId() === $id;
         }))[0];
 

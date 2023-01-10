@@ -49,7 +49,7 @@ class ClientAnimalsController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        $userId=$this->getUser()->getId;
+        $userId=$this->getUser()->getId();
         $animal = array_values(array_filter($ar->getAllAnimalsByclient($userId), function ($animal) use ($id) {
             return $animal->getId() === $id;
         }))[0];
