@@ -73,6 +73,6 @@ class PrendreRDVController extends AbstractController
         $entityManager->persist($event);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_prendre_rdv');
+        return $this->redirectToRoute('app_client_rendez_vous');
     }
 }
