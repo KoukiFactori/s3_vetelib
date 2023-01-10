@@ -5,6 +5,7 @@ body {
     flex-direction: column;
     font-family: "Inter";
     font-size: 1.2rem;
+    height: 100%;
 }
 
 a {
@@ -21,10 +22,19 @@ a {
 
 .nav_animal {
     display: flex;
-    flex-direction: row;
-    row-gap: 5%;
-
+    row-gap: 10%;
+    }
+.animals {
+    border-radius: 20px 20px 10px 10px;
+    margin-right: 1%;
+    /* margin-left: 5%; */
+    display: flex;
+    width: 90%;
+    min-width: 200px;
+    background-color: white;
+    flex-direction: column;
 }
+
 
 .decoration {
     background-color: #32A4BD;
@@ -44,12 +54,15 @@ a {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     font-size: 1.5rem;
     color: white;
     font-family: "Inter";
     margin-bottom: 0.7rem;
 }
-
+.decoration_bloc_principal p{
+    text-align: center;
+}
 .decoration h1 {
     text-align: left;
     width: max-content;
@@ -62,17 +75,6 @@ a {
     position: right;
 }
 
-.animals {
-    margin-top: 5%;
-    border-radius: 20px 20px 10px 10px;
-    margin-right: 7%;
-    margin-left: 5%;
-    display: flex;
-    width: 90%;
-    min-width: 120px;
-    background-color: white;
-    flex-direction: column;
-}
 
 .animals h2 {
     text-align: left;
@@ -88,6 +90,7 @@ a {
     border-radius: 49px 49px 20px 20px;
     margin: auto;
     align-items: flex-start;
+    flex-grow: 2;
  
 }
 
@@ -95,7 +98,6 @@ a {
     font-weight: bold;
     text-decoration: underline;
     margin-left: 5%;
-
     margin-bottom: 5%;
 }
 
@@ -143,7 +145,10 @@ li p:nth-child(2) {
 }
 
 .delete {
+    background-color: red;
     margin-left: auto;
+    margin-bottom: 5%;
+    margin-right: 15%;
 }
 
 .bouton_ajout {
@@ -173,7 +178,15 @@ li p:nth-child(2) {
 .species {
     text-align: start;
 }
-
+.rdv{
+    border-radius: 5px;
+    /* margin-right: 5%; */
+    /* margin-top: 5%; */
+    display: flex;
+    margin-left: 2rem;
+    align-items: flex-end;
+    margin-bottom: 5%;
+}
 @media(min-width: 690px) {
        
     body {
@@ -192,8 +205,13 @@ li p:nth-child(2) {
 
 @media(max-width: 900px) {
     .scrolling {
+        display: flex;
         overflow: auto;
     }
+}
+.rdv >a{
+    background-color: #2EA7B6;
+    border-radius: 2px;
 }
 
     
