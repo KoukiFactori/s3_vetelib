@@ -27,7 +27,7 @@ appointmentLinks.forEach(link => {
                 hours: 'numeric',
                 minutes: 'numeric',
             });
-            document.querySelector(".name_Vete").innerText =`Dr ${ data.veterinaire.lastname }${ data.veterinaire.firstname}`
+            document.querySelector(".name_Vete").innerText =`Dr ${ data.veterinaire.lastname } ${ data.veterinaire.firstname}`
             document.querySelector(".name").innerText = data.animal.name
             document.querySelector(".species").innerText = data.animal.espece.name
             document.querySelector(".rdv").innerText = data.description
@@ -38,7 +38,7 @@ deleteButton.style.display = "none";
 
 deleteButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    await fetch(`/mon_profil/rdv/${idChoosenAnimal}/delete`)
+    await fetch(`/mon_profil/rdv/${idChoosenAppointment}/delete`)
     location.reload();   
 });
 function redirect() {
