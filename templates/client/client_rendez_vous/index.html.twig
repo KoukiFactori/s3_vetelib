@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClientRendezVousController!{% endblock %}
+{% block title %}Page de rendez vous client{% endblock %}
 
 {% block body %}
 	<div class="scrolling">
@@ -15,7 +15,7 @@
 							{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
 						</div>
 						<h2>Dr.{{ appointment.veterinaire.name }} {{appointment.veterinaire.lastname}}</h2>
-						<h2>Age:{{age}}</h2>
+						<h2>{{appointment.date}}</h2>
 					</a>
 				</div>
 
@@ -27,9 +27,10 @@
 	<br>
 	<div class="main-content">
 		<div class="decoration_bloc_principal">
-			<h1 class="name">Nom :</h1>
+			<h1 class="name"></h1>
+            <h1 class="Date"></h1>
 		</div>
-		<h1>Type :</h1>
+		<h1 class="espece">{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}</h1>
 		<br>
 		<p class="species"></p>
 		<br>
