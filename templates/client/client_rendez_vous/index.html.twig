@@ -21,7 +21,7 @@
 							<h1>Rendez vous à venir</h1>
 							{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
 						</div>
-						<h2>Dr.{{ appointment.veterinaire.name }} {{appointment.veterinaire.lastname}}</h2>
+						<h2>Dr.{{ appointment.veterinaire.firstname }} {{appointment.veterinaire.lastname}}</h2>
 						<h2>{{appointment.date}}</h2>
 					</a>
 				</div>
@@ -54,6 +54,6 @@
 		</button>
 	</div>
 	<div>
-        {# <a href="{{path('/prendre-rdv')}}" class="rdv">Ajouter un rendez vous</a> #}
+         <a href="{{path('app_client_rendez_vous')}}" class="rdv">Ajouter un rendez vous</a> 
 	</div>
 {% endblock %}
