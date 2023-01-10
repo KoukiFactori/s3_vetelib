@@ -53,7 +53,11 @@ main {
   }
   
   .user__animals {
-    width: fit-content;
+    width: 40%;
+  }
+
+  .user__animals tbody {
+    text-align: center;
   }
 
   .info {
