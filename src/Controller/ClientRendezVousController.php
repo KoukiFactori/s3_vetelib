@@ -48,7 +48,7 @@ class ClientRendezVousController extends AbstractController
               'description',
               'id',
               'date',
-              'animal' => ['name','espece'],
+              'animal' => ['name','espece' => ['name']],
               'veterinaire' => ['firstname','lastname'],
             ],
           ]));
