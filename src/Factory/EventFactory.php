@@ -49,8 +49,7 @@ final class EventFactory extends ModelFactory
     {
         return [
             'animal' => AnimalFactory::random(),
-            'date' => self::faker()->dateTime(),
-            'description' => self::faker()->text(255),
+            'description' => self::faker()->text(35),
         ];
     }
 

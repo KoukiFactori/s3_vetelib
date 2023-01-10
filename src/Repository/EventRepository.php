@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use App\Entity\Veterinaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use app\Entity\Animal;
@@ -69,6 +70,23 @@ public function findAllEventByClient(Client $client)
 
 }
 
+
+    /**
+     * Récupère tous les events entre deux dates
+     * 
+     * @return Event[]
+     */
+    public function getVeterinaireEventsBetween(int $vetoId, \DateTimeInterface $start, \DateTimeInterface $end): array
+    {
+        return $this->createQueryBuilder('event')
+        ->where('event.date BETWEEN :start and :end')
+        ->andWhere('event.veterinaire = :vetoId')
+        ->setParameter('start', $start->format('Y-m-d H:i:s'))
+        ->setParameter('end', $end->format('Y-m-d H:i:s'))
+        ->setParameter('vetoId', $vetoId)
+        ->getQuery()
+        ->getResult();
+    }
 
 //    /**
 //     * @return Event[] Returns an array of Event objects
