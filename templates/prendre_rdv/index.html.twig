@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/air-datepicker@3.0.0/air-datepicker.css">
+    <link rel="stylesheet" href="{{ asset('css/prendre_rdv.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/air-datepicker@3.0.0/air-datepicker.js" defer></script>
+    <script src="{{ asset('js/prendre_rdv.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}Prendre Rendez-vous{% endblock %}
+
+{% block body %}
+    <header class="prendre_rdv_header">
+        {{ form_start(form, {attr: {class: 'crenaux_form'}}) }}
+            <div class="sec sec--1">
+                {{ form_label(form.animal) }}
+                <div class="sec__content">
+                    {{ form_widget(form.animal) }}
+                </div>
+            </div>
+            <div class="sec sec--2">
+                {{ form_label(form.date) }}
+                <div class="sec__content">
+                    {{ form_widget(form.date) }}
+                </div>
+            </div>
+            <div class="sec sec--3">
+                {{ form_label(form.typeEvent) }}
+                <div class="sec__content">
+                    {{ form_widget(form.typeEvent) }}
+                </div>
+            </div>
+            <div class="sec sec--4">
+                {{ form_label(form.description) }}
+                <div class="sec__content">
+                    {{ form_widget(form.description) }}
+                </div>
+            </div>
+            <button class="sec sec--5" type="submit">
+                Chercher des créneaux
+            </button>
+        {{ form_end(form) }}
+    </header>
+
+    {% if hasSubmitted %}
+        <main class="prendre_rdv_result">
+            {% for veto in vetos %}
+                <div class="card">
+                    <div class="card__veto_info">
+                        <div class="name">
+                            Dr. {{ veto.firstname }} {{ veto.lastname }}
+                        </div>
+                        <a class="contact" href="mailto:{{ veto.email }}">
+                            Contacter
+                        </a>
+                    </div>
+                    <div class="card__slots">
+                        {% for slot in slots[veto.id] %}
+                            <form method="post" action="{{ path('app_prendre_rdv_create') }}">
+                                <input type="hidden" name="veto" value="{{ veto.id }}" />
+                                <input type="hidden" name="date" value="{{ selectedDate | format('d-m-Y') }}" />
+                                <input type="hidden" name="slot" value="{{ slot['start'] }}" />
+                                <input type="hidden" name="animal" value="{{ selectedAnimal.id }}" />
+                                <input type="hidden" name="typeEvent" value="{{ selectedTypeEvent.id }}" />
+                                <input type="hidden" name="description" value="{{ selectedDescription }}" />
+                                <button type="submit" class="slot">
+                                    {{ slot['start'] }}
+                                </button>
+                            </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </main>
+    {% endif %}
+{% endblock %}
