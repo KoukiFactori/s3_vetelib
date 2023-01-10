@@ -98,14 +98,16 @@ button.sec--5 {
     grid-gap: 1rem;
 }
 
-.card__slots .slot,
-.card__slots .slot:visited {
+.card__slots .slot {
     text-decoration: none;
     color: white;
     background-color: #2EA7B6;
     padding: 1rem;
     border-radius: .5rem;
     font-size: 1.5rem;
+    border: none;
+    width: 100%;
+    cursor: pointer;
 
     display: flex;
     justify-content: center;

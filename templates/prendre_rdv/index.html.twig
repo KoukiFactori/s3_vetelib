@@ -59,9 +59,17 @@
                     </div>
                     <div class="card__slots">
                         {% for slot in slots[veto.id] %}
-                            <a class="slot" href="">
-                                {{ slot['start'] }}
-                            </a>
+                            <form method="post" action="{{ path('app_prendre_rdv_create') }}">
+                                <input type="hidden" name="veto" value="{{ veto.id }}" />
+                                <input type="hidden" name="date" value="{{ selectedDate | format('d-m-Y') }}" />
+                                <input type="hidden" name="slot" value="{{ slot['start'] }}" />
+                                <input type="hidden" name="animal" value="{{ selectedAnimal.id }}" />
+                                <input type="hidden" name="typeEvent" value="{{ selectedTypeEvent.id }}" />
+                                <input type="hidden" name="description" value="{{ selectedDescription }}" />
+                                <button type="submit" class="slot">
+                                    {{ slot['start'] }}
+                                </button>
+                            </form>
                         {% endfor %}
                     </div>
                 </div>
