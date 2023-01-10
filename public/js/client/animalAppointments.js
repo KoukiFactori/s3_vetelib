@@ -1,9 +1,8 @@
 const animalLinks = document.querySelectorAll('.animal-link');
 const firstAnimal = document.querySelector('.animal-link');
 let abortController;
-console.log(firstAnimal.dataset.id);
+
 let idChoosenAnimal=firstAnimal.dataset.id;
-console.log(`${idChoosenAnimal}`);
 const deleteButton = document.querySelector('.delete');
 
 animalLinks.forEach(link => {
