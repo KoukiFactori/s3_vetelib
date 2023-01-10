@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class ClientRendezVousController extends AbstractController
 {   
@@ -32,16 +34,16 @@ class ClientRendezVousController extends AbstractController
         return $this->render('client/client_rendez_vous/index.html.twig',['appointments' => $allAppointment]);
     }
     #[Route('/mon_profil/rdv/{id}', name: 'data_client_rdv')]
-    public function animalInformation(int $id, AnimalRepository $ar, EventRepository $er, SerializerInterface $ser)
+    public function animalInformation(int $id, EventRepository $er, SerializerInterface $ser)
     {
         // $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
         // $user=$this->getUser();
-        $appointment = array_values(array_filter($ar->getAllAnimalsByclient(23), function ($animal) use ($id) {
+        $appointment = array_values(array_filter($er->getAllEventByClient(23), function ($animal) use ($id) {
             return $animal->getId() === $id;
         }))[0];
 
-        return new Response($ser->serialize($animal, 'json', [
+        return new Response($ser->serialize($appointment, 'json', [
             AbstractNormalizer::ATTRIBUTES => [
               'name',
               'id',

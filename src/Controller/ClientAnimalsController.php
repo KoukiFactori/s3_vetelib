@@ -47,10 +47,10 @@ class ClientAnimalsController extends AbstractController
      #[Route('/mon_profil/animal/{id}', name: 'data_client_animals')]
     public function animalInformation(int $id, AnimalRepository $ar, EventRepository $er, SerializerInterface $ser)
     {
-        // $this->denyAccessUnlessGranted('ROLE_CLIENT');
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        // $user=$this->getUser();
-        $animal = array_values(array_filter($ar->getAllAnimalsByclient(23), function ($animal) use ($id) {
+        $userId=$this->getUser()->getId;
+        $animal = array_values(array_filter($ar->getAllAnimalsByclient($userId), function ($animal) use ($id) {
             return $animal->getId() === $id;
         }))[0];
 
