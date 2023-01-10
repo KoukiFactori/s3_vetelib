@@ -6,6 +6,7 @@ console.log(appointmentLinks);
 appointmentLinks.forEach(link => {
     link.addEventListener('click', async (event) => { 
         event.preventDefault();
+        deleteButton.style.display = "block";
 
         if (abortController) {
             abortController.abort();

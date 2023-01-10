@@ -145,7 +145,7 @@ li p:nth-child(2) {
 }
 
 .delete {
-    background-color: red;
+    /* background-color: red; */
     margin-left: auto;
     margin-bottom: 5%;
     margin-right: 15%;
