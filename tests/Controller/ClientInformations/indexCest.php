@@ -76,4 +76,25 @@ class IndexCest
         $I->seeInField('form input#user_zipcode', '17645');
         $I->seeInField('form input#user_address', '8 rue des Michels');
     }
+
+    // Vérifier bonne deconnexion
+
+    public function deconnexion(ControllerTester $I)
+    {
+        // Création d'un utilisateur Client
+        $user = ClientFactory::createOne(['lastname' => 'Ledoux', 'firstname' => 'Simon', 'email' => 'simon3@simon511000.fr', 'roles' => ['ROLE_CLIENT'], 'password' => 'password', 'phone' => '0654685216', 'birthdate' => new \DateTime('1970-01-01'), 'city' => 'Paris', 'zipcode' => '75000', 'address' => '1 rue de la paix']);
+
+        /** @var(Client) */
+        $user = $user->object();
+
+        $I->amLoggedInAs($user);
+        $I->amOnRoute('app_client_informations');
+
+        // Le prénom et nom sont bien affiché en haut à droite -> on est bien connecté
+        $I->see('Simon Ledoux', 'li.nav--primary');
+
+        // On se déconnecte et on vérifie qu'on arrive bien sur la page de connexion
+        $I->click('.bouton_deconnexion a');
+        $I->amOnRoute('app_login');
+    }
 }
