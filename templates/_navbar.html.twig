@@ -32,7 +32,9 @@
                 {% if not app.user %}
                     <li class="nav--primary"><a href="{{ path('app_login') }}">Login</a></li>
                 {% else %}
-                    {% if is_granted('ROLE_VETERINAIRE') %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav--primary"><a href="{{ path('admin') }}">{{app.user.lastname}} {{app.user.firstname}}</a></li>
+                    {% elseif is_granted('ROLE_VETERINAIRE') %}
                         <li class="nav--primary"><a href="{{ path('app_panel_event') }}">{{app.user.lastname}} {{app.user.firstname}}</a></li>
                     {% else %}
                         <li class="nav--primary"><a href="{{ path('app_client_informations')}}">{{app.user.lastname}} {{app.user.firstname}}</a></li>
