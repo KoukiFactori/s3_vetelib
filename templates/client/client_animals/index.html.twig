@@ -82,9 +82,12 @@
 		</button>
 		{# Affichage du bouton poubelle (SVG) END #}
 	</div>
-	<div>
+	<div class="bouton_bas_page">
 		<button class="bouton_ajout" type="submit" onclick="redirect()">
 			Ajouter un animal
 		</button>
+		<div class="bouton_deconnexion">
+			<a href="{{ path('app_logout') }}">Déconnexion</a>
+		</div>
 	</div>
 {% endblock %}
