@@ -23,7 +23,7 @@ class ClientRendezVousController extends AbstractController
         $this->tokenStorage = $tokenStorage;
     }
 
-    #[Route('/mon_profil/event', name: 'app_client_rendez_vous')]
+    #[Route('/mon_profil/rdv', name: 'app_client_rendez_vous')]
     public function index(EventRepository $er ,AnimalRepository $ar): Response
     {   
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
@@ -34,22 +34,22 @@ class ClientRendezVousController extends AbstractController
         return $this->render('client/client_rendez_vous/index.html.twig',['appointments' => $allAppointment]);
     }
     #[Route('/mon_profil/rdv/{id}', name: 'data_client_rdv')]
-    public function animalInformation(int $id, EventRepository $er, SerializerInterface $ser)
+    public function rdvInformation(int $id, EventRepository $er, SerializerInterface $ser)
     {
-        // $this->denyAccessUnlessGranted('ROLE_CLIENT');
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        // $user=$this->getUser();
-        $appointment = array_values(array_filter($er->getAllEventByClient(23), function ($animal) use ($id) {
-            return $animal->getId() === $id;
+        $userId=$this->getUser()->getId();
+        $appointment = array_values(array_filter($er->getAllEventByClient($userId), function ($appointment) use ($id) {
+            return $appointment->getId() === $id;
         }))[0];
 
         return new Response($ser->serialize($appointment, 'json', [
             AbstractNormalizer::ATTRIBUTES => [
-              'name',
+              'description',
               'id',
-              'birthdate',
-              'espece' => ['name'],
-              'events' => ['date', 'description', 'typeEvent' => ['libType']],
+              'date',
+              'animal' => ['name','espece'],
+              'veterinaire' => ['firstname','lastname'],
             ],
           ]));
     }
