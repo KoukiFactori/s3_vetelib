@@ -1,9 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'client/layout/base.html.twig' %}
 
 {% block title %}Page de rendez vous client{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/client/client_rdv.css')}}">
+{% endblock %}
 {% block javascripts%}
 	<script src="{{asset('js/client/animalAppointments.js')}}" defer></script>
 {% endblock %}
+
+
 {% block body %}
 	<div class="scrolling">
 		<div class="nav_animal">
@@ -11,7 +16,7 @@
 				
 
 				<div class="animals">
-					<a href="#" class="animal-link" data-id="{{appointment.id}}">
+					<a href="#" class="appointment-link" data-id="{{appointment.id}}">
 						<div class="decoration">
 							<h1>Rendez vous à venir</h1>
 							{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
@@ -33,23 +38,22 @@
             <h1 class="Date"></h1>
 		</div>
 		<h1 class="species">{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}</h1>
-		<br>
-		<br>
+
 		<h1>
 			Nom de l'animal :
 		</h1>
 		<p class="name"></p>
-		<br>
+
 		<h1>
 			Sujet du rendez vous :
 		</h1>
 		<p class="rendez vous"></p>
 		<br>
-		<br>
+
 		<button class="delete" onclick="return confirm('Êtes vous sur de vouloir supprimer votre rendez vous ?')">
 		</button>
 	</div>
 	<div>
-        <a href="{{path('/prendre-rdv')}}" class="rdv">Ajouter un rendez vous</a>
+        {# <a href="{{path('/prendre-rdv')}}" class="rdv">Ajouter un rendez vous</a> #}
 	</div>
 {% endblock %}

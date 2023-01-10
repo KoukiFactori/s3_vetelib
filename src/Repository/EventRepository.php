@@ -55,7 +55,7 @@ class EventRepository extends ServiceEntityRepository
     return $qb->getQuery()->getResult();
 }
 
-public function findAllEventByClient(Client $client)
+public function getAllEventByClient(Client $client)
 {
     $qb = $this->createQueryBuilder('a')
     ->innerJoin('a.animal', 'animal')

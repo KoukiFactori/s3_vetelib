@@ -27,8 +27,28 @@ class ClientRendezVousController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
         $user = $this->tokenStorage->getToken()->getUser();
 
-        $allAppointment = $er->findAllEventByClient($user);
+        $allAppointment = $er->getAllEventByClient($user);
 
         return $this->render('client/client_rendez_vous/index.html.twig',['appointments' => $allAppointment]);
+    }
+    #[Route('/mon_profil/rdv/{id}', name: 'data_client_rdv')]
+    public function animalInformation(int $id, AnimalRepository $ar, EventRepository $er, SerializerInterface $ser)
+    {
+        // $this->denyAccessUnlessGranted('ROLE_CLIENT');
+
+        // $user=$this->getUser();
+        $appointment = array_values(array_filter($ar->getAllAnimalsByclient(23), function ($animal) use ($id) {
+            return $animal->getId() === $id;
+        }))[0];
+
+        return new Response($ser->serialize($animal, 'json', [
+            AbstractNormalizer::ATTRIBUTES => [
+              'name',
+              'id',
+              'birthdate',
+              'espece' => ['name'],
+              'events' => ['date', 'description', 'typeEvent' => ['libType']],
+            ],
+          ]));
     }
 }
