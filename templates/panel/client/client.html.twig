@@ -1,0 +1,72 @@
+{% extends 'panel/layout/base.html.twig' %}
+
+{% block stylesheets %}
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+	<link rel="stylesheet" href={{ asset("/css/panel/client/client.css") }}>
+
+	<link rel="stylesheet" href={{ asset("css/panel/client/clients.css") }}>
+{% endblock %}
+
+{% block title %}
+	Information Client
+{% endblock %}
+
+{% block body %}
+	<div class="client__info">
+		<h1>Information de
+			{{ client.lastname }}
+			{{ client.firstname }}</h1>
+
+		<div class="info">
+			<div class="info__element">
+				<div class="info__label">Nom</div>
+				<div class="info__content">{{ client.lastname }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Prénom</div>
+				<div class="info__content">{{ client.firstname }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Date de naissance</div>
+				<div class="info__content">{{ client.birthdate|date("m/d/Y") }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Adresse mail</div>
+				<div class="info__content">{{ client.email }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Téléphone</div>
+				<div class="info__content">{{ client.phone }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Adresse</div>
+				<div class="info__content">{{ client.address }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Ville</div>
+				<div class="info__content">{{ client.zipcode }}
+					{{ client.city }}</div>
+			</div>
+		</div>
+	</div>
+
+	<table class="user__animals">
+		<caption>
+			Liste des animaux du client
+		</caption>
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Espece</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for animal in client.animals %}
+				<tr data-id={{animal.id}}>
+					<td>{{ animal.name }}</td>
+					<td>{{ animal.espece.name }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

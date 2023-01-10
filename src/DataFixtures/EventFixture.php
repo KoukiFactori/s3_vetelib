@@ -2,13 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Factory\AnimalFactory;
 use App\Factory\EventFactory;
 use App\Factory\TypeEventFactory;
 use App\Factory\VeterinaireFactory;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
 
 class EventFixture extends Fixture implements DependentFixtureInterface
 {
@@ -64,6 +63,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
+            AnimalFixtures::class,
             TypeEventFixture::class,
             VeterinaireFixture::class
         ];
