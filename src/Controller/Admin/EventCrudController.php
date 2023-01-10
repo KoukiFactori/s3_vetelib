@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Animal;
 use App\Entity\Event;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -25,14 +26,21 @@ class EventCrudController extends AbstractCrudController
                 ->setLabel('Horraire'),
             AssociationField::new('animal')
                 ->setLabel('Animal')
-                ->setFormTypeOption('choice_label', 'name')
+                ->setFormTypeOption('choice_label', function($choice, $key, $value) {
+                    return (
+                        $choice->client->getLastName()
+                        . ' '
+                        . $choice->client->getFirstName()
+                    )
+                })
                 ->setFormTypeOption('query_builder', function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('animal')
-                        ->innerJoin()
-                        ->orderBy('espece.name', 'ASC');
+                        ->addSelect('client')
+                        ->innerJoin('animal.client', 'client')
+                        ->orderBy('animal.name', 'ASC');
                 })
-                ->formatValue(function ($value, Animal $entity) {
-                    return $entity->getEspece()?->getName();
+                ->formatValue(function ($value, Event $entity) {
+                    return $entity->getAnimal()->getName();
                 }),
         ];
     }
