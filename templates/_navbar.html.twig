@@ -26,12 +26,15 @@
                 <li><a href="{{ path('app_nous_connaitre')}}">Nous connaitre</a></li>
                 <li><a href="{{ path('app_faq')}}">FAQ</a></li>
                 <li><a href="{{ path('app_contact') }}">Nous contacter</a></li>
+                <li><a href="{{ path('app_prendre_rdv') }}">Prendre Rendez-vous</a></li>
             </div>
             <div class="nav__right">
                 {% if not app.user %}
                     <li class="nav--primary"><a href="{{ path('app_login') }}">Login</a></li>
                 {% else %}
-                    {% if is_granted('ROLE_VETERINAIRE') %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav--primary"><a href="{{ path('admin') }}">{{app.user.lastname}} {{app.user.firstname}}</a></li>
+                    {% elseif is_granted('ROLE_VETERINAIRE') %}
                         <li class="nav--primary"><a href="{{ path('app_panel_event') }}">{{app.user.lastname}} {{app.user.firstname}}</a></li>
                     {% else %}
                         <li class="nav--primary"><a href="{{ path('app_client_informations')}}">{{app.user.lastname}} {{app.user.firstname}}</a></li>

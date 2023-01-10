@@ -4,6 +4,9 @@ modules:
     # enable helpers as array
     enabled:
         - Symfony:
-              app_path: 'src'
-              environment: 'test'
+            app_path: 'src'
+            environment: 'test'
         - Asserts:
+        - Doctrine2:
+            depends: Symfony
+            cleanup: true
