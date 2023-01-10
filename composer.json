@@ -98,13 +98,24 @@
             "php bin/console doctrine:database:create",
             "php bin/console doctrine:schema:create",
             "php bin/console doctrine:fixtures:load --no-interaction"
+        ],
+        "test:codeception": [
+            "php bin/console doctrine:database:drop --force --quiet --env=test",
+            "php bin/console doctrine:database:create --quiet --env=test",
+            "php bin/console doctrine:schema:create --quiet --env=test",
+            "codecept run"
+        ],
+        "test": [
+            "@test:codeception"
         ]
     },
     "scripts-descriptions": {
         "start" : "Lance un serveur web de test symfony",
         "fix:cs": "Fix le code PHP avec PHP CS Fixer",
         "test:cs" : "Test le code PHP avec PHP CS Fixer",
-        "db" : "Supprime et créé une nouvelle base de données, à laquelle on applique des migrations, puis création des données factives"
+        "db" : "Supprime et créé une nouvelle base de données, à laquelle on applique des migrations, puis création des données factives",
+        "test:codeception": "Génère une base de donnée de test, et lance les tests unitaires de Codeception",
+        "test": "Lance tous les tests"
     },
     "conflict": {
         "symfony/symfony": "*"
