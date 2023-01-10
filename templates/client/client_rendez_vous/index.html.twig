@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="{{asset('css/client/client_rdv.css')}}">
 {% endblock %}
 {% block javascripts%}
-	<script src="{{asset('js/client/animalAppointments.js')}}" defer></script>
+	<script src="{{asset('js/client/clientAppointment.js')}}" defer></script>
 {% endblock %}
 
 
@@ -22,7 +22,7 @@
 							{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
 						</div>
 						<h2>Dr.{{ appointment.veterinaire.firstname }} {{appointment.veterinaire.lastname}}</h2>
-						<h2>{{appointment.date|date("j F Y H:i")}}</h2>
+						<h2>{{appointment.date|date("j M Y H:i")}}</h2>
 					</a>
 				</div>
 
@@ -34,8 +34,8 @@
 	<br>
 	<div class="main-content">
 		<div class="decoration_bloc_principal">
-			<h1 class="name"></h1>
-            <h1 class="date"></h1>
+			<p class="name_Vete"></p>
+            <p class="date"></p>
 		</div>
 		<h1 class="species">{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}</h1>
 
@@ -43,17 +43,21 @@
 			Nom de l'animal :
 		</h1>
 		<p class="name"></p>
-
+		<br>
 		<h1>
 			Sujet du rendez vous :
 		</h1>
 		<p class="rdv"></p>
-		<br>
-
 		<button class="delete" onclick="return confirm('Êtes vous sur de vouloir supprimer votre rendez vous ?')">
 		</button>
 	</div>
-	<div>
-         <a href="{{path('app_prendre_rdv')}}" class="rdv">Ajouter un rendez vous</a> 
+	<div class="bouton_bas_page">
+		<button class="bouton_ajout" type="submit" onclick="redirect()">
+			Ajouter un rendez vous
+		</button>
+		<div class="bouton_deconnexion">
+			<a href="{{ path('app_logout') }}">Déconnexion</a>
+		</div>
 	</div>
+
 {% endblock %}
