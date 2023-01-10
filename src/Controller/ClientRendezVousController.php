@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 class ClientRendezVousController extends AbstractController
 {   
@@ -52,5 +53,20 @@ class ClientRendezVousController extends AbstractController
               'veterinaire' => ['firstname','lastname'],
             ],
           ]));
+    }
+    #[Route('/mon_profil/rdv/{id}/delete', name: 'data_client_rdv_delete')]
+    public function deleteRDV(int $id, ManagerRegistry $doctrine, EventRepository $er)
+    {
+        $this->denyAccessUnlessGranted('ROLE_CLIENT');
+
+        $user=$this->getUser();
+        $appointment = array_values(array_filter($er->getAllEventByClient($user), function ($appointment) use ($id) {
+            return $appointment->getId() == $id;
+        }))[0];
+        $em = $doctrine->getManager();
+        $em->remove($appointment);
+        $em->flush();
+
+        return $this->redirectToRoute('app_client_rendez_vous');
     }
 }

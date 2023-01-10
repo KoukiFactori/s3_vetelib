@@ -1,5 +1,6 @@
 const appointmentLinks = document.querySelectorAll('.appointment-link');
 const deleteButton = document.querySelector('.delete');
+let idChoosenAppointment;
 let abortController;
 console.log(appointmentLinks);
 
@@ -17,6 +18,7 @@ appointmentLinks.forEach(link => {
             signal: abortController.signal
         })
             .then(response => response.json());
+            idChoosenAppointment= parseInt(data.id);
             const appointmentDate = new Date(data.date)
             document.querySelector(".date").innerText = appointmentDate.toLocaleDateString('fr-FR', {
                 day: 'numeric',
