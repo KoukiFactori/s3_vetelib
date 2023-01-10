@@ -67,12 +67,13 @@ button.sec--5 {
     background-color: #F8D671;
     width: 90%;
     border-radius: .5rem;
+
+    box-sizing: border-box;
+    padding: 2rem;
 }
 
 .card:not(:last-child) {
     margin-bottom: 5rem;
-    padding: 2rem;
-    box-sizing: border-box;
 }
 
 .card__veto_info {
