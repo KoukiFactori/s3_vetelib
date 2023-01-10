@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class AnimalCrudController extends AbstractCrudController
@@ -19,6 +20,8 @@ class AnimalCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')
+                ->hideOnForm(),
             TextField::new('name')
                 ->setLabel('Nom'),
             DateField::new('birthdate')
