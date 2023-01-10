@@ -1,5 +1,7 @@
-const appointmentLinks = document.querySelectorAll('.animal-link');
+const appointmentLinks = document.querySelectorAll('.appointment-link');
+const deleteButton = document.querySelector('.delete');
 let abortController;
+console.log(appointmentLinks);
 
 appointmentLinks.forEach(link => {
     link.addEventListener('click', async (event) => { 
@@ -22,8 +24,20 @@ appointmentLinks.forEach(link => {
                 hours: 'numeric',
                 minutes: 'numeric',
             });
+            document.querySelector(".name_Vete").innerText =`Dr ${ data.veterinaire.lastname }${ data.veterinaire.firstname}`
             document.querySelector(".name").innerText = data.animal.name
             document.querySelector(".species").innerText = data.animal.espece.name
             document.querySelector(".rdv").innerText = data.description
     });
 });
+
+deleteButton.style.display = "none";
+
+deleteButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    await fetch(`/mon_profil/rdv/${idChoosenAnimal}/delete`)
+    location.reload();   
+});
+function redirect() {
+    window.location.href = '/prendre-rdv';
+}
