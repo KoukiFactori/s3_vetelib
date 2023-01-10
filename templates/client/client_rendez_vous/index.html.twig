@@ -22,7 +22,7 @@
 							{# <img src="{{asset('images/'{{animal.espece}}'.png')}}>"#}
 						</div>
 						<h2>Dr.{{ appointment.veterinaire.firstname }} {{appointment.veterinaire.lastname}}</h2>
-						<h2>{{appointment.date}}</h2>
+						<h2>{{appointment.date|date("j F Y H:i")}}</h2>
 					</a>
 				</div>
 
