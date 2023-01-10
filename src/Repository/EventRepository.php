@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Entity\Veterinaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use app\Entity\Animal;
 
 /**
  * @extends ServiceEntityRepository<Event>
@@ -39,6 +40,20 @@ class EventRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findEventByAnimal(Animal $animal)
+{
+    $qb = $this->createQueryBuilder('a');
+
+    $qb
+        ->where('a.animal = :animal')
+        ->orderBy("a.date", 'ASC')
+        ->setParameter('animal', $animal)
+    ;
+
+    return $qb->getQuery()->getResult();
+}
+
 
     /**
      * Récupère tous les events entre deux dates

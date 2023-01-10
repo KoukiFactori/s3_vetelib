@@ -38,7 +38,6 @@ class ClientRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
 //    /**
 //     * @return Client[] Returns an array of Client objects
 //     */
