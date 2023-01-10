@@ -21,9 +21,7 @@ animalLinks.forEach(link => {
             signal: abortController.signal
         })
             .then(response => response.json());
-        console.log(JSON.stringify(data, null, 2));
         idChoosenAnimal= parseInt(data.id);
-        console.log(idChoosenAnimal);
         const birthday = new Date(data.birthdate);
         const age = (new Date().getFullYear() - birthday.getFullYear());
         document.querySelector(".name").innerText = data.name
