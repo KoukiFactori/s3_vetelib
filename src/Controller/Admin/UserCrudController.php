@@ -38,7 +38,8 @@ class UserCrudController extends AbstractCrudController
                 ->renderExpanded(true)
                 ->setChoices([
                     'Client' => 'ROLE_CLIENT',
-                    'Vétérinaire' => 'ROLE_VETERINAIRE'
+                    'Vétérinaire' => 'ROLE_VETERINAIRE',
+                    'Administrateur' => 'ROLE_ADMIN'
                 ]),
             TextField::new('email'),
             TextField::new('firstname')
