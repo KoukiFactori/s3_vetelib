@@ -181,4 +181,14 @@ li p:nth-child(2) {
     .bouton_ajout {
         font-size: 2rem;
     }
+   
 }
+
+@media(max-width: 900px) {
+    .scrolling {
+        overflow: auto;
+    }
+}
+
+    
+

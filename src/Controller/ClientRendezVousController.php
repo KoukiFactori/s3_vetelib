@@ -29,6 +29,6 @@ class ClientRendezVousController extends AbstractController
 
         $allAppointment = $er->findAllEventByClient($user);
 
-        return $this->render('client/client_rendez_vous/index.html.twig',['appointment' => $allAppointment]);
+        return $this->render('client/client_rendez_vous/index.html.twig',['appointments' => $allAppointment]);
     }
 }
