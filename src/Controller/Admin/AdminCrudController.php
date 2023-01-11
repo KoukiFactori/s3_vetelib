@@ -62,10 +62,9 @@ class AdminCrudController extends AbstractCrudController
 
     private function setUserPassword($entityInstance): void
     {
-        $password = $this->getContext()->getRequest()->get('User')['password'];
-
-        if ('' != $password) {
-            $entityInstance->setPassword($this->passwordHasher->hashPassword($entityInstance, $password));
+        $parameters = $this->getContext()->getRequest()->get('Admin');
+        if (key_exists("password", $parameters)) {
+            $entityInstance->setPassword($this->passwordHasher->hashPassword($entityInstance, $parameters["password"]));
         }
     }
 
