@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+.crenaux_form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 70%;
+    border-radius: 2%;
+    overflow: hidden;
+    box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.66);
+}
+
+.sec:not(.sec--5) {
+    background-color: white;
+    border-bottom: .1rem solid black;
+}
+
+.sec {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    text-align: center;
+}
+
+.sec .sec__content select {
+    width: 100%;
+}
+
+.sec .sec__content input {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sec textarea {
+    width: 90%;
+    margin-top: .5rem;
+}
+
+button.sec--5 {
+    border: none;
+    background-color: #2EA7B6;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.air-datepicker {
+    margin: .5rem auto 0 auto;
+}
+
+.prendre_rdv_result {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.card {
+    background-color: #F8D671;
+    width: 90%;
+    border-radius: .5rem;
+
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+.card:not(:last-child) {
+    margin-bottom: 5rem;
+}
+
+.card__veto_info {
+    display: flex;
+    font-size: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card__veto_info .contact,
+.card__veto_info .contact:visited {
+    text-decoration: none;
+    color: white;
+    background-color: #2EA7B6;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.card__slots {
+    display: grid;
+    grid-template-columns: repeat(3, calc(33% - .5rem));
+    grid-gap: 1rem;
+}
+
+.card__slots .slot {
+    text-decoration: none;
+    color: white;
+    background-color: #2EA7B6;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

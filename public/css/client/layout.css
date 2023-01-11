@@ -6,6 +6,13 @@ body {
     font-family: "Inter";
 }
 
+.nav_animals {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* background-color: #32A4BD; */
+}
+
 
 header {
     font-size: 2.6rem;

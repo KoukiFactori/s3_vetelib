@@ -16,23 +16,23 @@ class EventFixture extends Fixture implements DependentFixtureInterface
         // Tableau stoquant les évennements déjà présents
         $datetimes = [];
 
-        EventFactory::createMany(500, function () use ($datetimes){
+        EventFactory::createMany(2000, function () use (&$datetimes){
+
+            $veterinaire = VeterinaireFactory::random();
+            $vetoId = $veterinaire->getId();
+            if(!isset($datetimes[$vetoId])) $datetimes[$vetoId] = [];
             
             // Tant que les évennements se chevauchent et ne sont pas en weekend, on regénère une nouvelle date
-            do {
-                $veterinaire = VeterinaireFactory::random();
-                $vetoId = $veterinaire->getId();
-                if(!isset($datetimes[$vetoId])) $datetimes[$vetoId] = [];
-
+            do {                
                 $start = EventFactory::faker()->dateTimeBetween('-15 days', '+15 days');
                 $start->setTime(
                     EventFactory::faker()->numberBetween(8, 18),
                     EventFactory::faker()->boolean() ? 0 : 30
                 );
-
+                
                 $end = clone $start;
                 $end->modify('+30 minutes');
-
+                
                 $regenerate = false;
                 foreach ($datetimes[$vetoId] as $datetime) {
                     if ($start >= $datetime['start'] && $start < $datetime['end']) {
@@ -46,7 +46,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
                     }
                 }
             } while ($regenerate);
-
+            
             $datetimes[$vetoId][] = [
                 'start' => $start,
                 'end' => $end,
