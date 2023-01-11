@@ -9,7 +9,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,7 +26,7 @@ class NewEventType extends AbstractType
                         ->where('animal.client = :clientId')
                         ->setParameter('clientId', $options['clientId'])
                         ->orderBy('animal.name', 'ASC');
-                }
+                },
             ])
             ->add('date', DateType::class, options: [
                 'label' => 'Choisir une date',
@@ -35,7 +34,7 @@ class NewEventType extends AbstractType
                 'html5' => false,
                 'data' => new \DateTime(),
                 'format' => 'dd/MM/yyyy',
-                'attr' => ['class' => 'js-datepicker']
+                'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('typeEvent', EntityType::class, options: [
                 'label' => 'Choisir le type',
@@ -47,7 +46,7 @@ class NewEventType extends AbstractType
                 },
             ])
             ->add('description', TextareaType::class, options: [
-                'label' => 'Choisir une description'
+                'label' => 'Choisir une description',
             ])
         ;
     }
@@ -55,7 +54,7 @@ class NewEventType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'clientId' => 0
+            'clientId' => 0,
         ]);
     }
 }

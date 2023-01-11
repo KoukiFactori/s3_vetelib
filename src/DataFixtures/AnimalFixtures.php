@@ -16,7 +16,7 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
         AnimalFactory::createMany(150, function () {
             return [
                 'espece' => EspeceFactory::random(),
-                'client' => ClientFactory::random()
+                'client' => ClientFactory::random(),
             ];
         });
     }

@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Animal;
 use App\Entity\Event;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -28,14 +27,14 @@ class EventCrudController extends AbstractCrudController
                 ->setLabel('Horraire'),
             AssociationField::new('animal')
                 ->setLabel('Animal')
-                ->setFormTypeOption('choice_label', function($choice, $key, $value) {
-                    return (
+                ->setFormTypeOption('choice_label', function ($choice, $key, $value) {
+                    return
                         $choice->getClient()->getLastName()
-                        . ' '
-                        . $choice->getClient()->getFirstName()
-                        . ' - '
-                        . $choice->getName()
-                    );
+                        .' '
+                        .$choice->getClient()->getFirstName()
+                        .' - '
+                        .$choice->getName()
+                    ;
                 })
                 ->setFormTypeOption('query_builder', function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('animal')
@@ -51,12 +50,12 @@ class EventCrudController extends AbstractCrudController
                 ->setLabel('Client')
                 ->hideOnForm()
                 ->setVirtual(true)
-                ->setFormTypeOption('choice_label', function($choice, $key, $value) {
-                    return (
+                ->setFormTypeOption('choice_label', function ($choice, $key, $value) {
+                    return
                         $choice->getClient()->getLastName()
-                        . ' '
-                        . $choice->getClient()->getFirstName()
-                    );
+                        .' '
+                        .$choice->getClient()->getFirstName()
+                    ;
                 })
                 ->setFormTypeOption('query_builder', function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('animal')
@@ -66,11 +65,11 @@ class EventCrudController extends AbstractCrudController
                         ->addOrderBy('client.firstname', 'ASC');
                 })
                 ->formatValue(function ($value, Event $entity) {
-                    return (
+                    return
                         $entity->getAnimal()->getClient()->getLastname()
-                        . ' '
-                        . $entity->getAnimal()->getClient()->getFirstname()
-                    );
+                        .' '
+                        .$entity->getAnimal()->getClient()->getFirstname()
+                    ;
                 }),
             AssociationField::new('typeEvent')
                 ->setLabel('Type')
@@ -84,12 +83,12 @@ class EventCrudController extends AbstractCrudController
                 }),
             AssociationField::new('veterinaire')
                 ->setLabel('Vétérinaire')
-                ->setFormTypeOption('choice_label', function($choice, $key, $value) {
-                    return (
+                ->setFormTypeOption('choice_label', function ($choice, $key, $value) {
+                    return
                         $choice->getLastName()
-                        . ' '
-                        . $choice->getFirstName()
-                    );
+                        .' '
+                        .$choice->getFirstName()
+                    ;
                 })
                 ->setFormTypeOption('query_builder', function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('veterinaire')
@@ -97,11 +96,11 @@ class EventCrudController extends AbstractCrudController
                         ->addOrderBy('veterinaire.firstname', 'ASC');
                 })
                 ->formatValue(function ($value, Event $entity) {
-                    return (
+                    return
                         $entity->getVeterinaire()->getLastname()
-                        . ' '
-                        . $entity->getVeterinaire()->getFirstname()
-                    );
+                        .' '
+                        .$entity->getVeterinaire()->getFirstname()
+                    ;
                 }),
         ];
     }

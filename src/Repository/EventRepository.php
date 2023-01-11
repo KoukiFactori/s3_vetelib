@@ -2,13 +2,11 @@
 
 namespace App\Repository;
 
-use App\Entity\Event;
-use App\Entity\Veterinaire;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query\Expr;
-use Doctrine\Persistence\ManagerRegistry;
 use app\Entity\Animal;
 use app\Entity\Client;
+use App\Entity\Event;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Event>
@@ -49,7 +47,7 @@ class EventRepository extends ServiceEntityRepository
 
         $qb
             ->where('a.animal = :animal')
-            ->orderBy("a.date", 'ASC')
+            ->orderBy('a.date', 'ASC')
             ->setParameter('animal', $animal);
 
         return $qb->getQuery()->getResult();
@@ -63,20 +61,22 @@ class EventRepository extends ServiceEntityRepository
             ->where('client = :client')
             ->andWhere(' a.date > :now')
             ->setParameter('client', $client)
-            ->setParameter('now', new \DateTime());
+            ->setParameter('now', new \DateTime())
+            ->orderBy('a.date', 'ASC');
 
         return $qb->getQuery()->getResult();
     }
 
-
     /**
-     * Récupère tous les events entre deux dates
-     * 
+     * Récupère tous les events entre deux dates.
+     *
      * @return Event[]
      */
-    public function getVeterinaireEventsBetween(int $vetoId, \DateTimeInterface $start, \DateTimeInterface $end): array
+    public function getVeterinaireEventsWithTypeEventBetween(int $vetoId, \DateTimeInterface $start, \DateTimeInterface $end): array
     {
         return $this->createQueryBuilder('event')
+            ->addSelect('typeEvent')
+            ->leftJoin('event.typeEvent', 'typeEvent')
             ->where('event.date BETWEEN :start and :end')
             ->andWhere('event.veterinaire = :vetoId')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
@@ -92,57 +92,55 @@ class EventRepository extends ServiceEntityRepository
      */
     public function fetchEventsByVeterinaire(int $veterinaireId): array
     {
-        $query = $this->createQueryBuilder("ev")
-            ->innerJoin("ev.responsable", "vet")
-            ->where("vet.id = :id")
-            ->orderBy("ev.id")
+        $query = $this->createQueryBuilder('ev')
+            ->innerJoin('ev.responsable', 'vet')
+            ->where('vet.id = :id')
+            ->orderBy('ev.id')
             ->getQuery();
 
-        return $query->execute(["id" => $veterinaireId]);
+        return $query->execute(['id' => $veterinaireId]);
     }
 
     /**
-     * @param integer $veterinaireId
      * @return Event[]
      */
     public function fetchEventsAllDataByVeterinaire(int $veterinaireId): array
     {
-        $query = $this->createQueryBuilder("ev")
-            ->innerJoin("ev.veterinaire", "vet")
-            ->addSelect("vet as veterinaire")
+        $query = $this->createQueryBuilder('ev')
+            ->innerJoin('ev.veterinaire', 'vet')
+            ->addSelect('vet as veterinaire')
 
-            ->innerJoin("ev.animal", "ani")
-            ->addSelect("ani as animal")
+            ->innerJoin('ev.animal', 'ani')
+            ->addSelect('ani as animal')
 
-            ->innerJoin("ani.espece", "esp")
-            ->addSelect("esp as espece")
+            ->innerJoin('ani.espece', 'esp')
+            ->addSelect('esp as espece')
 
-            ->innerJoin("ani.client", "cli")
-            ->addSelect("cli as client")
-            
-            ->where("vet.id = :id")
+            ->innerJoin('ani.client', 'cli')
+            ->addSelect('cli as client')
+
+            ->where('vet.id = :id')
             ->getQuery();
 
-        return $query->execute(["id" => $veterinaireId]);
+        return $query->execute(['id' => $veterinaireId]);
     }
 
     /**
-     * @param integer $eventId
      * @return Event
      */
     public function fetchEventAllData(int $eventId)
     {
-        $query = $this->createQueryBuilder("ev")
-            ->where("ev.id = :id")
+        $query = $this->createQueryBuilder('ev')
+            ->where('ev.id = :id')
 
-            ->innerJoin("ev.animal", "ani")
-            ->addSelect("ani as animal")
+            ->innerJoin('ev.animal', 'ani')
+            ->addSelect('ani as animal')
 
-            ->innerJoin("ani.espece", "esp")
-            ->addSelect("esp as espece")
+            ->innerJoin('ani.espece', 'esp')
+            ->addSelect('esp as espece')
 
-            ->innerJoin("ani.client", "cli")
-            ->addSelect("cli as client")
+            ->innerJoin('ani.client', 'cli')
+            ->addSelect('cli as client')
 
             ->setParameter('id', $eventId)
             ->getQuery();

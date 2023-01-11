@@ -4,17 +4,17 @@ namespace App\Controller;
 
 use App\Repository\AnimalRepository;
 use App\Repository\EventRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 
 class ClientRendezVousController extends AbstractController
-{   
+{
     private $em;
     private $tokenStorage;
 
@@ -25,21 +25,22 @@ class ClientRendezVousController extends AbstractController
     }
 
     #[Route('/mon_profil/rdv', name: 'app_client_rendez_vous')]
-    public function index(EventRepository $er ,AnimalRepository $ar): Response
-    {   
+    public function index(EventRepository $er, AnimalRepository $ar): Response
+    {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
         $user = $this->tokenStorage->getToken()->getUser();
 
         $allAppointment = $er->getAllEventByClient($user);
 
-        return $this->render('client/client_rendez_vous/index.html.twig',['appointments' => $allAppointment]);
+        return $this->render('client/client_rendez_vous/index.html.twig', ['appointments' => $allAppointment]);
     }
+
     #[Route('/mon_profil/rdv/{id}', name: 'data_client_rdv')]
     public function rdvInformation(int $id, EventRepository $er, SerializerInterface $ser)
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        $user=$this->getUser();
+        $user = $this->getUser();
         $appointment = array_values(array_filter($er->getAllEventByClient($user), function ($appointment) use ($id) {
             return $appointment->getId() === $id;
         }))[0];
@@ -49,17 +50,18 @@ class ClientRendezVousController extends AbstractController
               'description',
               'id',
               'date',
-              'animal' => ['name','espece' => ['name']],
-              'veterinaire' => ['firstname','lastname'],
+              'animal' => ['name', 'espece' => ['name']],
+              'veterinaire' => ['firstname', 'lastname'],
             ],
           ]));
     }
+
     #[Route('/mon_profil/rdv/{id}/delete', name: 'data_client_rdv_delete')]
     public function deleteRDV(int $id, ManagerRegistry $doctrine, EventRepository $er)
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        $user=$this->getUser();
+        $user = $this->getUser();
         $appointment = array_values(array_filter($er->getAllEventByClient($user), function ($appointment) use ($id) {
             return $appointment->getId() == $id;
         }))[0];

@@ -40,8 +40,8 @@ class AnimalCrudController extends AbstractCrudController
                 }),
             AssociationField::new('client')
                 ->setLabel('Propriétaire')
-                ->setFormTypeOption('choice_label', function($choice, $key, $value) {
-                    return $choice->getLastName() . ' ' . $choice->getFirstName();
+                ->setFormTypeOption('choice_label', function ($choice, $key, $value) {
+                    return $choice->getLastName().' '.$choice->getFirstName();
                 })
                 ->setFormTypeOption('query_builder', function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('client')
@@ -49,7 +49,8 @@ class AnimalCrudController extends AbstractCrudController
                 })
                 ->formatValue(function ($value, Animal $entity) {
                     $client = $entity->getClient();
-                    return $client->getLastName() . ' ' . $client->getFirstName();
+
+                    return $client->getLastName().' '.$client->getFirstName();
                 }),
         ];
     }

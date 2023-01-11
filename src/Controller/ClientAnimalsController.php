@@ -9,9 +9,9 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ClientAnimalsController extends AbstractController
 {
@@ -23,7 +23,7 @@ class ClientAnimalsController extends AbstractController
         $this->em = $em;
         $this->tokenStorage = $tokenStorage;
     }
-    
+
     #[Route('/mon_profil/animal', name: 'app_client_animals')]
     public function index(AnimalRepository $ar, EventRepository $er): Response
     {
@@ -49,7 +49,7 @@ class ClientAnimalsController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        $userId=$this->getUser()->getId();
+        $userId = $this->getUser()->getId();
         $animal = array_values(array_filter($ar->getAllAnimalsByclient($userId), function ($animal) use ($id) {
             return $animal->getId() === $id;
         }))[0];
@@ -70,7 +70,7 @@ class ClientAnimalsController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
 
-        $user=$this->getUser();
+        $user = $this->getUser();
         $userId = $user->getId();
         $animal = array_values(array_filter($ar->getAllAnimalsByclient($userId), function ($animal) use ($id) {
             return $animal->getId() == $id;

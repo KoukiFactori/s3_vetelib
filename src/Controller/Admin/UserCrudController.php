@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -22,7 +21,6 @@ class UserCrudController extends AbstractCrudController
     {
         $this->passwordHasher = $passwordHasher;
     }
-
 
     public static function getEntityFqcn(): string
     {
@@ -39,7 +37,7 @@ class UserCrudController extends AbstractCrudController
                 ->setChoices([
                     'Client' => 'ROLE_CLIENT',
                     'Vétérinaire' => 'ROLE_VETERINAIRE',
-                    'Administrateur' => 'ROLE_ADMIN'
+                    'Administrateur' => 'ROLE_ADMIN',
                 ]),
             TextField::new('email'),
             TextField::new('firstname')
@@ -74,7 +72,7 @@ class UserCrudController extends AbstractCrudController
     {
         $password = $this->getContext()->getRequest()->get('User')['password'];
 
-        if($password != "") {
+        if ('' != $password) {
             $entityInstance->setPassword($this->passwordHasher->hashPassword($entityInstance, $password));
         }
     }
@@ -92,5 +90,4 @@ class UserCrudController extends AbstractCrudController
 
         parent::persistEntity($entityManager, $entityInstance);
     }
-
 }

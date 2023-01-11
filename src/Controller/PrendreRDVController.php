@@ -21,7 +21,7 @@ class PrendreRDVController extends AbstractController
     public function index(VeterinaireRepository $vetoRepo, Request $request): Response
     {
         $form = $this->createForm(NewEventType::class, options: [
-            'clientId' => $this->getUser()->getId()
+            'clientId' => $this->getUser()->getId(),
         ]);
 
         $form->handleRequest($request);
@@ -38,14 +38,14 @@ class PrendreRDVController extends AbstractController
                 'selectedAnimal' => $formData['animal'],
                 'selectedTypeEvent' => $formData['typeEvent'],
                 'selectedDescription' => $formData['description'],
-                'selectedDate' => $formData['date']->format("m/d/Y"),
-                'form' => $form
+                'selectedDate' => $formData['date']->format('m/d/Y'),
+                'form' => $form,
             ]);
         }
 
         return $this->renderForm('prendre_rdv/index.html.twig', [
             'hasSubmitted' => false,
-            'form' => $form
+            'form' => $form,
         ]);
     }
 
@@ -56,14 +56,13 @@ class PrendreRDVController extends AbstractController
         TypeEventRepository $typeEventRepository,
         VeterinaireRepository $veterinaireRepository,
         ManagerRegistry $doctrine
-    ): Response
-    {
+    ): Response {
         $animal = $animalRepository->find($request->get('animal'));
         $typeEvent = $typeEventRepository->find($request->get('typeEvent'));
         $veterinaire = $veterinaireRepository->find($request->get('veto'));
 
         $event = new Event();
-        $event->setDate(date_create_from_format('m/d/Y G:i', $request->get('date') . ' ' . $request->get('slot')));
+        $event->setDate(date_create_from_format('m/d/Y G:i', $request->get('date').' '.$request->get('slot')));
         $event->setDescription($request->get('description'));
         $event->setAnimal($animal);
         $event->setTypeEvent($typeEvent);
