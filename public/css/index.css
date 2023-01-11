@@ -19,7 +19,7 @@ main.index img {
 }
 
 .pate {
-  background-image: URL(../image/PawOpacity50.png);
+  background-image: URL(../images/PawOpacity50.png);
   color: #3e402a;
   font-family: "Inter";
   margin-left: auto;
@@ -42,7 +42,7 @@ main.index img {
   }
 
   .pate {
-    background-image: URL(../image/PawOpacity50.png);
+    background-image: URL(../images/PawOpacity50.png);
     color: #3e402a;
     font-family: "Inter";
     margin-left: auto;
