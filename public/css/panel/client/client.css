@@ -1,6 +1,11 @@
 main {
   display: flex;
   flex-direction: column;
+
+  height: 80vh;
+  border-radius: 2rem 0 0 2rem !important;
+
+  font-size: 16px;
 }
 
 .client__info {
@@ -43,7 +48,6 @@ main {
 .info .info__element .info__label {
   text-decoration: underline;
 }
-
 
 /** **/
 

@@ -6,6 +6,10 @@ body {
     font-family: "Inter";
 }
 
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+
 .veterinaire main {
   background-color: white;
 }
