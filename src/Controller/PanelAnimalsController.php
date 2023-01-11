@@ -31,6 +31,6 @@ class PanelAnimalsController extends AbstractController
     #[Route('/panel/animal/{id}', name: 'app_panel_animal_show')]
     public function show(Animal $animal): Response
     {
-        return $this->render('panel/animal/animal.html.twig', ["client" => $animal]);
+        return $this->render('panel/animal/animal.html.twig', ["animal" => $animal]);
     }
 }
