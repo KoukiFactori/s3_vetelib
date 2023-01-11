@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Admin;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[IsGranted('ROLE_ADMIN')]
-class UserCrudController extends AbstractCrudController
+class AdminCrudController extends AbstractCrudController
 {
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -24,21 +24,12 @@ class UserCrudController extends AbstractCrudController
 
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Admin::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            ChoiceField::new('roles')
-                ->setLabel('Type')
-                ->allowMultipleChoices()
-                ->renderExpanded(true)
-                ->setChoices([
-                    'Client' => 'ROLE_CLIENT',
-                    'Vétérinaire' => 'ROLE_VETERINAIRE',
-                    'Administrateur' => 'ROLE_ADMIN',
-                ]),
             TextField::new('email'),
             TextField::new('firstname')
                 ->setLabel('Prénom'),
@@ -48,7 +39,8 @@ class UserCrudController extends AbstractCrudController
                 ->setLabel('Numéro de Téléphone')
                 ->setRequired(false),
             DateField::new('birthdate')
-                ->setLabel('Date de naissance'),
+                ->setLabel('Date de naissance')
+                ->setRequired(true),
             TextField::new('city')
                 ->setLabel('Ville'),
             TextField::new('zipcode')
@@ -70,7 +62,7 @@ class UserCrudController extends AbstractCrudController
 
     private function setUserPassword($entityInstance): void
     {
-        $password = $this->getContext()->getRequest()->get('User')['password'];
+        $password = $this->getContext()->getRequest()->get('Admin')['password'];
 
         if ('' != $password) {
             $entityInstance->setPassword($this->passwordHasher->hashPassword($entityInstance, $password));
@@ -80,6 +72,7 @@ class UserCrudController extends AbstractCrudController
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $this->setUserPassword($entityInstance);
+        $entityInstance->setRoles(['ROLE_ADMIN']);
 
         parent::updateEntity($entityManager, $entityInstance);
     }
