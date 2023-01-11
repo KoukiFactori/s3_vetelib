@@ -128,4 +128,10 @@ header:has(#checkbox_toggle:checked) nav {
   header .top .hamburger {
     display: none;
   }
+
+  header nav .nav__right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
