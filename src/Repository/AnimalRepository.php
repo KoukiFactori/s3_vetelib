@@ -80,7 +80,38 @@ class AnimalRepository extends ServiceEntityRepository
             ->getQuery();
 
         return $qb->execute();
-    }    
+    }
+
+        /**
+     * @param int $animalId ID du vétérinaire
+     * @return Animal retourne tous les animaux pour un vétérinaire spécifique
+     */
+    public function fetchAnimalWithExtraData(int $animalId): Animal
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->innerJoin("a.espece", "esp")
+            ->addSelect("esp")
+
+            ->where("a.id = :id")
+            
+            ->innerJoin("a.client", "cli")
+            ->addSelect("cli")
+
+            ->innerJoin("a.events", "ev")
+            ->addSelect("ev")
+
+            ->innerJoin("ev.veterinaire", "vet")
+            ->addSelect("vet")
+            
+            ->orderBy("cli.lastname", "ASC")
+            ->addOrderBy("cli.firstname", "ASC")
+            ->addOrderBy("a.name", "ASC")
+
+            ->setParameter("id", $animalId)
+            ->getQuery();
+
+        return $qb->getOneOrNullResult();
+    }
     
 //    /**
 //     * @return Animal[] Returns an array of Animal objects
