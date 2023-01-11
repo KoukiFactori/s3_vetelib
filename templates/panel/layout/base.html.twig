@@ -11,7 +11,7 @@
                 background: url("{{ asset('images/panel/background.svg') }}") no-repeat center center fixed;
             }
         </style>
-        <link href="{{ asset('css/panel/layout.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/panel/base/layout.css') }}" rel="stylesheet"/>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -35,7 +35,7 @@
                             <div class="nav__start">
                                 <li><a href="{{ path('app_panel_event') }}">Calendrier</a></li>
                                 <li><a href="{{ path('app_panel_client') }}">Clients</a></li>
-                                <li><a href="#">Animaux</a></li>
+                                <li><a href="{{ path('app_panel_animal') }}">Animaux</a></li>
                                 <li><a href="#">Urgences</a></li>
                             </div>
                             <div class="nav__end">

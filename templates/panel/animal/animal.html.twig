@@ -1,0 +1,57 @@
+{% extends 'panel/layout/base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset("css/panel/base/table.css") }}">
+	<link rel="stylesheet" href="{{ asset("/css/panel/animal/animal.css") }}">
+{% endblock %}
+
+{% block title %}
+	Information Animal
+{% endblock %}
+
+{% block body %}
+	<div class="animal__info">
+		<h1>Information de {{ animal.name }}</h1>
+
+		<div class="info">
+			<div class="info__element">
+				<div class="info__label">Nom</div>
+				<div class="info__content">{{ animal.name }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Espece</div>
+				<div class="info__content">{{ animal.espece.name }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Date de naissance</div>
+				<div class="info__content">{{ animal.birthdate|date("m/d/Y") }}</div>
+			</div>
+			<div class="info__element">
+				<div class="info__label">Propriétaire</div>
+				<div class="info__content">{{ animal.client.lastname }} {{ animal.client.firstname }}</div>
+			</div>
+		</div>
+	</div>
+
+	<table class="animal__rendezvous">
+		<caption>
+			Liste des rendez-vous liés
+		</caption>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Description</th>
+				<th>Vétérinaire responsable</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for event in animal.events %}
+				<tr data-id={{ animal.id }}>
+					<td>{{ event.date|date("m-d-Y") }}</td>
+					<td>{{ event.description }}</td>
+					<td>{{ event.veterinaire.lastname }} {{ event.veterinaire.firstname }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

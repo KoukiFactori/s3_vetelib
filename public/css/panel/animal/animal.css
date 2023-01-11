@@ -8,14 +8,14 @@ main {
   font-size: 16px;
 }
 
-.client__info {
+.animal__info {
   display: flex;
   flex-direction: column;
   
   flex: 1;
 }
 
-.client__info h1 {
+.animal__info h1 {
   align-self: center;
   padding: 20px;
   font-size: 2rem;
@@ -23,7 +23,7 @@ main {
 }
 
 /** Information panel **/
-.client__info .info {
+.animal__info .info {
   display: flex;
   flex-direction: column;
 
@@ -54,13 +54,14 @@ main {
 @media screen and (min-width: 900px) {
   main {
     flex-direction: row;
+    overflow-y: scroll;
   }
   
-  .user__animals {
+  .animal__rendezvous {
     width: 40%;
   }
 
-  .user__animals tbody {
+  .animal__rendezvous tbody {
     text-align: center;
   }
 
