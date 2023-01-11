@@ -8,6 +8,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\Persistence\ManagerRegistry;
 use app\Entity\Animal;
+use app\Entity\Client;
 
 /**
  * @extends ServiceEntityRepository<Event>
@@ -53,6 +54,21 @@ class EventRepository extends ServiceEntityRepository
     ;
 
     return $qb->getQuery()->getResult();
+}
+
+public function getAllEventByClient(Client $client)
+{
+    $qb = $this->createQueryBuilder('a')
+    ->innerJoin('a.animal', 'animal')
+    ->innerJoin('animal.client', 'client')
+    ->where('client = :client')
+    ->andWhere(' a.date > :now')
+    ->setParameter('client', $client )
+    ->setParameter('now', new \DateTime());
+
+    return $qb->getQuery()->getResult();
+
+
 }
 
 
