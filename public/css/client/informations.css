@@ -69,6 +69,20 @@ button {
     max-width: 13rem;
 }
 
+.bouton_deconnexion > * {
+    background-color: #2EA7B6;
+    border: none;
+    color: white;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    transition-duration: 0.3s;
+    border-radius: 6px;
+    max-width: 13rem;
+}
+
 button:hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.15), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
