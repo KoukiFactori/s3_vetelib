@@ -44,32 +44,29 @@ class EventRepository extends ServiceEntityRepository
     }
 
     public function findEventByAnimal(Animal $animal)
-{
-    $qb = $this->createQueryBuilder('a');
+    {
+        $qb = $this->createQueryBuilder('a');
 
-    $qb
-        ->where('a.animal = :animal')
-        ->orderBy("a.date", 'ASC')
-        ->setParameter('animal', $animal)
-    ;
+        $qb
+            ->where('a.animal = :animal')
+            ->orderBy("a.date", 'ASC')
+            ->setParameter('animal', $animal);
 
-    return $qb->getQuery()->getResult();
-}
+        return $qb->getQuery()->getResult();
+    }
 
-public function getAllEventByClient(Client $client)
-{
-    $qb = $this->createQueryBuilder('a')
-    ->innerJoin('a.animal', 'animal')
-    ->innerJoin('animal.client', 'client')
-    ->where('client = :client')
-    ->andWhere(' a.date > :now')
-    ->setParameter('client', $client )
-    ->setParameter('now', new \DateTime());
+    public function getAllEventByClient(Client $client)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->innerJoin('a.animal', 'animal')
+            ->innerJoin('animal.client', 'client')
+            ->where('client = :client')
+            ->andWhere(' a.date > :now')
+            ->setParameter('client', $client)
+            ->setParameter('now', new \DateTime());
 
-    return $qb->getQuery()->getResult();
-
-
-}
+        return $qb->getQuery()->getResult();
+    }
 
 
     /**
@@ -80,15 +77,15 @@ public function getAllEventByClient(Client $client)
     public function getVeterinaireEventsBetween(int $vetoId, \DateTimeInterface $start, \DateTimeInterface $end): array
     {
         return $this->createQueryBuilder('event')
-        ->where('event.date BETWEEN :start and :end')
-        ->andWhere('event.veterinaire = :vetoId')
-        ->setParameter('start', $start->format('Y-m-d H:i:s'))
-        ->setParameter('end', $end->format('Y-m-d H:i:s'))
-        ->setParameter('vetoId', $vetoId)
-        ->getQuery()
-        ->getResult();
+            ->where('event.date BETWEEN :start and :end')
+            ->andWhere('event.veterinaire = :vetoId')
+            ->setParameter('start', $start->format('Y-m-d H:i:s'))
+            ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->setParameter('vetoId', $vetoId)
+            ->getQuery()
+            ->getResult();
     }
-    
+
     /*
      * @param integer $veterinaireId
      * @return Event[]
@@ -108,8 +105,12 @@ public function getAllEventByClient(Client $client)
      * @param integer $veterinaireId
      * @return Event[]
      */
-    public function fetchEventsAllDataByVeterinaire(int $veterinaireId): array {
+    public function fetchEventsAllDataByVeterinaire(int $veterinaireId): array
+    {
         $query = $this->createQueryBuilder("ev")
+            ->innerJoin("ev.veterinaire", "vet")
+            ->addSelect("vet as veterinaire")
+
             ->innerJoin("ev.animal", "ani")
             ->addSelect("ani as animal")
 
@@ -118,9 +119,6 @@ public function getAllEventByClient(Client $client)
 
             ->innerJoin("ani.client", "cli")
             ->addSelect("cli as client")
-
-            ->innerJoin("ev.responsable", "vet")
-            ->addSelect("vet as veterinaire")
             
             ->where("vet.id = :id")
             ->getQuery();
@@ -132,7 +130,8 @@ public function getAllEventByClient(Client $client)
      * @param integer $eventId
      * @return Event
      */
-    public function fetchEventAllData(int $eventId) {
+    public function fetchEventAllData(int $eventId)
+    {
         $query = $this->createQueryBuilder("ev")
             ->where("ev.id = :id")
 
@@ -144,35 +143,35 @@ public function getAllEventByClient(Client $client)
 
             ->innerJoin("ani.client", "cli")
             ->addSelect("cli as client")
-            
+
             ->setParameter('id', $eventId)
             ->getQuery();
 
         return $query->setMaxResults(1)->getOneOrNullResult();
     }
 
-//    /**
-//     * @return Event[] Returns an array of Event objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Event[] Returns an array of Event objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('e')
+    //            ->andWhere('e.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('e.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Event
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Event
+    //    {
+    //        return $this->createQueryBuilder('e')
+    //            ->andWhere('e.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
