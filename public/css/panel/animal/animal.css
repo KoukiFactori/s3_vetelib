@@ -1,0 +1,81 @@
+main {
+  display: flex;
+  flex-direction: column;
+
+  height: 80vh;
+  border-radius: 2rem 0 0 2rem !important;
+
+  font-size: 16px;
+}
+
+.animal__info {
+  display: flex;
+  flex-direction: column;
+  
+  flex: 1;
+}
+
+.animal__info h1 {
+  align-self: center;
+  padding: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/** Information panel **/
+.animal__info .info {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  gap: 5px;
+}
+.info__element {
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+
+  align-items: center;
+
+  gap: 2px;
+
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.info .info__element .info__label {
+  text-decoration: underline;
+}
+
+/** **/
+
+@media screen and (min-width: 900px) {
+  main {
+    flex-direction: row;
+  }
+  
+  .animal__rendezvous {
+    width: 40%;
+  }
+
+  .animal__rendezvous tbody {
+    text-align: center;
+  }
+
+  .info {
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .veterinaire {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .veterinaire__main {
+    flex: 1;
+  }
+}
