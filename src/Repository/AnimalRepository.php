@@ -41,21 +41,46 @@ class AnimalRepository extends ServiceEntityRepository
         }
     }
     /**
-     * @param Client client dont on souhaite avoir les animaux
-     * @return Animal[]  return an array de tout les animaux d'un client
+     * @param int $clientId client dont on souhaite avoir les animaux
+     * @return Animal[] retourne une liste de tout les animaux d'un client
     */
-    public function getAllAnimalsByClient(string $clientId): Array 
+    public function getAllAnimalsByClient(int $clientId): Array 
     {
         $qb = $this->createQueryBuilder('a')
-        ->innerJoin('a.client', 'c')
-        ->where('c.id = :clientId')
-        ->setParameter('clientId', $clientId)
-        ->getQuery();
+            ->innerJoin('a.client', 'c')
+            ->where('c.id = :clientId')
+            ->setParameter('clientId', $clientId)
+            ->getQuery();
 
         return $qb->execute();
-
     }
-    
+
+    /**
+     * @param int $veterinaireId ID du vétérinaire
+     * @return Animal[] retourne tous les animaux pour un vétérinaire spécifique
+     */
+    public function fetchAnimalsWithExtraData(int $veterinaireId): array
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->innerJoin("a.espece", "esp")
+            ->addSelect("esp")
+            
+            ->innerJoin("a.client", "cli")
+            ->addSelect("cli")
+
+            ->innerJoin("a.events", "ev")
+            ->innerJoin("ev.veterinaire", "vet")
+            ->where("vet.id = :id")
+            
+            ->orderBy("cli.lastname", "ASC")
+            ->addOrderBy("cli.firstname", "ASC")
+            ->addOrderBy("a.name", "ASC")
+
+            ->setParameter("id", $veterinaireId)
+            ->getQuery();
+
+        return $qb->execute();
+    }    
     
 //    /**
 //     * @return Animal[] Returns an array of Animal objects
