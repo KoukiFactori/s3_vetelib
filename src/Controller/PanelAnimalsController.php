@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[IsGranted('ROLE_VETERINAIRE')]
 class PanelAnimalsController extends AbstractController
 {
-    #[Route('/panel/animals', name: 'app_panel_animals')]
+    #[Route('/panel/animals', name: 'app_panel_animal')]
     public function index(AnimalRepository $repository): Response
     {
         $animals = $repository->findBy([], ["lastname" => "ASC"]);
