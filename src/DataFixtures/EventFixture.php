@@ -48,11 +48,13 @@ class EventFixture extends Fixture implements DependentFixtureInterface
 
             $datetimes[$vetoId][] = [
                 'start' => $start,
-                'end' => $end,
+                'end' => $end
             ];
 
             return [
-                'typeEvent' => TypeEventFactory::random(),
+                'typeEvent' => EventFactory::faker()->boolean(90)
+                    ? TypeEventFactory::find(1)
+                    : TypeEventFactory::find(2),
                 'date' => $start,
                 'veterinaire' => $veterinaire,
             ];
