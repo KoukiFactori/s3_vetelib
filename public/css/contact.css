@@ -141,6 +141,12 @@ body, head {
     margin: 2.5rem 2rem;
 }
 
+.bottom__title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: .3rem;
+}
+
 #map {
     height: 30rem;
 }
