@@ -32,7 +32,7 @@ class CalendarSubscriber implements EventSubscriberInterface
 
     public function onCalendarSetData(CalendarEvent $calendar)
     {
-        $events = $this->eventRepository->getVeterinaireEventsBetween(
+        $events = $this->eventRepository->getVeterinaireEventsWithTypeEventBetween(
             $this->security->getUser()->getId(),
             $calendar->getStart(),
             $calendar->getEnd()
@@ -51,6 +51,10 @@ class CalendarSubscriber implements EventSubscriberInterface
                     'id' => $event->getId(),
                 ])
             );
+
+            if ($event->getTypeEvent()->getLibType() == 'Urgent') {
+                $calendarEvent->addOption('color', '#ef5350');
+            }
 
             $calendar->addEvent($calendarEvent);
         }
