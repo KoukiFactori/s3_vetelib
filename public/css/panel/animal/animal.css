@@ -54,6 +54,7 @@ main {
 @media screen and (min-width: 900px) {
   main {
     flex-direction: row;
+    overflow-y: scroll;
   }
   
   .animal__rendezvous {
