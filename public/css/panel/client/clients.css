@@ -1,9 +1,6 @@
 html, body {
   box-sizing: border-box;
   padding: 0px;
-}
-
-body {
   font-size: 16px;
 }
 
@@ -18,70 +15,10 @@ main {
   border-radius: 2rem 0 0 2rem !important;
 }
 
-table {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-
-  overflow: hidden;
-}
-
-table caption {
-  margin: 10px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-thead th {
-  text-align: center;
-}
-
 thead th:nth-child(1) {
   width: 25%;
 }
 
 thead th:nth-child(4) {
   width: 60px;
-}
-
-th,
-td {
-  padding: 20px;
-
-  border-bottom: 1px solid #ddd;
-
-  overflow: hidden;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: aliceblue;
-}
-
-tbody tr:hover {
-  background-color: aquamarine;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-
-  height: 90px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-td.actions {
-  user-select: none;
 }
