@@ -2,22 +2,22 @@
 
 {% block stylesheets %}
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ asset("css/panel/client/style.css") }}">
+  <link rel="stylesheet" href="{{ asset("css/panel/base/table.css") }}">
+  <link rel="stylesheet" href="{{ asset("css/panel/animal/animals.css") }}">
 {% endblock %}
 
-{% block title %} Liste des clients {% endblock %}
+{% block title %} Liste des animaux {% endblock %}
 
 {% block body %}
-  <table class="client__list">
+  <table class="animal__list">
     <caption>
-      Liste des clients
+      Liste des animaux
     </caption>
     <thead>
       <tr>
         <th>Nom</th>
         <th>Type animal</th>
         <th>Age</th>
-        <th>Descriptif santé</th>
         <th>Nom maitre</th>
         <th>Action</th>
       </tr>
@@ -25,11 +25,12 @@
     <tbody>
       {% for animal in animals %}
         <tr>
-          <td>{{animal.name}}</td>
-          <td>{{animal.type.name}}</td>
-          <td>{{client.email}}</td>
+          <td>{{ animal.name }}</td>
+          <td>{{ animal.espece.name }}</td>
+          <td>{{ date().diff(date(animal.birthdate)).y }}</td>
+          <td>{{ animal.client.lastname }} {{ animal.client.firstname }}</td>
           <td class="actions">
-            <span class="material-symbols-outlined">delete</span>
+            <a href={{ path('app_panel_animal_show', { id: animal.id }) }}><span class="material-symbols-outlined">file_open</span></a>
           </td>
         </tr>
       {% endfor %}
