@@ -81,6 +81,7 @@ button {
     transition-duration: 0.3s;
     border-radius: 6px;
     max-width: 13rem;
+    text-decoration: none;
 }
 
 button:hover {
