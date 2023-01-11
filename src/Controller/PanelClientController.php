@@ -3,10 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Client;
-use App\Form\EventType;
 use App\Repository\ClientRepository;
-use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
