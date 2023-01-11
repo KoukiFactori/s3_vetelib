@@ -19,7 +19,7 @@ class ClientInformationsController extends AbstractController
         $this->tokenStorage = $tokenStorage;
     }
 
-    #[Route('/client/informations', name: 'app_client_informations')]
+    #[Route('/mon_profil', name: 'app_client_informations')]
     public function index(UserRepository $userRepository, Request $request): Response
     {
         $this->denyAccessUnlessGranted('ROLE_CLIENT');
