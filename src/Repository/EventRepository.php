@@ -72,9 +72,11 @@ class EventRepository extends ServiceEntityRepository
      *
      * @return Event[]
      */
-    public function getVeterinaireEventsBetween(int $vetoId, \DateTimeInterface $start, \DateTimeInterface $end): array
+    public function getVeterinaireEventsWithTypeEventBetween(int $vetoId, \DateTimeInterface $start, \DateTimeInterface $end): array
     {
         return $this->createQueryBuilder('event')
+            ->addSelect('typeEvent')
+            ->leftJoin('event.typeEvent', 'typeEvent')
             ->where('event.date BETWEEN :start and :end')
             ->andWhere('event.veterinaire = :vetoId')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
