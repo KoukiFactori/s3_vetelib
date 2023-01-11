@@ -62,7 +62,7 @@ class VeterinaireCrudController extends AbstractCrudController
 
     private function setUserPassword($entityInstance): void
     {
-        $password = $this->getContext()->getRequest()->get('Veterinaire')['password'];
+        $password = $this->getContext()->getRequest()->get('User')['password'];
 
         if ('' != $password) {
             $entityInstance->setPassword($this->passwordHasher->hashPassword($entityInstance, $password));
