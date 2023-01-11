@@ -10,15 +10,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[IsGranted('ROLE_VETERINAIRE')]
-class PanelClientController extends AbstractController
+class PanelAnimalsController extends AbstractController
 {
-    #[Route('/panel/animaux', name: 'app_panel_animals')]
+    #[Route('/panel/animals', name: 'app_panel_animals')]
     public function index(AnimalRepository $repository): Response
     {
         $animals = $repository->findBy([], ["lastname" => "ASC"]);
 
         return $this->render('panel/animal/animals.html.twig', [
-            "animals" => $animals 
+            "animals" => $animals
         ]);
     }
 
