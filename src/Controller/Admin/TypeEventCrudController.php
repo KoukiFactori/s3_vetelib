@@ -19,7 +19,7 @@ class TypeEventCrudController extends AbstractCrudController
     {
         return [
             TextField::new('libType')
-                ->setLabel('Libélé')
+                ->setLabel('Libélé'),
         ];
     }
 }

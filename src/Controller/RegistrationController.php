@@ -6,13 +6,13 @@ use App\Entity\Client;
 use App\Entity\Veterinaire;
 use App\Form\RegistrationFormType;
 use App\Security\LoginAuthenticator;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
@@ -24,10 +24,10 @@ class RegistrationController extends AbstractController
 
         if ($isVet) {
             $user = new Veterinaire();
-            $user->setRoles(["ROLE_VETERINAIRE"]);
+            $user->setRoles(['ROLE_VETERINAIRE']);
         } else {
             $user = new Client();
-            $user->setRoles(["ROLE_CLIENT"]);
+            $user->setRoles(['ROLE_CLIENT']);
         }
 
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -43,7 +43,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            
+
             try {
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -54,7 +54,7 @@ class RegistrationController extends AbstractController
                     $request
                 );
             } catch (UniqueConstraintViolationException $err) {
-                //should re-render the form without actually adding the entity
+                // should re-render the form without actually adding the entity
             }
         }
 

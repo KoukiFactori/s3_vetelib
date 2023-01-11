@@ -5,11 +5,11 @@ namespace App\Controller;
 use App\Entity\Animal;
 use App\Entity\Veterinaire;
 use App\Repository\AnimalRepository;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[IsGranted('ROLE_VETERINAIRE')]
 class PanelAnimalsController extends AbstractController
@@ -25,7 +25,7 @@ class PanelAnimalsController extends AbstractController
         $animals = $repository->fetchAnimalsWithExtraData($user->getId());
 
         return $this->render('panel/animal/animals.html.twig', [
-            "animals" => $animals
+            'animals' => $animals,
         ]);
     }
 
@@ -33,6 +33,6 @@ class PanelAnimalsController extends AbstractController
     #[Entity('animal', expr: 'repository.fetchAnimalWithExtraData(id)')]
     public function show(Animal $animal): Response
     {
-        return $this->render('panel/animal/animal.html.twig', ["animal" => $animal]);
+        return $this->render('panel/animal/animal.html.twig', ['animal' => $animal]);
     }
 }

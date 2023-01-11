@@ -14,7 +14,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class ClientAnimalsAjoutController extends AbstractController
 {
-    
     private $em;
     private $tokenStorage;
 
@@ -28,7 +27,7 @@ class ClientAnimalsAjoutController extends AbstractController
     public function index(Request $request): Response
     {
         $user = $this->tokenStorage->getToken()->getUser();
-        
+
         $form = $this->createForm(AddAnimalType::class);
         $form->handleRequest($request);
 
@@ -44,7 +43,6 @@ class ClientAnimalsAjoutController extends AbstractController
 
             $animal->setClient($user);
 
-            
             $this->em->persist($animal);
             $this->em->flush();
 
