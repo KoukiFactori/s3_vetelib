@@ -23,6 +23,7 @@ class IndexCest
 
         $I->amOnRoute('app_client_animals');
         $I->seeResponseCodeIs(200);
+        $I->seeNumberOfElements('.animal', 3);
 
 
     }

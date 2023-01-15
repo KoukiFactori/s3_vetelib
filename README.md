@@ -31,3 +31,18 @@ Il peut être reformaté automatiquement avec :
 Une base de données est créée sur le compte utilisateur mare0055. La base s'appelle mare0055_contact.
 
 - On peut créer une nouvelle base de données en supprimant l'ancienne, et en y créant des données factices en utilisant la commande : `composer db`
+
+### Utilisisateur par default
+
+ Vétérinaire :
+antoinemarechal08@gmail.com : miaou
+Client : 
+simon@simon511000.fr : miaou
+Admin : 
+nicolas.mossmann@etudiant.univ-reims.fr : miaou
+
+
+### moyen de connexion pour le site  
+
+avec l'ip et le vpn de l'iut : 10.31.11.99
+en passant par ce lien : vetelib.simon511000.fr

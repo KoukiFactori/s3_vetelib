@@ -10,6 +10,7 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+        - Codeception\Util\Shared\Asserts
 params:
     - .env
     - .env.test
