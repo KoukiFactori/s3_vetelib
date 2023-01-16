@@ -8,6 +8,23 @@ use App\Tests\Support\ControllerTester;
 
 class IndexCest
 {
+    public function login(ControllerTester $I) {
+        $user = ClientFactory::createOne([
+            'lastname' => 'Ledoux',
+            'firstname' => 'Simon',
+            'email' => 'simon@simon511000.fr',
+            'roles' => ['ROLE_CLIENT'],
+            'password' => 'password',
+            'phone' => '0654685216',
+            'birthdate' => new \DateTime('1970-01-01'),
+            'city' => 'Paris',
+            'zipcode' => '75000',
+            'address' => '1 rue de la paix'
+        ]);
+
+        $I->amLoggedInAs($user->object());
+    }
+
     // Vérifier le bon chargement de la page
     public function chargementPage(ControllerTester $I)
     {
